@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { asExcelText, validateRsvp } from "../lib/rsvp.ts";
+import { asSpreadsheetText, validateRsvp } from "../lib/rsvp.ts";
 import { checkRateLimit } from "../lib/rate-limit.ts";
 
 const base = {
@@ -39,10 +39,10 @@ test("rejects missing attendance, invalid guest counts and bad phone", () => {
   if (!invalidGuests.success) assert.ok(invalidGuests.errors.guests);
 });
 
-test("escapes Excel formulas so RSVP inputs are stored as text", () => {
-  assert.equal(asExcelText("=HYPERLINK(\"bad\")"), "'=HYPERLINK(\"bad\")");
-  assert.equal(asExcelText("+94771234567"), "'+94771234567");
-  assert.equal(asExcelText("Congratulations!"), "Congratulations!");
+test("escapes spreadsheet formulas so RSVP inputs are stored as text", () => {
+  assert.equal(asSpreadsheetText("=HYPERLINK(\"bad\")"), "'=HYPERLINK(\"bad\")");
+  assert.equal(asSpreadsheetText("+94771234567"), "'+94771234567");
+  assert.equal(asSpreadsheetText("Congratulations!"), "Congratulations!");
 });
 
 test("limits requests to five per fifteen-minute window per key", () => {

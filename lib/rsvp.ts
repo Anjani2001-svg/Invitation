@@ -61,8 +61,8 @@ export function validateRsvp(input: unknown): ValidationResult {
   };
 }
 
-/** Excel treats cells beginning with =, +, -, or @ as formulas; write them as text. */
-export function asExcelText(value: string): string {
+/** Protect spreadsheet cells from interpreting guest-entered content as formulas. */
+export function asSpreadsheetText(value: string): string {
   const safe = value.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, "");
   return /^[\s]*[=+\-@]/.test(safe) ? `'${safe}` : safe;
 }

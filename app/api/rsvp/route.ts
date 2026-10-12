@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { asExcelText, validateRsvp } from "@/lib/rsvp";
+import { asSpreadsheetText, validateRsvp } from "@/lib/rsvp";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -10,6 +10,27 @@ const jsonHeaders = { "Cache-Control": "no-store" };
 
 function reply(body: object, status: number) {
   return NextResponse.json(body, { status, headers: jsonHeaders });
+}
+
+/** Only the official, deployed Google Apps Script URL is an acceptable destination. */
+function getSheetsWebAppUrl(value: string): URL | null {
+  try {
+    const url = new URL(value);
+    if (
+      url.protocol !== "https:" ||
+      url.hostname !== "script.google.com" ||
+      !/^\/macros\/s\/[^/]+\/exec$/.test(url.pathname) ||
+      url.search ||
+      url.hash ||
+      url.username ||
+      url.password
+    ) {
+      return null;
+    }
+    return url;
+  } catch {
+    return null;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -30,8 +51,7 @@ export async function POST(request: NextRequest) {
     return reply({ error: "Invalid request." }, 400);
   }
 
-  // Honeypot: bots that fill this invisible field receive a plausible response,
-  // without any data being forwarded to the wedding spreadsheet.
+  // Honeypot: do not store submissions from basic form-filling bots.
   if ("website" in raw && typeof raw.website === "string" && raw.website.trim()) {
     return reply({ ok: true }, 200);
   }
@@ -50,58 +70,67 @@ export async function POST(request: NextRequest) {
     return reply({ error: "Please review your details.", fields: result.errors }, 400);
   }
 
-  const webhookUrl = process.env.EXCEL_WEBHOOK_URL;
-  if (!webhookUrl) {
-    console.error("RSVP webhook is not configured.");
+  const endpoint = process.env.GOOGLE_SHEETS_WEBAPP_URL;
+  const sharedSecret = process.env.GOOGLE_SHEETS_SHARED_SECRET;
+  if (!endpoint || !sharedSecret || sharedSecret.length < 32) {
+    console.error("Google Sheets RSVP configuration is missing or incomplete.");
     return reply({ error: "RSVP is temporarily unavailable. Please contact the couple." }, 503);
   }
 
+  const url = getSheetsWebAppUrl(endpoint);
+  if (!url) {
+    console.error("Google Sheets RSVP web app URL has an invalid format.");
+    return reply({ error: "RSVP is temporarily unavailable. Please contact the couple." }, 503);
+  }
+
+  const { name, phone, attending, guests, message } = result.data;
+  const sheetsRow = {
+    secret: sharedSecret,
+    Timestamp: new Date().toISOString(),
+    Name: asSpreadsheetText(name),
+    Phone: asSpreadsheetText(phone),
+    Attending: attending,
+    Guests: guests,
+    Message: asSpreadsheetText(message),
+  };
+
   try {
-    const destination = new URL(webhookUrl);
-    if (destination.protocol !== "https:") throw new Error("Webhook must use HTTPS");
-
-    const { name, phone, attending, guests, message } = result.data;
-    const excelRow = {
-      Timestamp: new Date().toISOString(),
-      Name: asExcelText(name),
-      Phone: asExcelText(phone),
-      Attending: attending,
-      Guests: guests,
-      Message: asExcelText(message),
-    };
-
-    const response = await fetch(destination.toString(), {
+    const response = await fetch(url.toString(), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(excelRow),
+      body: JSON.stringify(sheetsRow),
       cache: "no-store",
-      redirect: "error",
+      // Google Apps Script ContentService redirects to script.googleusercontent.com.
+      redirect: "follow",
       signal: AbortSignal.timeout(25000),
     });
 
-    // A bare Power Automate HTTP trigger often returns 202 *before* Excel writes.
-    // We require a Response action AFTER "Add a row" returning {"ok":true}.
-    if (response.status !== 200) {
-      console.error("RSVP flow did not confirm Excel write; HTTP status:", response.status);
+    // An RSVP is successful ONLY after the Google Apps Script confirms appendRow.
+    if (!response.ok) {
+      console.error("Google Sheets RSVP endpoint did not confirm a save; HTTP:", response.status);
       return reply({ error: "We couldn't confirm your RSVP. Please try again." }, 502);
     }
 
     let confirmed = false;
     try {
-      const payload: unknown = await response.json();
-      confirmed = !!payload && typeof payload === "object" && "ok" in payload && payload.ok === true;
+      const responseBody = await response.text();
+      if (responseBody.length <= 1024) {
+        const data: unknown = JSON.parse(responseBody);
+        confirmed = !!data && typeof data === "object" && "ok" in data && data.ok === true;
+      }
     } catch {
       confirmed = false;
     }
+
     if (!confirmed) {
-      console.error("RSVP flow returned an unexpected confirmation payload.");
+      console.error("Google Sheets RSVP endpoint returned no valid save confirmation.");
       return reply({ error: "We couldn't confirm your RSVP. Please try again." }, 502);
     }
 
     return reply({ ok: true }, 200);
   } catch (error) {
-    // Avoid printing the confidential webhook URL or any guest information.
-    console.error("RSVP delivery failed:", error instanceof Error ? error.name : "unknown error");
+    // Do not log the URL, secret, or guests' personal information.
+    console.error("Google Sheets RSVP delivery failed:", error instanceof Error ? error.name : "unknown error");
     return reply({ error: "Something went wrong. Please try again shortly." }, 502);
   }
 }

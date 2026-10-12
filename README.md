@@ -1,12 +1,12 @@
 # Catholic Wedding Invitation — Next.js + Tailwind CSS
 
-An elegant, mobile-first, single-page invitation for a Catholic Nuptial Mass and wedding reception. Built with the **Next.js App Router**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and a server-only **Power Automate → Excel Online** RSVP endpoint. Deployable to Vercel.
+An elegant, mobile-first, single-page invitation for a Catholic Nuptial Mass and wedding reception. Built with the **Next.js App Router**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and a server-only **Google Apps Script → Google Sheets** RSVP endpoint. Deployable to Vercel.
 
-> **Before sharing the invitation:** All names, wedding dates, church details and times are *sample values*. Update them in `config/wedding.ts`. RSVP storage requires a Power Automate flow and `EXCEL_WEBHOOK_URL`; without the webhook, the form intentionally reports that RSVP is unavailable rather than pretending to save data.
+> **Before sharing the invitation:** All names, wedding dates, church details and times are *sample values*. Update them in `config/wedding.ts`. RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
 
 ## 1. Quick start
 
-**Requirements:** Node.js 20.9+ (Node 22 LTS recommended), npm, a Microsoft account with suitable Power Automate/Excel access, and optionally GitHub and Vercel accounts.
+**Requirements:** Node.js 20.9+ (Node 22 LTS recommended), npm, a Google account to own the RSVP sheet and Apps Script, and optionally GitHub and Vercel accounts. No Microsoft account is needed.
 
 ```bash
 npm install
@@ -14,7 +14,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Visit **http://localhost:3000**. The invitation itself runs without any webhook, but a real RSVP cannot be saved until section 3 below is completed.
+Visit **http://localhost:3000**. The invitation itself runs without a connected spreadsheet, but a real RSVP cannot be saved until section 3 below is completed.
 
 Useful commands:
 
@@ -54,105 +54,34 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 
 **Bible verse:** The starter copy is 1 Corinthians 13:4. You can remove it from the Hero markup if you prefer not to display a verse.
 
-## 3. Connect RSVPs to Excel Online on OneDrive
+## 3. Connect RSVPs to Google Sheets (no Microsoft account)
 
-The browser posts JSON only to **`/api/rsvp`**. The Next.js API route validates inputs, limits basic spam, converts them to the Excel column names, adds a UTC timestamp, and forwards the payload to the private Power Automate HTTP endpoint. The webhook URL never appears in browser code.
+This project now uses **Next.js -> Google Apps Script -> Google Sheets**. All existing RSVP fields and the invitation design are unchanged. The guest's browser posts to `/api/rsvp`; the server checks the form, rate-limits requests, and securely forwards data to Apps Script. After the script appends a row and returns `{ "ok": true }`, the website displays a confirmation.
 
-### 3A. Create and prepare the workbook
+You need only a **Google account** to own the spreadsheet and Apps Script. Guests do not need accounts. Google Sheets itself must remain private. The full, beginner-friendly setup guide is **`docs/GOOGLE_SHEETS_SETUP.md`**.
 
-1. Sign in to Excel for the web through **OneDrive for Business** (Microsoft 365 work/school account) or SharePoint.
-2. Create a file, for example **`Wedding-RSVPs.xlsx`**.
-3. In row 1, add the six headers, **exactly** as follows and in this order:
+**Summary of setup:**
 
-   `Timestamp | Name | Phone | Attending | Guests | Message`
-
-4. Select the header row and a blank row under it, then **Insert → Table** (tick **My table has headers**).
-5. Under **Table Design → Table Name**, name the table **`RSVPs`** (no spaces). Save the workbook.
-6. Leave the table editable. Avoid simultaneously modifying the Excel workbook in multiple clients while the flow adds rows.
-
-**Which OneDrive?** The action **Excel Online (Business) → Add a row into a table** works with **OneDrive for Business**, SharePoint, and certain Microsoft 365 group libraries. For a **personal OneDrive / consumer Microsoft account**, use the separate **Excel Online (OneDrive)** connector if available in your Power Automate account; select the same `RSVPs` table there. These are distinct connectors. If neither connector/trigger is available with your licence, consider Microsoft Graph or another RSVP storage provider.
-
-### 3B. Create the HTTP-triggered flow
-
-1. Open **https://make.powerautomate.com/** and sign in with the account that can edit the workbook.
-2. Create a new cloud flow with the **Request → When an HTTP request is received** trigger. Depending on the Power Automate designer, you may start from a blank automated flow or add the trigger after creating a flow.
-3. In **Request Body JSON Schema**, paste `docs/power-automate-schema.json` below (the same schema is in the file):
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "Timestamp": { "type": "string", "format": "date-time" },
-    "Name": { "type": "string" },
-    "Phone": { "type": "string" },
-    "Attending": { "type": "string", "enum": ["Yes", "No"] },
-    "Guests": { "type": "integer", "minimum": 0, "maximum": 5 },
-    "Message": { "type": "string" }
-  },
-  "required": ["Timestamp", "Name", "Phone", "Attending", "Guests", "Message"]
-}
-```
-
-4. **Authentication setting (important):** This project's basic server-to-flow webhook does **not** send Microsoft Entra bearer tokens. In the trigger's **Who can trigger the flow?** setting, select **Anyone** if your organisation permits it. Newer flows may default to **Any user in my tenant**, which requires OAuth and would return HTTP 401 for this starter code. The `Anyone` setting grants access to anyone possessing the secret signed trigger URL, so keep that URL private. If your organisation prohibits anonymous triggers, don't bypass its security policy; implement the Microsoft Entra service-principal OAuth variant instead.
-5. Add an **Excel Online (Business) → Add a row into a table** action. Choose the **Location** (OneDrive for Business or SharePoint), **Document Library**, **File**, and **Table = RSVPs**.
-6. Map each Excel column to its identically named value from the HTTP trigger's Dynamic Content (or expressions `triggerBody()?['Name']`, etc.):
-
-   | Excel column | Request field |
-   | --- | --- |
-   | Timestamp | `Timestamp` |
-   | Name | `Name` |
-   | Phone | `Phone` |
-   | Attending | `Attending` |
-   | Guests | `Guests` |
-   | Message | `Message` |
-
-7. **Mandatory for reliable confirmation:** Add a **Response** action **after** the Excel action (in the success path). Set **Status Code = 200**, `Content-Type = application/json` and Response Body to:
-
-   ```json
-   { "ok": true }
-   ```
-
-   This is essential: without a Response action, an HTTP-triggered flow may return `202 Accepted` immediately, even if the Excel action fails later. The API deliberately only treats **HTTP 200 plus `{ "ok": true }`** as a confirmed RSVP. If possible, add a separate **Response (500)** action configured to run after the Excel action fails/times out, to provide explicit failure feedback.
-8. **Save the flow** and copy the **HTTP POST URL** from the trigger. This URL is a secret and may contain a signed access token. **Never paste it into React, `config/wedding.ts`, a public README, or a GitHub repository.**
-9. Locally, add the URL to **`.env.local`**:
+1. Upload `docs/Wedding-RSVPs-Google-Sheets-Template.xlsx` to Google Drive and save it as a native Google Sheet.
+2. Open **Extensions > Apps Script**, paste `docs/google-apps-script/Code.gs`, and save it.
+3. In **Apps Script > Project Settings > Script Properties**, set `RSVP_SHEET_ID` to the spreadsheet ID and `RSVP_SHARED_SECRET` to a private, randomly generated value of at least 32 characters.
+4. **Deploy > New deployment > Web app** with **Execute as Me** and **Who has access: Anyone**, if that deployment permission is available to your account. Authorise as the script owner. Copy the `/exec` URL.
+5. Configure these two **server-side** values in `.env.local`, and also in Vercel Production environment settings when deployed:
 
    ```dotenv
-   EXCEL_WEBHOOK_URL=https://YOUR-PRIVATE-POWER-AUTOMATE-POST-URL
+   GOOGLE_SHEETS_WEBAPP_URL=https://script.google.com/macros/s/EXAMPLE_ID/exec
+   GOOGLE_SHEETS_SHARED_SECRET=YOUR_LONG_RANDOM_PRIVATE_SECRET
    ```
 
-10. Restart `npm run dev` after changing `.env.local`. Submit a real Yes RSVP and inspect **Power Automate → My flows → Run history**, then verify the new row inside the `RSVPs` table.
+6. Redeploy the website. Submit one **Yes** and one **No** RSVP and check that new rows appear in the private `RSVPs` sheet.
 
-### Example JSON sent to Power Automate
+**Spreadsheet columns:** `Timestamp | Name | Phone | Attending | Guests | Message`.
 
-```json
-{
-  "Timestamp": "2027-02-01T11:42:00.000Z",
-  "Name": "Example Guest",
-  "Phone": "+94 77 123 4567",
-  "Attending": "Yes",
-  "Guests": 2,
-  "Message": "Congratulations and blessings!"
-}
-```
+**Important security details:** The `GOOGLE_SHEETS_SHARED_SECRET` exists only in the server environment and Apps Script properties, never in website code or the spreadsheet. Apps Script executes under the spreadsheet owner's account, but checks the secret before writing. The endpoint deliberately requires a JSON `ok: true` confirmation before telling a guest their response was saved. Apps Script ContentService redirects JSON responses through `script.googleusercontent.com`, so the server follows that Google redirect.
 
-For **No** RSVPs, `Attending` is `"No"` and `Guests` is `0`. The timestamp is ISO UTC, produced by the server rather than trusting the visitor's device. The API prefixes potentially dangerous Excel formula characters (`=`, `+`, `-`, `@`) with a text marker to prevent formula injection.
+**Troubleshooting:** A 503 response usually means missing or invalid server configuration. A 502 means the spreadsheet write was not confirmed; check the Apps Script execution logs, deployment access, `RSVP_SHEET_ID`, secret, and exact `RSVPs` tab headers. An Apps Script `/exec` URL opened directly in a browser returns `{ "ok": false }` by design. Managed Workspace accounts may block web apps accessible to anyone. There may also be Google Apps Script service quotas. A timeout after a successful write can still create a duplicate if retried; check the sheet first.
 
-### Notes and troubleshooting
-
-- **503 error / RSVP unavailable:** `EXCEL_WEBHOOK_URL` has not been configured on the Next.js server.
-- **401/403 from the flow:** Verify who can trigger the flow (see step 4) and that the trigger URL has not expired or been regenerated.
-- **502 / couldn't confirm:** Verify the Excel step succeeded **and** the final Response action returns HTTP 200 with a JSON object containing `ok: true`. A bare 202 is rejected intentionally.
-- **Excel table missing:** Confirm the range was converted to a real **Table** named `RSVPs` rather than being a plain worksheet, and that your account has edit access.
-- **Row appears late:** Microsoft's Excel connector can take a short time to reflect a write. Check the flow run history before retrying; repeated retries after timeouts can produce duplicate rows.
-- **Premium licensing:** Microsoft licensing and your tenant's policies may restrict availability of HTTP request triggers/flow actions. Check your plan with the Microsoft 365 administrator before launch.
-- **Privacy:** Names, phone numbers and optional notes are personal data. Restrict workbook access, define a reasonable retention period, and include an appropriate privacy disclosure before public launch.
-
-Official connector and authentication references:
-
-- [Excel Online (Business) connector](https://learn.microsoft.com/en-us/connectors/excelonlinebusiness/)
-- [Excel Online (OneDrive/personal) connector](https://learn.microsoft.com/en-us/connectors/excelonline/)
-- [Microsoft: HTTP trigger authentication](https://learn.microsoft.com/en-us/power-automate/oauth-authentication)
-- [Microsoft: Secure inputs and outputs](https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/use-secure-inputs-outputs-triggers)
+For details and source documentation, open **`docs/GOOGLE_SHEETS_SETUP.md`**.
 
 ## 4. Deploy on Vercel through GitHub
 
@@ -170,10 +99,10 @@ Official connector and authentication references:
 
 3. Sign in to **https://vercel.com/** → **Add New → Project** → **Import** your GitHub repository.
 4. Vercel should detect **Next.js** automatically. Keep its default install/build settings and deploy. It will install the project dependencies and build the App Router application.
-5. Open **Project → Settings → Environment Variables**. Add **`EXCEL_WEBHOOK_URL`** with the actual private HTTP POST URL; select **Production** and any Preview environments you intend to test. Do **not** prefix the variable with `NEXT_PUBLIC_`.
+5. Open **Project → Settings → Environment Variables**. Add **`GOOGLE_SHEETS_WEBAPP_URL`** and **`GOOGLE_SHEETS_SHARED_SECRET`** using the values from section 3. Select **Production** and any Preview environments you intend to test. Do **not** prefix either variable with `NEXT_PUBLIC_`.
 6. **Redeploy** the latest production deployment after adding the environment variable so the server function has access to it.
 7. Copy the resulting HTTPS address (e.g. `https://our-wedding-abc.vercel.app`), paste it into `wedding.siteUrl` in `config/wedding.ts`, commit and push so the generated Open Graph metadata points to the right domain.
-8. Test a Yes and No RSVP **on the production URL** and check the Excel `RSVPs` table.
+8. Test a Yes and No RSVP **on the production URL** and check the private Google Sheets `RSVPs` tab.
 9. To connect an optional custom domain: **Vercel Project → Settings → Domains → Add**, enter the domain, follow Vercel's DNS instructions, then update `wedding.siteUrl` to that final HTTPS domain and redeploy.
 10. Share the deployed URL on WhatsApp. For the cleanest link preview, share it only **after** replacing `public/couple.jpg`, updating the names and `siteUrl`, and confirming Open Graph metadata.
 
@@ -189,13 +118,13 @@ Optional: a portrait JPG is used for the social preview because it always stays 
 - [ ] On iPhone Safari and Android Chrome, tap **Open invitation**: page opens and music plays (subject to user device settings).
 - [ ] Pause music, refresh, reopen: preference remains muted; manually resume and verify playback.
 - [ ] Check layout at 320 px and 390 px widths; links, text and controls remain usable.
-- [ ] Submit **RSVP Yes** with 1 guest; see confirmation and verify `Attending=Yes`, `Guests=1` in Excel.
-- [ ] Submit **RSVP Yes** with 5 guests; verify `Guests=5` in Excel.
-- [ ] Submit **RSVP No**; guest selector is hidden, no-success copy is friendly, Excel shows `Attending=No`, `Guests=0`.
+- [ ] Submit **RSVP Yes** with 1 guest; see confirmation and verify `Attending=Yes`, `Guests=1` in Google Sheets.
+- [ ] Submit **RSVP Yes** with 5 guests; verify `Guests=5` in Google Sheets.
+- [ ] Submit **RSVP No**; guest selector is hidden, no-success copy is friendly, Google Sheets shows `Attending=No`, `Guests=0`.
 - [ ] Submit without a name or attendance choice: client-side validation blocks submission.
 - [ ] Submit an invalid phone number: see a helpful validation message.
 - [ ] Check the Google Maps iframe and **Get directions** link point to the correct Royal Ramsess listing.
-- [ ] Temporarily remove webhook setting: the form shows an error rather than a false success.
+- [ ] Temporarily remove the Google Sheets environment variables: the form shows an error rather than a false success.
 - [ ] Verify title, description, portrait thumbnail and HTTPS link when shared on WhatsApp.
 - [ ] Run `npm run test`, `npm run typecheck`, `npm run lint`, `npm run build` before launch.
 
@@ -217,9 +146,11 @@ components/
   section-title.tsx
   wedding-experience.tsx
 config/wedding.ts         # Edit all names, copy, dates and links here
-docs/power-automate-schema.json
+docs/GOOGLE_SHEETS_SETUP.md                  # Step-by-step setup and troubleshooting
+docs/Wedding-RSVPs-Google-Sheets-Template.xlsx
+docs/google-apps-script/Code.gs              # Server-side Google Apps Script
 lib/rate-limit.ts         # Basic per-instance 5/15-minute IP limiter
-lib/rsvp.ts               # Shared validation and Excel text safety
+lib/rsvp.ts               # Shared validation and spreadsheet text safety
 public/couple.jpg         # Replace with wedding portrait
 public/music.mp3          # Original placeholder tune; replace if desired
 tests/rsvp.test.mjs
@@ -229,9 +160,9 @@ README.md
 
 ## 7. Production safety and scaling
 
-- The backend validates guest inputs again, uses a hidden honeypot, enforces a maximum JSON body length, forwards only a known six-column payload, and never returns the private webhook URL to the client.
+- The backend validates guest inputs again, uses a hidden honeypot, enforces a maximum JSON body length, forwards only the six expected spreadsheet fields plus a server-side secret, and never returns the Apps Script URL or secret to the client.
 - **Rate limiting is best-effort**, based on IP and **in-memory state** (five requests per 15 minutes per warm server process). Vercel serverless functions can scale to multiple instances, so this does **not** provide a durable cross-instance guarantee. For a high-traffic public invitation, enable Vercel Firewall/WAF protections or replace `lib/rate-limit.ts` with a Redis-backed limiter (e.g., Upstash).
-- If your organisation requires an **authenticated HTTP flow**, implement Microsoft Entra ID service-to-service authentication (with confidential server-side credentials) or consider the **Microsoft Graph API** to append table rows through an Azure app registration. Graph requires tenant/app permissions, token acquisition and careful workbook write permissions; it is intentionally not hidden behind a fictional "public OneDrive link" shortcut.
+- The Apps Script deployment must allow anonymous access for the site server to call it without Google OAuth, but requires a long shared secret before it writes. If your Google Workspace account blocks such deployments, choose an approved authenticated backend instead. Apps Script quotas and availability apply.
 - This template does not send confirmation SMS/email, keep a guest list publicly accessible or automatically prevent intentional duplicate submissions. You can add those later if needed.
 
 ---
