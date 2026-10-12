@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { ArrowRight, Check, CheckCircle2, LoaderCircle } from "lucide-react";
+import { ArrowRight, CalendarPlus2, Check, CheckCircle2, LoaderCircle } from "lucide-react";
 import { validateRsvp, type Attendance, type RsvpErrors } from "@/lib/rsvp";
 import { wedding } from "@/config/wedding";
 
@@ -88,7 +88,16 @@ export function RsvpForm() {
             ? "Thank you! We can't wait to celebrate with you. See you on our special day!"
             : "We'll miss celebrating with you, but we're grateful for your love and prayers."}
         </p>
-        <button type="button" onClick={reset} className="mt-9 text-xs font-semibold uppercase tracking-[.14em] text-sage-dark underline underline-offset-5">
+        {submittedAttendance === "Yes" ? (
+          <a
+            href="#events"
+            className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sage-dark px-6 text-[11px] font-semibold uppercase tracking-[.1em] text-white hover:bg-charcoal"
+          >
+            <CalendarPlus2 className="h-4 w-4" aria-hidden="true" />
+            Save the wedding date to your calendar
+          </a>
+        ) : null}
+        <button type="button" onClick={reset} className="mt-8 text-xs font-semibold uppercase tracking-[.14em] text-sage-dark underline underline-offset-5">
           Send another response
         </button>
       </div>

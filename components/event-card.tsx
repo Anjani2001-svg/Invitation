@@ -1,6 +1,8 @@
 import { ArrowUpRight, Clock3, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { wedding } from "@/config/wedding";
+import { CalendarActions } from "@/components/calendar-actions";
+import type { WeddingCalendarKind } from "@/lib/calendar";
 
 type EventData = {
   title: string;
@@ -16,10 +18,12 @@ export function EventCard({
   number,
   icon,
   event,
+  eventKind,
 }: {
   number: string;
   icon: ReactNode;
   event: EventData;
+  eventKind: WeddingCalendarKind;
 }) {
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white/75 px-7 pb-9 pt-10 transition-shadow duration-300 hover:shadow-[0_20px_55px_rgba(40,59,43,.07)] sm:px-11 sm:pb-12 sm:pt-12">
@@ -51,6 +55,7 @@ export function EventCard({
           Directions <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </a>
       ) : null}
+      <CalendarActions kind={eventKind} />
     </article>
   );
 }

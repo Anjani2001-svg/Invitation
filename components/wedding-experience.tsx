@@ -248,10 +248,10 @@ export function WeddingExperience() {
               </Reveal>
               <div className="mt-13 grid gap-6 md:grid-cols-2 md:gap-7">
                 <Reveal className="h-full" delay={0.05}>
-                  <EventCard number="01" icon={<Church className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.ceremony} />
+                  <EventCard number="01" eventKind="ceremony" icon={<Church className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.ceremony} />
                 </Reveal>
                 <Reveal className="h-full" delay={0.17}>
-                  <EventCard number="02" icon={<Heart className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.reception} />
+                  <EventCard number="02" eventKind="reception" icon={<Heart className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.reception} />
                 </Reveal>
               </div>
               {wedding.dressCode ? (
