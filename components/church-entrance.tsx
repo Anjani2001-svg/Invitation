@@ -1,33 +1,56 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-export default function ChurchEntrance() {
+export function ChurchEntrance({ onComplete }: { onComplete?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+  const [isInView, setIsInView] = useState(false);
 
-  // Handle smooth play/pause based on scroll visibility to optimize performance
   useEffect(() => {
-    if (!videoRef.current) return;
-    
+    const timer = window.setTimeout(() => {
+      onComplete?.();
+    }, 1800);
+
+    return () => window.clearTimeout(timer);
+  }, [onComplete]);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsInView(entries.some((entry) => entry.isIntersecting));
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
     if (isInView) {
-      videoRef.current.play().catch((error) => {
+      void video.play().catch((error: Error) => {
         console.warn("Autoplay was prevented:", error);
       });
     } else {
-      videoRef.current.pause();
+      video.pause();
     }
   }, [isInView]);
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       className="relative w-full py-20 overflow-hidden bg-background flex flex-col items-center justify-center"
     >
       <div className="max-w-4xl mx-auto px-4 text-center mb-10">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -36,7 +59,7 @@ export default function ChurchEntrance() {
         >
           Sacred Moments
         </motion.span>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -47,8 +70,7 @@ export default function ChurchEntrance() {
         </motion.h2>
       </div>
 
-      {/* Smooth Animated Video Container */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -64,12 +86,10 @@ export default function ChurchEntrance() {
           preload="metadata"
           poster="/couple.jpg"
         >
-          {/* Ensure your video file is placed inside public/ with this filename or update path */}
           <source src="/church-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
-        {/* Cinematic Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
       </motion.div>
     </section>
