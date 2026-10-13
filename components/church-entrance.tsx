@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { wedding } from "@/config/wedding";
@@ -8,17 +8,26 @@ import { WeddingFlorals } from "@/components/ornaments";
 
 /**
  * "Open the church doors" scene.
- * Plays after the guest taps "Open our invitation":
+ * Plays after the guest taps "Open our invitation". The closed church is shown
+ * first; the guest TAPS the church and then:
  *   1. the church doors swing open and warm light spills out,
  *   2. doves fly up from the doorway,
  *   3. the bride & groom walk hand-in-hand up the path and into the church,
  *   4. the light blooms and melts into the invitation.
  *
- * Everything is drawn with SVG + CSS keyframes (see "Church entrance scene" in
+ * REAL VIDEO (optional): drop a video at public/church-walk.mp4 and it replaces the
+ * illustration. Its first frame is shown as the closed church; tapping plays the
+ * video full-screen, and the invitation opens when it ends. Remove the file and the
+ * illustrated version below is used again.
+ *
+ * The illustration is drawn with SVG + CSS keyframes (see "Church entrance scene" in
  * app/globals.css) so it needs no video file and stays crisp on every screen.
  * Timings below must stay in sync with the animation delays in globals.css.
  */
 export const CHURCH_ENTRANCE_MS = 8700;
+export const CHURCH_VIDEO_SRC = "/church-walk.mp4";
+/** Safety net: never leave a guest stuck if a video stalls. */
+const VIDEO_MAX_MS = 40000;
 
 const PETALS = [
   { x: 40, drift: 60, dur: 10, delay: 0.3, fill: "#ffffff" },
@@ -46,17 +55,49 @@ const DOVES = [
 
 export function ChurchEntrance({ onComplete }: { onComplete: () => void }) {
   const onCompleteRef = useRef(onComplete);
-  const skipRef = useRef<HTMLButtonElement>(null);
+  const openRef = useRef<HTMLButtonElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
+  // null = still checking, true = a real video exists, false = use the illustration
+  const [hasVideo, setHasVideo] = useState<boolean | null>(null);
 
   useEffect(() => {
     onCompleteRef.current = onComplete;
   });
 
   useEffect(() => {
-    skipRef.current?.focus({ preventScroll: true });
-    const timer = window.setTimeout(() => onCompleteRef.current(), CHURCH_ENTRANCE_MS);
-    return () => window.clearTimeout(timer);
+    openRef.current?.focus({ preventScroll: true });
+    let cancelled = false;
+    fetch(CHURCH_VIDEO_SRC, { method: "HEAD" })
+      .then((res) => {
+        const type = res.headers.get("content-type") ?? "";
+        if (!cancelled) setHasVideo(res.ok && type.startsWith("video"));
+      })
+      .catch(() => {
+        if (!cancelled) setHasVideo(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
+
+  // The timeline only starts once the guest taps the church.
+  useEffect(() => {
+    if (!started) return;
+    const ms = hasVideo ? VIDEO_MAX_MS : CHURCH_ENTRANCE_MS;
+    const timer = window.setTimeout(() => onCompleteRef.current(), ms);
+    return () => window.clearTimeout(timer);
+  }, [started, hasVideo]);
+
+  function openDoors() {
+    if (started) return;
+    setStarted(true);
+    if (hasVideo) {
+      void videoRef.current?.play().catch(() => onCompleteRef.current());
+    }
+  }
+
+  const showArt = hasVideo !== true;
 
   return (
     <motion.div
@@ -67,8 +108,21 @@ export function ChurchEntrance({ onComplete }: { onComplete: () => void }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.9, ease: "easeInOut" } }}
       transition={{ duration: 0.7, ease: "easeInOut" }}
-      className="ce-scene fixed inset-0 z-[110] overflow-hidden bg-[#faf6e6]"
+      className={`ce-scene fixed inset-0 z-[110] overflow-hidden bg-[#faf6e6] ${started ? "ce-play" : ""}`}
     >
+      {hasVideo ? (
+        <video
+          ref={videoRef}
+          src={`${CHURCH_VIDEO_SRC}#t=0.1`}
+          muted
+          playsInline
+          preload="auto"
+          onEnded={() => onCompleteRef.current()}
+          onError={() => setHasVideo(false)}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : null}
+      {showArt ? (
       <svg
         viewBox="0 0 400 700"
         preserveAspectRatio="xMidYMid meet"
@@ -342,7 +396,10 @@ export function ChurchEntrance({ onComplete }: { onComplete: () => void }) {
         <circle className="ce-bloom" cx="200" cy="430" r="60" fill="url(#ce-bloom)" />
         <rect className="ce-flash" x="-3000" y="-3000" width="6400" height="6400" fill="#fcfbf5" />
       </svg>
+      ) : null}
 
+      {showArt ? (
+      <>
       {/* Same botanical corners as the opening screen */}
       <div
         className="botanical-sway pointer-events-none absolute -bottom-12 -left-18 h-55 w-60 opacity-70 sm:-bottom-9 sm:-left-8 sm:h-80 sm:w-80"
@@ -357,6 +414,25 @@ export function ChurchEntrance({ onComplete }: { onComplete: () => void }) {
         <WeddingFlorals className="flower-shadow h-full w-full rotate-180" />
       </div>
 
+      </>
+      ) : null}
+
+      {/* Tap target: the whole church. Hidden once the doors are opening. */}
+      {!started ? (
+        <button
+          ref={openRef}
+          type="button"
+          onClick={openDoors}
+          aria-label="Tap to open the church doors"
+          className="absolute inset-0 z-[5] cursor-pointer bg-transparent"
+        >
+          <span className="ce-hint absolute inset-x-0 bottom-[9svh] mx-auto flex w-fit items-center gap-2.5 rounded-full border border-gold/40 bg-white/90 px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[.16em] text-sage-dark shadow-[0_10px_28px_rgba(54,82,62,.16)] backdrop-blur">
+            <span aria-hidden="true" className="text-gold">✦</span> Tap to open the church doors
+          </span>
+        </button>
+      ) : null}
+
+      {showArt ? (
       <div className="ce-caption pointer-events-none absolute inset-x-0 top-[7svh] z-10 px-6 text-center [@media(max-height:480px)]:hidden">
         <p className="kicker text-gold-deep">
           {wedding.ceremony.venue} <span aria-hidden="true">·</span> {wedding.ceremony.time}
@@ -365,9 +441,9 @@ export function ChurchEntrance({ onComplete }: { onComplete: () => void }) {
           Together, by God&apos;s grace
         </p>
       </div>
+      ) : null}
 
       <button
-        ref={skipRef}
         type="button"
         onClick={onComplete}
         className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-20 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-gold/30 bg-white/80 px-4 text-[10px] font-semibold uppercase tracking-[.16em] text-sage-dark shadow-[0_6px_18px_rgba(54,82,62,.1)] backdrop-blur transition-colors hover:bg-sage-light sm:right-7 sm:top-7"
