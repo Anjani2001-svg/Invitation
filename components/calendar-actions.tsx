@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarPlus2, Download, ExternalLink } from 'lucide-react';
+import { CalendarPlus2, Download } from 'lucide-react';
 import { getWeddingCalendarEvent, type WeddingCalendarKind } from '@/lib/calendar';
 import { googleCalendarUrl, weddingIcs } from '@/lib/calendar-core';
 
@@ -24,33 +24,32 @@ export function CalendarActions({ kind }: { kind: WeddingCalendarKind }) {
   }
 
   return (
-    <div className="mt-auto border-t border-line pt-7">
+    <div className="calendar-actions-container mt-auto border-t border-line pt-7">
       <p className="text-xs font-semibold uppercase tracking-[.13em] text-sage-dark">
         Save this moment to your calendar
       </p>
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+      <div className="calendar-actions-grid mt-4 grid grid-cols-1 items-stretch gap-2">
         <a
           href={googleUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-sage-dark px-5 py-3 text-[11px] font-semibold tracking-wide text-white transition-colors hover:bg-charcoal"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-sage-dark px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-white transition-colors hover:bg-charcoal"
         >
-          <CalendarPlus2 className="h-4 w-4" aria-hidden="true" />
-          Google Calendar
-          <ExternalLink className="h-3 w-3 opacity-75" aria-hidden="true" />
+          <CalendarPlus2 className="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span>Google Calendar</span>
         </a>
         <button
           type="button"
           onClick={downloadCalendarFile}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-sage/50 bg-white px-5 py-3 text-[11px] font-semibold tracking-wide text-sage-dark transition-colors hover:bg-sage-light"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-sage/50 bg-white px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-sage-dark transition-colors hover:bg-sage-light"
         >
-          <Download className="h-4 w-4" aria-hidden="true" />
-          Apple / Outlook (.ics)
+          <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span>Apple / Outlook</span>
         </button>
       </div>
       <p className="mt-3 text-[11px] leading-5 text-muted">
-        The calendar file requests a reminder one day before. For Google Calendar,
-        select a reminder when saving the event.
+        Apple / Outlook downloads a calendar (.ics) file with a reminder one day before.
+        For Google Calendar, select a reminder when saving the event.
       </p>
     </div>
   );

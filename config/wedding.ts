@@ -1,7 +1,7 @@
 /**
  * EDIT THIS FILE to personalise the entire invitation.
  * Names, date, times, copy, venue details, maps and SEO URL live here.
- * Names, date and times are set for Anjani and Vihan. Confirm venue details and site URL before sharing.
+ * Church, names, date and times are set for Anjani and Vihan. Confirm reception venue and site URL before sharing.
  */
 export const wedding = {
   bride: "Anjani",
@@ -34,12 +34,15 @@ export const wedding = {
   ceremony: {
     title: "The Nuptial Mass",
     label: "Holy Matrimony",
-    venue: "Your Church Name",
-    address: "Negombo, Sri Lanka",
+    venue: "St. Paul's Church",
+    address: "Waragoda, Kelaniya, Sri Lanka",
     time: "4:00 PM",
     note: "Please join us in prayer as we receive the Sacrament of Matrimony.",
-    // Optional; leave empty to hide the directions link on this card.
-    directionsUrl: "",
+    // Google Maps place ID points to the Waragoda church, not similarly named churches elsewhere.
+    directionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=St.%20Paul%27s%20Church%2C%20Waragoda%2C%20Kelaniya%2C%20Sri%20Lanka&destination_place_id=ChIJEUKF2T1Y4joROz17YzpIHjs",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=St.%20Paul%27s%20Church%2C%20Waragoda%2C%20Kelaniya%2C%20Sri%20Lanka&z=16&output=embed",
   },
 
   reception: {

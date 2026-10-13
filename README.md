@@ -2,7 +2,7 @@
 
 An elegant, mobile-first, single-page invitation for a Catholic Nuptial Mass and wedding reception. Built with the **Next.js App Router**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and a server-only **Google Apps Script → Google Sheets** RSVP endpoint. Deployable to Vercel.
 
-> **Before sharing the invitation:** The names, date and times are set for **Anjani & Vihan — Saturday, 22 May 2027** (Nuptial Mass **4:00 PM**, reception **7:00 PM**, Sri Lanka time). The church name, website URL and other sample venue details still need confirmation. RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
+> **Before sharing the invitation:** Anjani & Vihan's date and Sri Lanka event times are set: **Saturday, 22 May 2027** (Nuptial Mass **4:00 PM**, reception **7:00 PM**). The church is now **St. Paul's Church, Waragoda, Kelaniya** (with its Google Maps listing). **Verify the reception venue, website URL and other sample details before sharing.** RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
 
 ## 1. Quick start
 
@@ -40,9 +40,9 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 | `date.display`, `date.short` | Human-readable wedding date labels |
 | `verse` | Optional scripture text and reference (edit/replace as desired) |
 | `invitation` | Short invitation from both families |
-| `ceremony` | Church name, address, time and optional directions URL |
+| `ceremony` | St. Paul's Church in Waragoda, Kelaniya; Mass time; Google Maps embed and directions (already filled in) |
 | `reception` | Reception time and description |
-| `location` | Royal Ramsess venue label, Google Maps embed URL and directions URL |
+| `location` | Reception venue, Google Maps embed and directions URL (still the original Royal Ramsess details; confirm independently) |
 | `dressCode` | Set to `""` to hide it |
 | `rsvp` | Short RSVP guidance and response note |
 
@@ -50,7 +50,9 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 
 **Music:** Replace `public/music.mp3` with a properly licensed instrumental MP3 if preferred. The included track is an original, generated soft instrumental demo. It plays at 40% volume and loops. Playback only starts after tapping **Open invitation**; the floating control pauses/resumes playback and remembers the user's preference locally. Music may not play if the device is muted or its browser disables sound.
 
-**Google Maps:** The embedded map uses a Google Maps search URL, so no API key is required. Check that Google resolves the correct venue; if not, update both URLs in the config to the verified listing or place ID. The external directions link opens Google Maps.
+**Google Maps:** The location section has **Nuptial Mass** and **Reception** tabs, with an embedded map for each. The Mass tab points to **St. Paul's Church, Waragoda, Kelaniya**; its Directions URL uses Google's specific place ID so it will not route guests to a different St. Paul's Church. Map previews use API-key-free search embeds. Confirm that both embedded previews resolve correctly when deployed; the **Open Google Maps** buttons are the reliable alternative. The original reception map is unchanged and its venue should be checked before sharing.
+
+**US time zones:** In **The wedding day**, US guests can choose **Eastern, Central, Mountain or Pacific**; both event cards show the converted time and date. The site uses IANA time zones and accounts for daylight saving on 22 May 2027 automatically. Sri Lanka time always appears alongside the US time. Google and Apple/Outlook calendar buttons are equal-width/equal-height on wider screens, full-width on narrow phones, and generate events using the correct instant so calendar apps display local time.
 
 **Bible verse:** The starter copy is 1 Corinthians 13:4. You can remove it from the Hero markup if you prefer not to display a verse.
 
@@ -112,18 +114,19 @@ Optional: a portrait JPG is used for the social preview because it always stays 
 
 ## 5. Testing checklist
 
-- [ ] Verify the names and 22 May 2027 wedding schedule; replace the sample church name and confirm reception venue/location in `config/wedding.ts`.
+- [ ] Verify the names and 22 May 2027 schedule; St. Paul's Church, Waragoda, Kelaniya is already entered. Confirm reception venue/location in `config/wedding.ts`.
 - [ ] Verify the Mass and reception times, Colombo time zone (`+05:30`), and countdown.
 - [ ] Replace `public/couple.jpg` and optionally `public/music.mp3`.
 - [ ] On iPhone Safari and Android Chrome, tap **Open invitation**: page opens and music plays (subject to user device settings).
 - [ ] Pause music, refresh, reopen: preference remains muted; manually resume and verify playback.
-- [ ] Check layout at 320 px and 390 px widths; links, text and controls remain usable.
+- [ ] Check at 320 px, 390 px, 768 px and desktop; time-zone pills, calendar buttons and map tabs remain tappable without overflow.
+- [ ] Select Eastern / Central / Mountain / Pacific and verify Mass US times 6:30 / 5:30 / 4:30 / 3:30 AM, reception 9:30 / 8:30 / 7:30 / 6:30 AM on 22 May 2027. Calendar downloads/openings should match the event instant.
 - [ ] Submit **RSVP Yes** with 1 guest; see confirmation and verify `Attending=Yes`, `Guests=1` in Google Sheets.
 - [ ] Submit **RSVP Yes** with 5 guests; verify `Guests=5` in Google Sheets.
 - [ ] Submit **RSVP No**; guest selector is hidden, no-success copy is friendly, Google Sheets shows `Attending=No`, `Guests=0`.
 - [ ] Submit without a name or attendance choice: client-side validation blocks submission.
 - [ ] Submit an invalid phone number: see a helpful validation message.
-- [ ] Check the Google Maps iframe and **Get directions** link point to the correct Royal Ramsess listing.
+- [ ] Check both Google Maps tabs and **Open Google Maps** links: the Mass should point to St. Paul's Church in Waragoda (not Colombo/Kandy), and reception should point to the correct Royal Ramsess venue.
 - [ ] Temporarily remove the Google Sheets environment variables: the form shows an error rather than a false success.
 - [ ] Verify title, description, portrait thumbnail and HTTPS link when shared on WhatsApp.
 - [ ] Run `npm run test`, `npm run typecheck`, `npm run lint`, `npm run build` before launch.
@@ -140,6 +143,8 @@ app/
 components/
   countdown.tsx
   event-card.tsx
+  usa-time-selector.tsx  # US regional clock picker
+  calendar-actions.tsx   # Matched Google / Apple-Outlook buttons
   ornaments.tsx
   reveal.tsx
   rsvp-form.tsx
@@ -149,6 +154,7 @@ config/wedding.ts         # Edit all names, copy, dates and links here
 docs/GOOGLE_SHEETS_SETUP.md                  # Step-by-step setup and troubleshooting
 docs/Wedding-RSVPs-Google-Sheets-Template.xlsx
 docs/google-apps-script/Code.gs              # Server-side Google Apps Script
+lib/us-time.ts           # Daylight-saving-aware US wedding time conversion
 lib/rate-limit.ts         # Basic per-instance 5/15-minute IP limiter
 lib/rsvp.ts               # Shared validation and spreadsheet text safety
 public/couple.jpg         # Replace with wedding portrait

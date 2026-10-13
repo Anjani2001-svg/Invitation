@@ -57,6 +57,13 @@ section[id] { scroll-margin-top: 7.5rem; }
   background: radial-gradient(ellipse at 50% 50%, rgba(220,228,217,.68), rgba(250,249,245,0) 72%);
 }
 
+/* Calendar buttons respond to their card width rather than the browser width.
+   Both actions are identical sizes, side by side only when there is room. */
+.calendar-actions-container { container-type: inline-size; }
+@container (min-width: 350px) {
+  .calendar-actions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* Soft olive/ivory glow keeps the original Catholic invitation palette. */
 .wedding-splash {
   background-image:

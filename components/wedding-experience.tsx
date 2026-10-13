@@ -10,6 +10,7 @@ import {
   Church,
   Heart,
   MapPin,
+  Navigation,
   Pause,
   Play,
 } from "lucide-react";
@@ -20,6 +21,8 @@ import { BotanicalSprig, DividerOrnament, TinyCross } from "@/components/ornamen
 import { Reveal } from "@/components/reveal";
 import { RsvpForm } from "@/components/rsvp-form";
 import { SectionTitle } from "@/components/section-title";
+import { UsaTimeSelector } from "@/components/usa-time-selector";
+import { type UsTimeZone } from "@/lib/us-time";
 
 const MUSIC_PREF = "wedding-music-preference";
 
@@ -29,6 +32,10 @@ export function WeddingExperience() {
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioFailed, setAudioFailed] = useState(false);
+  const [usZone, setUsZone] = useState<UsTimeZone>("America/New_York");
+  const [activeVenue, setActiveVenue] = useState<"ceremony" | "reception">("ceremony");
+  const locationDetails = activeVenue === "ceremony" ? wedding.ceremony : wedding.location;
+  const isCeremonyLocation = activeVenue === "ceremony";
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -133,7 +140,7 @@ export function WeddingExperience() {
                 <span className="h-px w-9 bg-gold/60" />
               </div>
               <p className="mt-4 max-w-sm text-[11px] leading-relaxed tracking-wide text-sage-dark sm:text-xs">
-                Nuptial Mass at {wedding.ceremony.time} <span className="mx-1.5 text-gold" aria-hidden="true">&bull;</span> Reception at {wedding.reception.time}
+                Nuptial Mass at {wedding.ceremony.time} <span className="mx-1.5 text-gold" aria-hidden="true">&bull;</span> Reception at {wedding.reception.time} <span className="text-muted">(Sri Lanka)</span>
               </p>
               <button
                 type="button"
@@ -218,6 +225,9 @@ export function WeddingExperience() {
                   “{wedding.verse.text}”
                 </p>
                 <p className="mt-2 text-xs uppercase tracking-[.17em] text-gold">{wedding.verse.reference}</p>
+                <a href="#events" className="mt-7 inline-flex items-center gap-2 rounded-full border border-sage/25 bg-white/70 px-4 py-2.5 text-[11px] font-medium text-sage-dark transition-colors hover:bg-sage-light">
+                  Joining from the USA? Check your time zone <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
                 <a href="#story" className="mt-12 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[.14em] text-sage-dark transition-colors hover:text-charcoal">
                   Discover our invitation <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -262,12 +272,13 @@ export function WeddingExperience() {
               <Reveal>
                 <SectionTitle eyebrow="Save the date" title="The wedding day" description="One sacred promise, followed by an evening of joy. We hope you'll join us for both beautiful moments." />
               </Reveal>
-              <div className="mt-13 grid gap-6 md:grid-cols-2 md:gap-7">
+              <UsaTimeSelector value={usZone} onChange={setUsZone} />
+              <div className="mt-7 grid gap-6 md:grid-cols-2 md:gap-7">
                 <Reveal className="h-full" delay={0.05}>
-                  <EventCard number="01" eventKind="ceremony" icon={<Church className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.ceremony} />
+                  <EventCard number="01" eventKind="ceremony" usZone={usZone} icon={<Church className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.ceremony} />
                 </Reveal>
                 <Reveal className="h-full" delay={0.17}>
-                  <EventCard number="02" eventKind="reception" icon={<Heart className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.reception} />
+                  <EventCard number="02" eventKind="reception" usZone={usZone} icon={<Heart className="h-6 w-6" strokeWidth={1.35} aria-hidden="true" />} event={wedding.reception} />
                 </Reveal>
               </div>
               {wedding.dressCode ? (
@@ -285,31 +296,55 @@ export function WeddingExperience() {
               <Reveal>
                 <SectionTitle eyebrow="Where to find us" title={wedding.location.title} />
               </Reveal>
-              <div className="mt-13 grid overflow-hidden rounded-2xl border border-line bg-white shadow-[0_14px_50px_rgba(55,75,57,.05)] lg:grid-cols-[.82fr_1.18fr]">
-                <Reveal className="flex flex-col justify-center px-8 py-13 sm:px-14 sm:py-16">
-                  <span className="flex h-13 w-13 items-center justify-center rounded-full bg-sage-light text-sage-dark"><MapPin className="h-6 w-6" strokeWidth={1.4} aria-hidden="true" /></span>
-                  <p className="kicker mt-7 text-gold">Our reception venue</p>
-                  <h3 className="display-serif mt-3 text-5xl leading-[.98] sm:text-6xl">{wedding.location.venue}</h3>
-                  <p className="mt-6 text-sm leading-7 text-muted">{wedding.location.address}</p>
-                  <p className="mt-1 text-sm leading-7 text-muted">{wedding.date.display} · {wedding.reception.time}</p>
-                  <a
-                    href={wedding.location.directionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-10 inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full bg-sage-dark px-6 text-[11px] font-semibold uppercase tracking-[.15em] text-white transition-colors hover:bg-charcoal"
+              <div className="mt-12 rounded-2xl border border-line bg-white p-2 shadow-[0_14px_50px_rgba(55,75,57,.05)] sm:p-3">
+                <div role="group" aria-label="Choose a wedding venue to view on the map" className="grid grid-cols-2 gap-2 p-1 sm:gap-3 sm:p-2">
+                  <button
+                    type="button"
+                    aria-pressed={isCeremonyLocation}
+                    onClick={() => setActiveVenue("ceremony")}
+                    className={`flex min-h-14 items-center justify-center gap-2 rounded-xl border px-2 py-3 text-center text-xs font-semibold transition-colors sm:gap-3 sm:text-sm ${isCeremonyLocation ? "border-sage-dark bg-sage-dark text-white" : "border-line bg-ivory text-sage-dark hover:bg-sage-light"}`}
                   >
-                    Get directions <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Reveal>
-                <div className="relative min-h-[310px] overflow-hidden bg-sage-light sm:min-h-[380px]">
-                  <iframe
-                    title={`Google Maps: ${wedding.location.venue}`}
-                    src={wedding.location.mapEmbedUrl}
-                    className="absolute inset-0 h-full w-full border-0"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
+                    <Church className="h-5 w-5 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                    <span>Nuptial Mass <span className="hidden sm:inline">· 4:00 PM</span></span>
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={!isCeremonyLocation}
+                    onClick={() => setActiveVenue("reception")}
+                    className={`flex min-h-14 items-center justify-center gap-2 rounded-xl border px-2 py-3 text-center text-xs font-semibold transition-colors sm:gap-3 sm:text-sm ${!isCeremonyLocation ? "border-sage-dark bg-sage-dark text-white" : "border-line bg-ivory text-sage-dark hover:bg-sage-light"}`}
+                  >
+                    <Heart className="h-5 w-5 shrink-0" strokeWidth={1.5} aria-hidden="true" />
+                    <span>Reception <span className="hidden sm:inline">· 7:00 PM</span></span>
+                  </button>
+                </div>
+                <div className="grid overflow-hidden rounded-xl bg-white lg:grid-cols-[.82fr_1.18fr]">
+                  <div className="flex flex-col justify-center px-6 py-10 sm:px-12 sm:py-14">
+                    <span className="flex h-13 w-13 items-center justify-center rounded-full bg-sage-light text-sage-dark"><MapPin className="h-6 w-6" strokeWidth={1.4} aria-hidden="true" /></span>
+                    <p className="kicker mt-7 text-gold">{isCeremonyLocation ? "The sacred ceremony" : "Our reception venue"}</p>
+                    <h3 className="display-serif mt-3 text-[clamp(2.75rem,6vw,4rem)] leading-[.98]">{locationDetails.venue}</h3>
+                    <p className="mt-6 text-sm leading-7 text-muted">{locationDetails.address}</p>
+                    <p className="mt-1 text-sm leading-7 text-sage-dark">{wedding.date.display} · {isCeremonyLocation ? wedding.ceremony.time : wedding.reception.time} <span className="text-muted">(Sri Lanka)</span></p>
+                    <a
+                      href={locationDetails.directionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-9 inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full bg-sage-dark px-6 text-[11px] font-semibold uppercase tracking-[.13em] text-white transition-colors hover:bg-charcoal"
+                    >
+                      <Navigation className="h-4 w-4" strokeWidth={1.7} aria-hidden="true" />
+                      Open Google Maps <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </div>
+                  <div className="relative min-h-[310px] overflow-hidden bg-sage-light sm:min-h-[390px]">
+                    <iframe
+                      key={activeVenue}
+                      title={`Google Maps: ${locationDetails.venue}`}
+                      src={locationDetails.mapEmbedUrl}
+                      className="absolute inset-0 h-full w-full border-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
+                  </div>
                 </div>
               </div>
             </div>

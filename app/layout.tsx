@@ -16,7 +16,7 @@ const body = Inter({
   display: "swap",
 });
 
-const description = `Please join us to celebrate the Nuptial Mass and wedding reception of ${coupleNames} on ${wedding.date.display} in Negombo, Sri Lanka.`;
+const description = `Join us for the Nuptial Mass of ${coupleNames} on ${wedding.date.display} at St. Paul's Church, Waragoda, Kelaniya, followed by our wedding reception in Negombo, Sri Lanka.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(wedding.siteUrl),
