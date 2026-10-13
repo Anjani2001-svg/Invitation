@@ -215,7 +215,7 @@ export function WeddingExperience() {
                 </div>
                 <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start" aria-label="Wedding schedule">
                   <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-sage/30 bg-white/80 px-4 py-2 text-[11px] text-muted shadow-[0_4px_16px_rgba(65,83,65,.04)]">
-                    <TinyCross className="h-3.5 w-3.5 text-gold" /> Holy Mass <strong className="font-semibold text-sage-dark">{wedding.ceremony.time}</strong>
+                    <TinyCross className="h-3.5 w-3.5 text-gold" /> Wedding Mass <strong className="font-semibold text-sage-dark">{wedding.ceremony.time}</strong>
                   </span>
                   <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-sage/30 bg-white/80 px-4 py-2 text-[11px] text-muted shadow-[0_4px_16px_rgba(65,83,65,.04)]">
                     <Heart className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} aria-hidden="true" /> Reception <strong className="font-semibold text-sage-dark">{wedding.reception.time}</strong>
@@ -229,7 +229,7 @@ export function WeddingExperience() {
                   Joining from the USA? Check your time zone <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </a>
                 <a href="#story" className="mt-12 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[.14em] text-sage-dark transition-colors hover:text-charcoal">
-                  Discover our invitation <ArrowDown className="h-4 w-4" aria-hidden="true" />
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
                 </a>
               </Reveal>
 
