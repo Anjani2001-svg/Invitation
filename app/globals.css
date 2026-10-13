@@ -195,3 +195,116 @@ section[id] { scroll-margin-top: 7.5rem; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .wedding-photo-card:hover { transform: rotate(1.5deg); }
 }
+
+/* ------------------------------------------------------------------ */
+/* Church entrance scene: doors open, bride & groom walk in (~8.7s).   */
+/* Delays below are the timeline; keep CHURCH_ENTRANCE_MS in sync.     */
+/*   0.0s  scene fades in          1.0-3.0s  doors swing open          */
+/*   1.8s  doves + light rays      2.2-7.4s  couple walks to the door  */
+/*   6.9s  light blooms            7.6-8.5s  fade into the invitation  */
+/* ------------------------------------------------------------------ */
+.ce-door-left, .ce-door-right {
+  transform-box: fill-box;
+  animation: ce-door-open 2s cubic-bezier(.55, .05, .3, 1) 1s both;
+}
+.ce-door-left { transform-origin: left center; }
+.ce-door-right { transform-origin: right center; }
+@keyframes ce-door-open { from { transform: scaleX(1); } to { transform: scaleX(.1); } }
+
+.ce-rays {
+  opacity: 0;
+  animation: ce-rays-in 1.6s ease-out 1.8s forwards, ce-rays-breathe 3.6s ease-in-out 3.4s infinite alternate;
+}
+@keyframes ce-rays-in { to { opacity: 1; } }
+@keyframes ce-rays-breathe { from { opacity: 1; } to { opacity: .72; } }
+
+.ce-flicker { animation: ce-flicker 1.3s ease-in-out infinite alternate; }
+.ce-flicker-late { animation-delay: -.6s; }
+@keyframes ce-flicker { from { opacity: .55; } to { opacity: 1; } }
+
+.ce-bell {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: ce-bell .8s ease-in-out .3s infinite alternate;
+}
+@keyframes ce-bell { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
+
+.ce-twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ce-twinkle 2.6s ease-in-out infinite alternate;
+}
+@keyframes ce-twinkle {
+  from { opacity: .25; scale: .5; }
+  to { opacity: 1; scale: 1.15; }
+}
+
+.ce-dove { opacity: 0; animation: ce-fly 4.2s ease-in-out forwards; }
+.ce-dove-1 { animation-delay: 1.9s; }
+.ce-dove-2 { animation-delay: 2.6s; }
+@keyframes ce-fly {
+  0% { transform: translate(200px, 410px) scale(.45); opacity: 0; }
+  14% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(var(--ex), var(--ey)) scale(1.05); opacity: 0; }
+}
+.ce-flap {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ce-flap .34s ease-in-out infinite alternate;
+}
+@keyframes ce-flap { from { transform: scaleY(1); } to { transform: scaleY(.4); } }
+
+/* Perspective walk: quick at first, then slowing as they near the doorway. */
+.ce-couple {
+  opacity: 0;
+  transform: translate(208px, 860px) scale(1.35);
+  animation: ce-walk 5.2s linear 2.2s forwards;
+}
+@keyframes ce-walk {
+  0%   { transform: translate(208px, 860px) scale(1.35); opacity: 0; }
+  6%   { opacity: 1; }
+  22%  { transform: translate(208px, 600px) scale(.7); }
+  50%  { transform: translate(208px, 530px) scale(.5); }
+  78%  { transform: translate(208px, 493px) scale(.4); opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translate(208px, 474px) scale(.36); opacity: 0; }
+}
+.ce-bob { animation: ce-bob .62s ease-in-out infinite alternate; }
+@keyframes ce-bob { from { transform: translateY(0); } to { transform: translateY(-2.5px); } }
+.ce-leg-a, .ce-leg-b, .ce-hem { transform-box: fill-box; transform-origin: 50% 0; }
+.ce-leg-a { animation: ce-step .62s ease-in-out infinite alternate; }
+.ce-leg-b { animation: ce-step .62s ease-in-out infinite alternate-reverse; }
+@keyframes ce-step { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+.ce-hem { animation: ce-sway .62s ease-in-out infinite alternate; }
+@keyframes ce-sway { from { transform: skewX(-1.6deg); } to { transform: skewX(1.6deg); } }
+
+.ce-petal {
+  opacity: 0;
+  animation: ce-fall var(--dur, 10s) linear var(--delay, 0s) infinite;
+}
+@keyframes ce-fall {
+  0%   { transform: translate(var(--x), -40px) rotate(0deg); opacity: 0; }
+  8%   { opacity: .85; }
+  92%  { opacity: .7; }
+  100% { transform: translate(calc(var(--x) + var(--drift)), 780px) rotate(420deg); opacity: 0; }
+}
+
+.ce-bloom {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(.2);
+  animation: ce-bloom 1.5s ease-in 6.9s forwards;
+}
+@keyframes ce-bloom { to { transform: scale(16); opacity: 1; } }
+.ce-flash { opacity: 0; animation: ce-flash .9s ease-in 7.6s forwards; }
+@keyframes ce-flash { to { opacity: 1; } }
+
+.ce-caption { opacity: 0; animation: ce-caption 7.2s ease-in-out .5s forwards; }
+@keyframes ce-caption {
+  0%   { opacity: 0; transform: translateY(8px); }
+  12%  { opacity: 1; transform: translateY(0); }
+  82%  { opacity: 1; }
+  100% { opacity: 0; }
+}

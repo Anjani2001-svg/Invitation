@@ -16,6 +16,7 @@ import {
   Play,
 } from "lucide-react";
 import { wedding, coupleNames } from "@/config/wedding";
+import { ChurchEntrance } from "@/components/church-entrance";
 import { Countdown } from "@/components/countdown";
 import { EventCard } from "@/components/event-card";
 import { BotanicalSprig, DividerOrnament, SacredSeal, TinyCross, TinyHeart, WeddingFlorals } from "@/components/ornaments";
@@ -30,6 +31,7 @@ const MUSIC_PREF = "wedding-music-preference";
 export function WeddingExperience() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [opened, setOpened] = useState(false);
+  const [entering, setEntering] = useState(false);
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioFailed, setAudioFailed] = useState(false);
@@ -76,8 +78,17 @@ export function WeddingExperience() {
   }
 
   function openInvitation() {
-    setOpened(true);
+    if (entering) return;
+    // Music must start inside the tap itself to satisfy browser autoplay rules.
     if (musicPreferred) playMusic();
+    // Guests who prefer reduced motion skip the church-doors scene.
+    if (reducedMotion) setOpened(true);
+    else setEntering(true);
+  }
+
+  function finishEntrance() {
+    setEntering(false);
+    setOpened(true);
   }
 
   function toggleMusic() {
@@ -165,6 +176,10 @@ export function WeddingExperience() {
             </motion.div>
           </motion.div>
         ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {entering ? <ChurchEntrance key="church-entrance" onComplete={finishEntrance} /> : null}
       </AnimatePresence>
 
       {opened ? (
