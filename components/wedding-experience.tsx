@@ -368,7 +368,7 @@ export function WeddingExperience() {
           <p className="kicker mt-6 text-sage-dark">With all our love</p>
           <p className="display-serif mt-4 text-[clamp(2.5rem,9vw,3.75rem)] leading-tight">{coupleNames}</p>
           <DividerOrnament className="mt-6" />
-          <p className="mt-7 text-xs tracking-[.12em] text-sage-dark">{wedding.hashtag}</p>
+         
           <p className="mt-9 text-[10px] uppercase tracking-[.16em] text-muted">Made with love, faith and gratitude</p>
         </footer>
       </div>
