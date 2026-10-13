@@ -1,106 +1,140 @@
 @import "tailwindcss";
 
+/* A warm, joyful wedding palette: champagne, blush, peach & eucalyptus. */
 @theme inline {
-  --color-ivory: #faf9f5;
-  --color-paper: #f5f3ed;
-  --color-sage: #788a78;
-  --color-sage-dark: #536957;
-  --color-sage-light: #e9ede5;
-  --color-gold: #ae9770;
-  --color-line: #dedfd5;
-  --color-charcoal: #343b36;
-  --color-muted: #727970;
+  --color-ivory: #fffaf6;
+  --color-paper: #fff0ed;
+  --color-sage: #869d83;
+  --color-sage-dark: #496257;
+  --color-sage-light: #edf4ea;
+  --color-gold: #b98d56;
+  --color-line: #ebded8;
+  --color-charcoal: #493c3e;
+  --color-muted: #796d70;
+  --color-rose: #b7556a;
+  --color-rose-dark: #913f54;
+  --color-blush: #fae5e6;
+  --color-peach: #ffe9d9;
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-inter);
 }
 
-:root {
-  color-scheme: light;
-  scroll-behavior: smooth;
-}
-
+:root { color-scheme: light; scroll-behavior: smooth; }
 * { box-sizing: border-box; }
-
-::selection { background: #e4e9df; color: #343b36; }
-
-body {
-  min-height: 100%;
-  background: #faf9f5;
-}
-
+::selection { background: #f5ccd3; color: #493c3e; }
+body { min-height: 100%; background: #fffaf6; }
 button, input, textarea, select { font: inherit; }
-
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
-
-:focus-visible {
-  outline: 2px solid #536957;
-  outline-offset: 3px;
-}
-
+:focus-visible { outline: 2px solid #a9495e; outline-offset: 3px; }
 section[id] { scroll-margin-top: 7.5rem; }
 @media (min-width: 768px) { section[id] { scroll-margin-top: 6rem; } }
 
-.kicker { letter-spacing: .3em; font-size: .63rem; font-weight: 600; text-transform: uppercase; }
-
+.kicker { letter-spacing: .27em; font-size: .65rem; font-weight: 700; text-transform: uppercase; }
 .display-serif { font-family: var(--font-cormorant), Georgia, serif; font-weight: 500; }
+.eyebrow-rule::before, .eyebrow-rule::after { content: ""; width: clamp(25px, 7vw, 72px); height: 1px; background: #dbb4a4; }
 
-.eyebrow-rule::before, .eyebrow-rule::after {
+.romantic-splash {
+  background:
+    radial-gradient(ellipse 70% 60% at 8% 6%, #f8dcda 0, transparent 70%),
+    radial-gradient(ellipse 65% 70% at 98% 95%, #fff0d4 0, transparent 70%),
+    radial-gradient(ellipse 44% 40% at 95% 10%, #ecf2e9 0, transparent 85%),
+    #fffaf6;
+}
+.romantic-hero {
+  background:
+    radial-gradient(ellipse 49% 95% at 92% 37%, rgba(250,210,214,.68), transparent 76%),
+    radial-gradient(ellipse 48% 64% at 8% 90%, rgba(255,231,203,.44), transparent 78%),
+    linear-gradient(115deg, #fffaf6 9%, #fff5f2 100%);
+}
+.story-bloom {
+  background:
+    radial-gradient(ellipse 40% 85% at 0% 60%, rgba(251,224,225,.5), transparent 85%),
+    radial-gradient(ellipse 40% 85% at 100% 30%, rgba(236,242,230,.6), transparent 88%);
+}
+.flower-shadow { filter: drop-shadow(0 12px 15px rgba(103,62,62,.09)); }
+.paper-texture {
+  background-image: radial-gradient(rgba(178,105,113,.18) .55px, transparent .55px);
+  background-size: 22px 22px;
+}
+.wedding-sparkle { animation: wedding-shimmer 5s ease-in-out infinite alternate; }
+@keyframes wedding-shimmer { from { transform: rotate(-6deg) scale(.98); } to { transform: rotate(6deg) scale(1.04); } }
+
+/* A contemporary wedding keepsake, not a memorial-style arched portrait. */
+.wedding-photo-wrap { isolation: isolate; }
+.wedding-photo-wrap::before {
   content: "";
-  width: clamp(25px, 7vw, 72px);
-  height: 1px;
-  background: #c8b79a;
+  position: absolute;
+  inset: 12% -7% 6% 0;
+  z-index: -2;
+  border-radius: 49% 51% 43% 57%;
+  background: linear-gradient(140deg, #f8d7dc, #f6e0c9 63%, #e7efe3);
+  transform: rotate(9deg);
+}
+.wedding-photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 5% -2% 11% -8%;
+  z-index: -1;
+  border: 1.5px solid rgba(187,130,118,.34);
+  border-radius: 47% 53% 49% 51%;
+  transform: rotate(-10deg);
+}
+.wedding-photo-card {
+  background: #fffdf9;
+  box-shadow: 0 24px 65px rgba(115,71,76,.16), 0 4px 14px rgba(115,71,76,.07);
+  transform: rotate(2deg);
+  border: 1px solid rgba(255,255,255,.96);
+  border-radius: 24px;
+  padding: 12px 12px 0;
+}
+.wedding-photo-image { border-radius: 14px 14px 5px 5px; }
+.wedding-photo-image img { filter: sepia(.12) saturate(.91) contrast(.96) brightness(1.025); }
+.wedding-photo-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(255,228,213,.07), transparent 43%, rgba(182,104,105,.07));
+}
+.wedding-photo-note {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-style: italic;
+  letter-spacing: .025em;
+  color: #a55866;
+  line-height: 1;
 }
 
-.photo-arch { border-radius: 48% 48% 10px 10px / 36% 36% 10px 10px; }
-
-.hero-halo {
-  background: radial-gradient(ellipse at 50% 50%, rgba(220,228,217,.68), rgba(250,249,245,0) 72%);
-}
-
-/* Calendar buttons respond to their card width rather than the browser width.
-   Both actions are identical sizes, side by side only when there is room. */
+/* Responsive calendar actions retain their original behaviour. */
 .calendar-actions-container { container-type: inline-size; }
 @container (min-width: 350px) {
   .calendar-actions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Soft olive/ivory glow keeps the original Catholic invitation palette. */
-.wedding-splash {
-  background-image:
-    radial-gradient(ellipse at 50% -12%, rgba(120,138,120,.13), transparent 51%),
-    radial-gradient(ellipse at 50% 112%, rgba(174,151,112,.08), transparent 48%);
-}
-
-.intro-texture {
-  background-image: radial-gradient(#88977d30 .7px, transparent .7px);
-  background-size: 21px 21px;
-}
-
-.flower-shadow { filter: drop-shadow(0 14px 30px rgba(76,95,75,.04)); }
-
 .input-field {
   width: 100%;
-  min-height: 3.2rem;
+  min-height: 3.25rem;
   padding: .85rem 1rem;
-  border-radius: .6rem;
-  border: 1px solid #d9ddd5;
-  background: #fff;
-  color: #343b36;
+  border-radius: .85rem;
+  border: 1px solid #e9d9d7;
+  background: #fffdfb;
+  color: #493c3e;
   font-size: .88rem;
-  transition: border-color .2s, box-shadow .2s;
+  transition: border-color .2s, background-color .2s, box-shadow .2s;
 }
-
-.input-field::placeholder { color: #a1a8a0; }
-.input-field:focus { outline: none; border-color: #788a78; box-shadow: 0 0 0 3px rgba(120,138,120,.12); }
-.input-field[aria-invalid="true"] { border-color: #ba746c; }
+.input-field::placeholder { color: #aa9a9c; }
+.input-field:hover { border-color: #d7aeb5; }
+.input-field:focus { outline: none; border-color: #b7556a; background-color: #fff; box-shadow: 0 0 0 4px rgba(183,85,106,.1); }
+.input-field[aria-invalid="true"] { border-color: #b7556a; }
 
 @media (max-width: 639px) {
+  .wedding-photo-card { padding: 9px 9px 0; border-radius: 18px; }
+  .wedding-photo-image { border-radius: 11px 11px 4px 4px; }
   .music-toggle {
     bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
     right: max(1.25rem, env(safe-area-inset-right, 0px));
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

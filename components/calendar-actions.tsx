@@ -25,7 +25,7 @@ export function CalendarActions({ kind }: { kind: WeddingCalendarKind }) {
 
   return (
     <div className="calendar-actions-container mt-auto border-t border-line pt-7">
-      <p className="text-xs font-semibold uppercase tracking-[.13em] text-sage-dark">
+      <p className="text-xs font-semibold uppercase tracking-[.13em] text-rose-dark">
         Save this moment to your calendar
       </p>
       <div className="calendar-actions-grid mt-4 grid grid-cols-1 items-stretch gap-2">
@@ -33,7 +33,7 @@ export function CalendarActions({ kind }: { kind: WeddingCalendarKind }) {
           href={googleUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-sage-dark px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-white transition-colors hover:bg-charcoal"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-rose px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-white transition-colors hover:bg-rose-dark"
         >
           <CalendarPlus2 className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span>Google Calendar</span>
@@ -41,7 +41,7 @@ export function CalendarActions({ kind }: { kind: WeddingCalendarKind }) {
         <button
           type="button"
           onClick={downloadCalendarFile}
-          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-sage/50 bg-white px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-sage-dark transition-colors hover:bg-sage-light"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-rose/30 bg-white px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-rose-dark transition-colors hover:bg-blush"
         >
           <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span>Apple / Outlook</span>

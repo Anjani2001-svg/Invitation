@@ -76,10 +76,10 @@ export function RsvpForm() {
   if (status === "success") {
     return (
       <div className="flex min-h-[440px] flex-col items-center justify-center px-5 py-16 text-center" role="status" aria-live="polite">
-        <span className="flex h-18 w-18 items-center justify-center rounded-full bg-sage-light text-sage-dark">
+        <span className="flex h-18 w-18 items-center justify-center rounded-full bg-blush text-rose-dark">
           <CheckCircle2 className="h-9 w-9" strokeWidth={1.3} aria-hidden="true" />
         </span>
-        <p className="kicker mt-9 text-sage-dark">Response received</p>
+        <p className="kicker mt-9 text-rose-dark">Response received</p>
         <h3 className="display-serif mt-4 max-w-lg text-5xl leading-none sm:text-6xl">
           {submittedAttendance === "Yes" ? "Thank you, from our hearts" : "Thank you for letting us know"}
         </h3>
@@ -91,13 +91,13 @@ export function RsvpForm() {
         {submittedAttendance === "Yes" ? (
           <a
             href="#events"
-            className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sage-dark px-6 text-[11px] font-semibold uppercase tracking-[.1em] text-white hover:bg-charcoal"
+            className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-rose px-6 text-[11px] font-semibold uppercase tracking-[.1em] text-white hover:bg-rose-dark"
           >
             <CalendarPlus2 className="h-4 w-4" aria-hidden="true" />
             Save the wedding date to your calendar
           </a>
         ) : null}
-        <button type="button" onClick={reset} className="mt-8 text-xs font-semibold uppercase tracking-[.14em] text-sage-dark underline underline-offset-5">
+        <button type="button" onClick={reset} className="mt-8 text-xs font-semibold uppercase tracking-[.14em] text-rose-dark underline underline-offset-5">
           Send another response
         </button>
       </div>
@@ -157,7 +157,7 @@ export function RsvpForm() {
           {(["Yes", "No"] as const).map((option) => (
             <label
               key={option}
-              className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-lg border px-4 text-sm font-medium transition-colors focus-within:ring-2 focus-within:ring-sage-dark focus-within:ring-offset-2 ${attending === option ? "border-sage-dark bg-sage-dark text-white" : "border-line bg-white text-charcoal hover:border-sage"}`}
+              className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-colors focus-within:ring-2 focus-within:ring-rose focus-within:ring-offset-2 ${attending === option ? "border-rose bg-rose text-white" : "border-line bg-ivory text-charcoal hover:border-rose/60 hover:bg-blush/40"}`}
             >
               <input
                 className="sr-only"
@@ -230,7 +230,7 @@ export function RsvpForm() {
       <button
         type="submit"
         disabled={loading}
-        className="flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-sage-dark px-8 text-xs font-semibold uppercase tracking-[.19em] text-white transition-colors hover:bg-charcoal disabled:cursor-wait disabled:opacity-70"
+        className="flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-rose px-8 text-xs font-semibold uppercase tracking-[.16em] text-white shadow-[0_11px_28px_rgba(163,66,88,.15)] transition-all hover:bg-rose-dark hover:shadow-[0_14px_30px_rgba(163,66,88,.2)] disabled:cursor-wait disabled:opacity-70"
       >
         {loading ? <><LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending your RSVP...</> : <>Send my RSVP <ArrowRight className="h-4 w-4" aria-hidden="true" /></>}
       </button>

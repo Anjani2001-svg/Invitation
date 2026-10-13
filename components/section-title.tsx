@@ -11,8 +11,8 @@ export function SectionTitle({
 }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <p className="kicker text-sage-dark">{eyebrow}</p>
-      <h2 className="display-serif mt-5 text-5xl leading-[.95] tracking-[-.025em] sm:text-6xl md:text-7xl">
+      <p className="kicker text-rose-dark">{eyebrow}</p>
+      <h2 className="display-serif mt-5 text-5xl leading-[.95] tracking-[-.025em] text-charcoal sm:text-6xl md:text-7xl">
         {title}
       </h2>
       <DividerOrnament className="mt-7" />

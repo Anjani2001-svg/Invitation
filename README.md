@@ -1,8 +1,10 @@
 # Catholic Wedding Invitation — Next.js + Tailwind CSS
 
-An elegant, mobile-first, single-page invitation for a Catholic Nuptial Mass and wedding reception. Built with the **Next.js App Router**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and a server-only **Google Apps Script → Google Sheets** RSVP endpoint. Deployable to Vercel.
+A romantic, mobile-first, single-page invitation for a Catholic Nuptial Mass and wedding reception. Built with the **Next.js App Router**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and a server-only **Google Apps Script → Google Sheets** RSVP endpoint. Deployable to Vercel.
 
 > **Before sharing the invitation:** Anjani & Vihan's date and Sri Lanka event times are set: **Saturday, 22 May 2027** (Nuptial Mass **4:00 PM**, reception **7:00 PM**). The church is now **St. Paul's Church, Waragoda, Kelaniya** (with its Google Maps listing). **Verify the reception venue, website URL and other sample details before sharing.** RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
+
+The latest design features a cheerful blush-and-champagne wedding palette, floral illustration and a rectangular keepsake photo frame (rather than the original arched style). See **`DESIGN_UPDATE.md`** for details.
 
 ## 1. Quick start
 
@@ -46,7 +48,7 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 | `dressCode` | Set to `""` to hide it |
 | `rsvp` | Short RSVP guidance and response note |
 
-**Photo:** Replace `public/couple.jpg` with an actual couple portrait **using the same filename**. The included JPG is a decorative, clearly labelled placeholder. A portrait composition around 1000 × 1350 px works well. The image uses `next/image` with responsive image optimisation. The same image supplies WhatsApp/Open Graph previews; verify how the portrait crops in social previews. For a dedicated horizontal social card, see the optional OG note below.
+**Photo:** The existing couple portrait is preserved in `public/couple.jpg`. You can replace it with your preferred image **using the same filename**. A full-colour portrait is an optional way to make the design brighter. A portrait composition around 1000 × 1350 px works well. The image uses `next/image` with responsive image optimisation. The same image supplies WhatsApp/Open Graph previews; verify how the portrait crops in social previews. For a dedicated horizontal social card, see the optional OG note below.
 
 **Music:** Replace `public/music.mp3` with a properly licensed instrumental MP3 if preferred. The included track is an original, generated soft instrumental demo. It plays at 40% volume and loops. Playback only starts after tapping **Open invitation**; the floating control pauses/resumes playback and remembers the user's preference locally. Music may not play if the device is muted or its browser disables sound.
 
@@ -58,7 +60,7 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 
 ## 3. Connect RSVPs to Google Sheets (no Microsoft account)
 
-This project now uses **Next.js -> Google Apps Script -> Google Sheets**. All existing RSVP fields and the invitation design are unchanged. The guest's browser posts to `/api/rsvp`; the server checks the form, rate-limits requests, and securely forwards data to Apps Script. After the script appends a row and returns `{ "ok": true }`, the website displays a confirmation.
+This project now uses **Next.js -> Google Apps Script -> Google Sheets**. All RSVP fields, validation and spreadsheet integration remain unchanged; the front-end design has been refreshed. The guest's browser posts to `/api/rsvp`; the server checks the form, rate-limits requests, and securely forwards data to Apps Script. After the script appends a row and returns `{ "ok": true }`, the website displays a confirmation.
 
 You need only a **Google account** to own the spreadsheet and Apps Script. Guests do not need accounts. Google Sheets itself must remain private. The full, beginner-friendly setup guide is **`docs/GOOGLE_SHEETS_SETUP.md`**.
 
