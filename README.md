@@ -4,7 +4,7 @@ A romantic, mobile-first, single-page invitation for a Catholic Nuptial Mass and
 
 > **Before sharing the invitation:** Anjani & Vihan's date and Sri Lanka event times are set: **Saturday, 22 May 2027** (Nuptial Mass **4:00 PM**, reception **7:00 PM**). The church is now **St. Paul's Church, Waragoda, Kelaniya** (with its Google Maps listing). **Verify the reception venue, website URL and other sample details before sharing.** RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
 
-The latest design features a cheerful blush-and-champagne wedding palette, floral illustration and a rectangular keepsake photo frame (rather than the original arched style). See **`DESIGN_UPDATE.md`** for details.
+The latest design uses **only champagne-gold and sage-green accents** on an ivory-paper base, with golden Catholic wedding details (cross, olive leaves and joined rings) and a rectangular keepsake-style photo. Subtle animated glimmers, greenery, countdown transitions and scroll reveals are included; reduced-motion settings are respected. See **`DESIGN_UPDATE.md`** for details.
 
 ## 1. Quick start
 
@@ -56,7 +56,7 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 
 **US time zones:** In **The wedding day**, US guests can choose **Eastern, Central, Mountain or Pacific**; both event cards show the converted time and date. The site uses IANA time zones and accounts for daylight saving on 22 May 2027 automatically. Sri Lanka time always appears alongside the US time. Google and Apple/Outlook calendar buttons are equal-width/equal-height on wider screens, full-width on narrow phones, and generate events using the correct instant so calendar apps display local time.
 
-**Bible verse:** The starter copy is 1 Corinthians 13:4. You can remove it from the Hero markup if you prefer not to display a verse.
+**Bible verses:** The hero text comes from `wedding.verse` in `config/wedding.ts` (initially 1 Corinthians 13:4). The invitation story also features Matthew 19:6 as a Catholic scripture accent; you can edit or remove that block in `components/wedding-experience.tsx`.
 
 ## 3. Connect RSVPs to Google Sheets (no Microsoft account)
 

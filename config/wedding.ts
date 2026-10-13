@@ -26,7 +26,7 @@ export const wedding = {
 
   invitation: {
     eyebrow: "Together with our families",
-    heading: "A day written in love",
+    heading: "Our sacred promise",
     body: "With grateful hearts and God's abundant blessings, we joyfully invite you to witness our marriage in the presence of the Lord and celebrate this new chapter with us. Your prayers and presence would make our day even more meaningful.",
     signoff: "We would be honoured to share this beautiful day with you.",
   },

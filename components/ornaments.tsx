@@ -8,6 +8,31 @@ export function TinyCross({ className = "" }: { className?: string }) {
   );
 }
 
+/** Catholic wedding emblem: a gilded cross, joined rings and sage olive leaves. */
+export function SacredSeal({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 152 152" fill="none" aria-hidden="true" className={className}>
+      <circle cx="76" cy="76" r="66" stroke="#b69861" strokeWidth="1" opacity=".68" />
+      <circle cx="76" cy="76" r="60" stroke="#b69861" strokeWidth=".6" opacity=".32" strokeDasharray="1.5 5.5" />
+      <path d="M76 31v47M60 47h32" stroke="#896e40" strokeWidth="2.7" strokeLinecap="round" />
+      <path d="M76 24v3M76 82v3M53 47h3M96 47h3" stroke="#b69861" strokeWidth="1" strokeLinecap="round" />
+      <circle cx="67" cy="100" r="13" stroke="#b69861" strokeWidth="2.2" />
+      <circle cx="85" cy="100" r="13" stroke="#896e40" strokeWidth="2.2" />
+      <path d="M45 111C31 98 27 77 39 57M107 111c14-13 18-34 6-54" stroke="#829d87" strokeWidth="1.5" strokeLinecap="round" />
+      <g fill="#e9f0e6" stroke="#829d87" strokeWidth="1">
+        <path d="M40 66c-12-1-15-9-14-15 9 0 14 6 14 15Z" />
+        <path d="M36 82c-12 0-15-7-15-14 9-1 14 5 15 14Z" />
+        <path d="M42 98c-11 2-16-4-18-11 9-3 16 2 18 11Z" />
+        <path d="M112 66c12-1 15-9 14-15-9 0-14 6-14 15Z" />
+        <path d="M116 82c12 0 15-7 15-14-9-1-14 5-15 14Z" />
+        <path d="M110 98c11 2 16-4 18-11-9-3-16 2-18 11Z" />
+      </g>
+      <path d="M51 119q25 15 50 0" stroke="#b69861" strokeWidth=".8" opacity=".85" />
+      <circle cx="76" cy="124" r="2" fill="#b69861" />
+    </svg>
+  );
+}
+
 export function TinyHeart({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
@@ -29,41 +54,41 @@ export function BotanicalSprig(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-/** Blush garden florals. SVG keeps the blooms crisp on mobile and needs no extra assets. */
+/** Champagne-gold blossoms and sage foliage, illustrated in lightweight SVG. */
 export function WeddingFlorals(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 320 310" fill="none" aria-hidden="true" {...props}>
       <g strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 277c90-12 143-65 193-158M68 295c33-77 104-127 197-168M39 230c41-36 77-40 121-39" stroke="#789478" strokeWidth="2.6" />
-        <path d="M92 225c-27-30-50-30-67-19 5 25 32 29 67 19ZM111 210c4-37 19-58 46-68 9 30-12 54-46 68ZM160 177c-5-30 9-58 29-67 13 25 0 54-29 67ZM195 150c32-30 61-31 81-20-6 27-38 36-81 20ZM74 259c-34-9-53-3-68 17 24 12 48 8 68-17ZM146 238c24-33 50-38 69-27-6 26-32 38-69 27ZM119 266c-10-30-3-49 17-62 16 21 10 45-17 62Z" fill="#a4b9a0" stroke="#7c9a7e" strokeWidth="1.7" />
-        <path d="M51 202c-20-26-34-31-48-32M241 147c18-18 30-23 45-21" stroke="#789478" strokeWidth="2" />
-        <path d="M54 195c-21 0-36-11-41-26 21-5 36 3 41 26ZM223 157c7-29 21-41 41-42 2 21-12 36-41 42Z" fill="#bfd0af" stroke="#86a184" strokeWidth="1.5" />
+        <path d="M20 277c90-12 143-65 193-158M68 295c33-77 104-127 197-168M39 230c41-36 77-40 121-39" stroke="#789178" strokeWidth="2.6" />
+        <path d="M92 225c-27-30-50-30-67-19 5 25 32 29 67 19ZM111 210c4-37 19-58 46-68 9 30-12 54-46 68ZM160 177c-5-30 9-58 29-67 13 25 0 54-29 67ZM195 150c32-30 61-31 81-20-6 27-38 36-81 20ZM74 259c-34-9-53-3-68 17 24 12 48 8 68-17ZM146 238c24-33 50-38 69-27-6 26-32 38-69 27ZM119 266c-10-30-3-49 17-62 16 21 10 45-17 62Z" fill="#a1b6a0" stroke="#66866e" strokeWidth="1.7" />
+        <path d="M51 202c-20-26-34-31-48-32M241 147c18-18 30-23 45-21" stroke="#789178" strokeWidth="2" />
+        <path d="M54 195c-21 0-36-11-41-26 21-5 36 3 41 26ZM223 157c7-29 21-41 41-42 2 21-12 36-41 42Z" fill="#ccdac7" stroke="#7e9e81" strokeWidth="1.5" />
         <g transform="translate(190 108)">
-          <ellipse cx="-23" cy="-10" rx="31" ry="18" fill="#f6c9c5" transform="rotate(-38 -23 -10)" />
-          <ellipse cx="21" cy="-9" rx="31" ry="20" fill="#f2b6b9" transform="rotate(43 21 -9)" />
-          <ellipse cx="-12" cy="22" rx="31" ry="20" fill="#e9a2a9" transform="rotate(32 -12 22)" />
-          <ellipse cx="18" cy="20" rx="27" ry="18" fill="#f8d4ca" transform="rotate(-37 18 20)" />
-          <ellipse cx="0" cy="0" rx="23" ry="23" fill="#fff2de" />
-          <path d="M-11-2c5-14 22-14 24-1 1 9-13 16-18 6-5-9 7-15 12-7" stroke="#cb868c" strokeWidth="3" />
-          <circle cx="3" cy="0" r="3" fill="#c28d5d" />
+          <ellipse cx="-23" cy="-10" rx="31" ry="18" fill="#e8d7b3" transform="rotate(-38 -23 -10)" />
+          <ellipse cx="21" cy="-9" rx="31" ry="20" fill="#e2ca9a" transform="rotate(43 21 -9)" />
+          <ellipse cx="-12" cy="22" rx="31" ry="20" fill="#d9bc84" transform="rotate(32 -12 22)" />
+          <ellipse cx="18" cy="20" rx="27" ry="18" fill="#f4e7cc" transform="rotate(-37 18 20)" />
+          <ellipse cx="0" cy="0" rx="23" ry="23" fill="#fcf7e9" />
+          <path d="M-11-2c5-14 22-14 24-1 1 9-13 16-18 6-5-9 7-15 12-7" stroke="#b69457" strokeWidth="3" />
+          <circle cx="3" cy="0" r="3" fill="#977440" />
         </g>
         <g transform="translate(88 166) rotate(-17)">
-          <ellipse cx="0" cy="-23" rx="19" ry="27" fill="#e6a4b3" />
-          <ellipse cx="22" cy="-7" rx="20" ry="25" fill="#f5c7ce" transform="rotate(75 22 -7)" />
-          <ellipse cx="15" cy="20" rx="20" ry="25" fill="#eeadb8" transform="rotate(140 15 20)" />
-          <ellipse cx="-16" cy="18" rx="20" ry="25" fill="#facfd0" transform="rotate(-140 -16 18)" />
-          <ellipse cx="-23" cy="-5" rx="19" ry="25" fill="#eab1bd" transform="rotate(-70 -23 -5)" />
-          <circle r="13" fill="#fff2d8" />
-          <circle r="5" fill="#d9aa6d" />
+          <ellipse cx="0" cy="-23" rx="19" ry="27" fill="#e3d1a6" />
+          <ellipse cx="22" cy="-7" rx="20" ry="25" fill="#f2e5c8" transform="rotate(75 22 -7)" />
+          <ellipse cx="15" cy="20" rx="20" ry="25" fill="#d8c08e" transform="rotate(140 15 20)" />
+          <ellipse cx="-16" cy="18" rx="20" ry="25" fill="#f7eed9" transform="rotate(-140 -16 18)" />
+          <ellipse cx="-23" cy="-5" rx="19" ry="25" fill="#e8d5a7" transform="rotate(-70 -23 -5)" />
+          <circle r="13" fill="#fcf5e2" />
+          <circle r="5" fill="#a88647" />
           <circle cx="-5" cy="-3" r="1.4" fill="#fff" /><circle cx="5" cy="2" r="1.4" fill="#fff" />
         </g>
         <g transform="translate(254 56) rotate(18)">
-          <ellipse cy="-14" rx="13" ry="19" fill="#f1c0bc" />
-          <ellipse cx="13" cy="7" rx="13" ry="19" fill="#ffe1ce" transform="rotate(80 13 7)" />
-          <ellipse cx="-13" cy="7" rx="13" ry="19" fill="#eaa5a8" transform="rotate(-80 -13 7)" />
-          <circle r="10" fill="#ffe5b4" /><circle r="4" fill="#bd9960" />
+          <ellipse cy="-14" rx="13" ry="19" fill="#e5d5ae" />
+          <ellipse cx="13" cy="7" rx="13" ry="19" fill="#f8eed9" transform="rotate(80 13 7)" />
+          <ellipse cx="-13" cy="7" rx="13" ry="19" fill="#d4b57c" transform="rotate(-80 -13 7)" />
+          <circle r="10" fill="#f4e5c4" /><circle r="4" fill="#977643" />
         </g>
-        <g fill="#e7b26e">
+        <g fill="#b99b5e">
           <circle cx="42" cy="155" r="4" /><circle cx="37" cy="140" r="3" /><circle cx="56" cy="143" r="3" /><circle cx="33" cy="184" r="3" />
           <circle cx="274" cy="172" r="3.5" /><circle cx="290" cy="165" r="3" /><circle cx="279" cy="190" r="3" />
         </g>
@@ -74,10 +99,12 @@ export function WeddingFlorals(props: SVGProps<SVGSVGElement>) {
 
 export function DividerOrnament({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center justify-center gap-4 text-rose ${className}`} aria-hidden="true">
-      <span className="h-px w-14 bg-gradient-to-r from-transparent to-rose/40" />
-      <TinyHeart className="h-5 w-5" />
-      <span className="h-px w-14 bg-gradient-to-l from-transparent to-rose/40" />
+    <div className={`flex items-center justify-center gap-3 text-gold ${className}`} aria-hidden="true">
+      <span className="h-px w-15 bg-gradient-to-r from-transparent to-gold/55" />
+      <span className="h-1 w-1 rounded-full bg-sage/70" />
+      <TinyCross className="h-5 w-5" />
+      <span className="h-1 w-1 rounded-full bg-sage/70" />
+      <span className="h-px w-15 bg-gradient-to-l from-transparent to-gold/55" />
     </div>
   );
 }

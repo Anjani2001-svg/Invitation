@@ -76,10 +76,10 @@ export function RsvpForm() {
   if (status === "success") {
     return (
       <div className="flex min-h-[440px] flex-col items-center justify-center px-5 py-16 text-center" role="status" aria-live="polite">
-        <span className="flex h-18 w-18 items-center justify-center rounded-full bg-blush text-rose-dark">
+        <span className="flex h-18 w-18 items-center justify-center rounded-full bg-sage-light text-sage-dark">
           <CheckCircle2 className="h-9 w-9" strokeWidth={1.3} aria-hidden="true" />
         </span>
-        <p className="kicker mt-9 text-rose-dark">Response received</p>
+        <p className="kicker mt-9 text-sage-dark">Response received</p>
         <h3 className="display-serif mt-4 max-w-lg text-5xl leading-none sm:text-6xl">
           {submittedAttendance === "Yes" ? "Thank you, from our hearts" : "Thank you for letting us know"}
         </h3>
@@ -91,13 +91,13 @@ export function RsvpForm() {
         {submittedAttendance === "Yes" ? (
           <a
             href="#events"
-            className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-rose px-6 text-[11px] font-semibold uppercase tracking-[.1em] text-white hover:bg-rose-dark"
+            className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sage-dark px-6 text-[11px] font-semibold uppercase tracking-[.1em] text-white hover:bg-sage-deep"
           >
             <CalendarPlus2 className="h-4 w-4" aria-hidden="true" />
             Save the wedding date to your calendar
           </a>
         ) : null}
-        <button type="button" onClick={reset} className="mt-8 text-xs font-semibold uppercase tracking-[.14em] text-rose-dark underline underline-offset-5">
+        <button type="button" onClick={reset} className="mt-8 text-xs font-semibold uppercase tracking-[.14em] text-sage-dark underline underline-offset-5">
           Send another response
         </button>
       </div>
@@ -128,7 +128,7 @@ export function RsvpForm() {
             onChange={(e) => { setName(e.target.value); clearField("name"); }}
             disabled={loading}
           />
-          {errors.name ? <p id="name-error" className="mt-2 text-xs text-red-700">{errors.name}</p> : null}
+          {errors.name ? <p id="name-error" className="mt-2 text-xs text-gold-deep">{errors.name}</p> : null}
         </div>
         <div>
           <label htmlFor="rsvp-phone" className="mb-2.5 block text-xs font-semibold tracking-wide text-charcoal">Phone number <span className="font-normal text-muted">(optional)</span></label>
@@ -147,7 +147,7 @@ export function RsvpForm() {
             onChange={(e) => { setPhone(e.target.value); clearField("phone"); }}
             disabled={loading}
           />
-          {errors.phone ? <p id="phone-error" className="mt-2 text-xs text-red-700">{errors.phone}</p> : null}
+          {errors.phone ? <p id="phone-error" className="mt-2 text-xs text-gold-deep">{errors.phone}</p> : null}
         </div>
       </div>
 
@@ -157,7 +157,7 @@ export function RsvpForm() {
           {(["Yes", "No"] as const).map((option) => (
             <label
               key={option}
-              className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-colors focus-within:ring-2 focus-within:ring-rose focus-within:ring-offset-2 ${attending === option ? "border-rose bg-rose text-white" : "border-line bg-ivory text-charcoal hover:border-rose/60 hover:bg-blush/40"}`}
+              className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-colors focus-within:ring-2 focus-within:ring-sage-dark focus-within:ring-offset-2 ${attending === option ? "border-gold bg-sage-dark text-white" : "border-line bg-ivory text-charcoal hover:border-gold/60 hover:bg-sage-light/40"}`}
             >
               <input
                 className="sr-only"
@@ -174,7 +174,7 @@ export function RsvpForm() {
             </label>
           ))}
         </div>
-        {errors.attending ? <p className="mt-2 text-xs text-red-700" role="alert">{errors.attending}</p> : null}
+        {errors.attending ? <p className="mt-2 text-xs text-gold-deep" role="alert">{errors.attending}</p> : null}
       </fieldset>
 
       {attending === "Yes" ? (
@@ -194,7 +194,7 @@ export function RsvpForm() {
               <option value={count} key={count}>{count} {count === 1 ? "guest" : "guests"}</option>
             ))}
           </select>
-          {errors.guests ? <p id="guests-error" className="mt-2 text-xs text-red-700">{errors.guests}</p> : null}
+          {errors.guests ? <p id="guests-error" className="mt-2 text-xs text-gold-deep">{errors.guests}</p> : null}
         </div>
       ) : null}
 
@@ -214,7 +214,7 @@ export function RsvpForm() {
           disabled={loading}
         />
         <p className="mt-2 text-right text-[11px] text-muted">{message.length}/500</p>
-        {errors.message ? <p id="message-error" className="text-xs text-red-700">{errors.message}</p> : null}
+        {errors.message ? <p id="message-error" className="text-xs text-gold-deep">{errors.message}</p> : null}
       </div>
 
       {/* Invisible to real guests but commonly filled by bots. */}
@@ -224,13 +224,13 @@ export function RsvpForm() {
       </div>
 
       {serverError ? (
-        <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm leading-6 text-red-800" role="alert">{serverError}</p>
+        <p className="rounded-md border border-gold/40 bg-gold-mist px-4 py-3 text-sm leading-6 text-sage-deep" role="alert">{serverError}</p>
       ) : null}
 
       <button
         type="submit"
         disabled={loading}
-        className="flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-rose px-8 text-xs font-semibold uppercase tracking-[.16em] text-white shadow-[0_11px_28px_rgba(163,66,88,.15)] transition-all hover:bg-rose-dark hover:shadow-[0_14px_30px_rgba(163,66,88,.2)] disabled:cursor-wait disabled:opacity-70"
+        className="flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-sage-dark px-8 text-xs font-semibold uppercase tracking-[.16em] text-white shadow-[0_11px_28px_rgba(65,98,75,.15)] transition-all hover:bg-sage-deep hover:shadow-[0_14px_30px_rgba(65,98,75,.2)] disabled:cursor-wait disabled:opacity-70"
       >
         {loading ? <><LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending your RSVP...</> : <>Send my RSVP <ArrowRight className="h-4 w-4" aria-hidden="true" /></>}
       </button>
