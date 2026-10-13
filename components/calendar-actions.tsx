@@ -48,7 +48,7 @@ export function CalendarActions({ kind }: { kind: WeddingCalendarKind }) {
         </button>
       </div>
       <p className="mt-3 text-[11px] leading-5 text-muted">
-        Apple / Outlook downloads a calendar (.ics) file with a reminder one day before.
+      
         For Google Calendar, select a reminder when saving the event.
       </p>
     </div>
