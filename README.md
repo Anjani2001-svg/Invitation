@@ -2,7 +2,7 @@
 
 An elegant, mobile-first, single-page invitation for a Catholic Nuptial Mass and wedding reception. Built with the **Next.js App Router**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and a server-only **Google Apps Script → Google Sheets** RSVP endpoint. Deployable to Vercel.
 
-> **Before sharing the invitation:** All names, wedding dates, church details and times are *sample values*. Update them in `config/wedding.ts`. RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
+> **Before sharing the invitation:** The names, date and times are set for **Anjani & Vihan — Saturday, 22 May 2027** (Nuptial Mass **4:00 PM**, reception **7:00 PM**, Sri Lanka time). The church name, website URL and other sample venue details still need confirmation. RSVP storage requires a Google Sheet, an Apps Script web app and two private server environment variables; without them, the form reports RSVP as unavailable rather than pretending to save data.
 
 ## 1. Quick start
 
@@ -36,7 +36,7 @@ Edit **only `config/wedding.ts` for all event information and wording**:
 | --- | --- |
 | `bride`, `groom`, `hashtag` | Full names and preferred wedding hashtag |
 | `siteUrl` | The real `https://...` Vercel/custom domain, for canonical link previews |
-| `date.iso` | **Wedding Mass start** in ISO 8601 with `+05:30` (Sri Lanka time), e.g. `2027-02-14T10:00:00+05:30`. Drives the countdown. |
+| `date.iso` | **Wedding Mass start** in ISO 8601 with `+05:30` (Sri Lanka time), currently `2027-05-22T16:00:00+05:30`. Drives the countdown. |
 | `date.display`, `date.short` | Human-readable wedding date labels |
 | `verse` | Optional scripture text and reference (edit/replace as desired) |
 | `invitation` | Short invitation from both families |
@@ -112,7 +112,7 @@ Optional: a portrait JPG is used for the social preview because it always stays 
 
 ## 5. Testing checklist
 
-- [ ] Replace all names, example wedding dates/times and church details in `config/wedding.ts`.
+- [ ] Verify the names and 22 May 2027 wedding schedule; replace the sample church name and confirm reception venue/location in `config/wedding.ts`.
 - [ ] Verify the Mass and reception times, Colombo time zone (`+05:30`), and countdown.
 - [ ] Replace `public/couple.jpg` and optionally `public/music.mp3`.
 - [ ] On iPhone Safari and Android Chrome, tap **Open invitation**: page opens and music plays (subject to user device settings).

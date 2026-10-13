@@ -45,7 +45,7 @@ export function Countdown() {
           <div className="mx-auto mt-12 grid max-w-[590px] grid-cols-4 gap-2 sm:gap-5" role="timer" aria-label="Time until the wedding">
             {(["days", "hours", "minutes", "seconds"] as const).map((unit) => (
               <div key={unit} className="flex flex-col items-center border-r border-sage/25 last:border-r-0">
-                <span className="display-serif text-5xl leading-none tabular-nums text-sage-dark sm:text-7xl">
+                <span className="display-serif text-[clamp(1.7rem,8vw,3.2rem)] leading-none tabular-nums text-sage-dark sm:text-7xl">
                   {String(timeLeft?.[unit] ?? 0).padStart(2, "0")}
                 </span>
                 <span className="mt-4 text-[9px] font-semibold uppercase tracking-[.2em] text-sage-dark sm:text-xs">{unit}</span>

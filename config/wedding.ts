@@ -1,12 +1,12 @@
 /**
  * EDIT THIS FILE to personalise the entire invitation.
  * Names, date, times, copy, venue details, maps and SEO URL live here.
- * The values supplied below are EXAMPLES, not confirmed wedding details.
+ * Names, date and times are set for Anjani and Vihan. Confirm venue details and site URL before sharing.
  */
 export const wedding = {
-  bride: "Bride Name",
-  groom: "Groom Name",
-  hashtag: "#BrideAndGroom2027",
+  bride: "Anjani",
+  groom: "Vihan",
+  hashtag: "#AnjaniAndVihan2027",
 
   // Set this to the actual HTTPS URL after deploying (also used for social previews).
   siteUrl: "https://your-wedding-site.vercel.app",
@@ -14,9 +14,9 @@ export const wedding = {
   date: {
     // IMPORTANT: ISO 8601 WITH Sri Lanka's UTC+05:30 offset.
     // Countdown targets this exact instant (normally the start of the Mass).
-    iso: "2027-02-14T10:00:00+05:30",
-    display: "Sunday, 14 February 2027",
-    short: "14 . 02 . 2027",
+    iso: "2027-05-22T16:00:00+05:30",
+    display: "Saturday, 22 May 2027",
+    short: "22 . 05 . 2027",
   },
 
   verse: {
@@ -36,7 +36,7 @@ export const wedding = {
     label: "Holy Matrimony",
     venue: "Your Church Name",
     address: "Negombo, Sri Lanka",
-    time: "10:00 AM",
+    time: "4:00 PM",
     note: "Please join us in prayer as we receive the Sacrament of Matrimony.",
     // Optional; leave empty to hide the directions link on this card.
     directionsUrl: "",
@@ -47,7 +47,7 @@ export const wedding = {
     label: "Dinner & Celebration",
     venue: "Royal Ramsess Wedding Hall",
     address: "Negombo, Sri Lanka",
-    time: "6:00 PM",
+    time: "7:00 PM",
     note: "An evening of wonderful company, heartfelt toasts and celebration.",
   },
 

@@ -26,7 +26,8 @@ export function EventCard({
   eventKind: WeddingCalendarKind;
 }) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white/75 px-7 pb-9 pt-10 transition-shadow duration-300 hover:shadow-[0_20px_55px_rgba(40,59,43,.07)] sm:px-11 sm:pb-12 sm:pt-12">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white/85 px-6 pb-9 pt-10 shadow-[0_8px_24px_rgba(40,59,43,.035)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(40,59,43,.09)] motion-reduce:transform-none sm:px-11 sm:pb-12 sm:pt-12">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-sage-light via-sage/75 to-sage-light" aria-hidden="true" />
       <span className="absolute right-7 top-8 display-serif text-3xl text-sage/30 sm:right-10">{number}</span>
       <div className="flex h-14 w-14 items-center justify-center rounded-full border border-sage/25 bg-sage-light/70 text-sage-dark">
         {icon}
@@ -37,7 +38,7 @@ export function EventCard({
       <div className="space-y-5 text-sm leading-6">
         <div className="flex items-start gap-4">
           <Clock3 className="mt-0.5 h-[17px] w-[17px] shrink-0 text-sage-dark" strokeWidth={1.5} aria-hidden="true" />
-          <div><p className="font-semibold text-charcoal">{wedding.date.display}</p><p className="mt-1 text-muted">{event.time} (Sri Lanka time)</p></div>
+          <div><p className="font-semibold text-charcoal">{wedding.date.display}</p><p className="mt-1 font-semibold text-sage-dark">{event.time} <span className="font-normal text-muted">(Sri Lanka time)</span></p></div>
         </div>
         <div className="flex items-start gap-4">
           <MapPin className="mt-0.5 h-[17px] w-[17px] shrink-0 text-sage-dark" strokeWidth={1.5} aria-hidden="true" />

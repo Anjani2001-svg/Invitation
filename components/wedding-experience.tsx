@@ -106,7 +106,7 @@ export function WeddingExperience() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, y: reducedMotion ? 0 : -28 }}
             transition={{ duration: reducedMotion ? 0.1 : 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex min-h-[100svh] flex-col items-center justify-center overflow-y-auto bg-ivory px-6 py-12 text-center"
+            className="wedding-splash fixed inset-0 z-[100] flex min-h-[100svh] flex-col items-center justify-start overflow-y-auto bg-ivory px-5 py-8 text-center sm:px-6 sm:py-12"
           >
             <div className="intro-texture pointer-events-none absolute inset-0 opacity-35" />
             <div className="pointer-events-none absolute inset-5 rounded-[180px_180px_18px_18px] border border-gold/25 sm:inset-9" />
@@ -116,26 +116,29 @@ export function WeddingExperience() {
               initial={reducedMotion ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1 }}
-              className="relative z-10 flex w-full max-w-2xl flex-col items-center"
+              className="relative z-10 my-auto flex w-full max-w-2xl flex-col items-center"
             >
               <TinyCross className="h-8 w-8 text-gold" />
-              <p className="kicker mt-10 text-sage-dark">The wedding invitation</p>
-              <div className="mt-7 w-full">
-                <h1 className="display-serif text-[clamp(3rem,9vw,6.4rem)] leading-[.75] tracking-[-.055em]">
+              <p className="kicker mt-6 text-sage-dark sm:mt-10">The wedding invitation</p>
+              <div className="mt-6 w-full sm:mt-7">
+                <h1 className="display-serif text-[clamp(3rem,9vw,6.4rem)] leading-[.83] tracking-[-.055em]">
                   <span className="block">{wedding.bride}</span>
-                  <span className="my-4 block text-[.65em] italic text-gold">&</span>
+                  <span className="my-2 block text-[.65em] italic text-gold sm:my-4">&</span>
                   <span className="block">{wedding.groom}</span>
                 </h1>
               </div>
-              <div className="mt-10 flex items-center gap-5 text-gold">
+              <div className="mt-7 flex items-center gap-5 text-gold sm:mt-10">
                 <span className="h-px w-9 bg-gold/60" />
                 <span className="text-xs tracking-[.22em] text-sage-dark">{wedding.date.short}</span>
                 <span className="h-px w-9 bg-gold/60" />
               </div>
+              <p className="mt-4 max-w-sm text-[11px] leading-relaxed tracking-wide text-sage-dark sm:text-xs">
+                Nuptial Mass at {wedding.ceremony.time} <span className="mx-1.5 text-gold" aria-hidden="true">&bull;</span> Reception at {wedding.reception.time}
+              </p>
               <button
                 type="button"
                 onClick={openInvitation}
-                className="mt-12 inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-sage-dark px-8 text-xs font-semibold uppercase tracking-[.17em] text-white transition-all hover:bg-charcoal hover:shadow-xl active:scale-[.98]"
+                className="mt-8 inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-sage-dark px-8 text-xs font-semibold uppercase tracking-[.17em] text-white shadow-[0_12px_30px_rgba(65,83,65,.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-charcoal hover:shadow-[0_18px_36px_rgba(65,83,65,.23)] active:scale-[.98] motion-reduce:transform-none sm:mt-11"
               >
                 Open invitation <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -152,7 +155,7 @@ export function WeddingExperience() {
           transition={{ delay: 0.55 }}
           type="button"
           onClick={toggleMusic}
-          className="fixed bottom-5 right-5 z-50 flex h-12 items-center gap-2 rounded-full border border-line bg-white/90 px-4 text-sage-dark shadow-[0_10px_28px_rgba(44,55,42,.12)] backdrop-blur-md transition-colors hover:bg-sage-light sm:bottom-7 sm:right-7"
+          className="music-toggle fixed bottom-5 right-5 z-50 flex h-11 items-center gap-2 rounded-full border border-line bg-white/90 px-3.5 text-sage-dark shadow-[0_10px_28px_rgba(44,55,42,.12)] backdrop-blur-md transition-colors hover:bg-sage-light sm:bottom-7 sm:right-7 sm:h-12 sm:px-4"
           aria-label={isPlaying ? "Pause background music" : "Play background music"}
           aria-pressed={isPlaying}
           title={audioFailed ? "Tap to try playing music again" : undefined}
@@ -164,7 +167,7 @@ export function WeddingExperience() {
 
       <div id="top" inert={!opened} className="overflow-x-clip">
         <header className="sticky top-0 z-30 border-b border-line/65 bg-ivory/85 backdrop-blur-xl">
-          <div className="mx-auto flex h-17 max-w-7xl items-center justify-between px-6 sm:px-10">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:h-17 sm:px-10">
             <a href="#top" aria-label="Back to the beginning" className="flex items-center gap-3">
               <span className="display-serif text-2xl leading-none tracking-tight text-sage-dark">
                 {wedding.bride.charAt(0)} <span className="italic text-gold">&</span> {wedding.groom.charAt(0)}
@@ -178,10 +181,15 @@ export function WeddingExperience() {
             </nav>
             <a href="#rsvp" className="rounded-full border border-sage/60 px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[.16em] text-sage-dark transition-colors hover:bg-sage-light">RSVP <span className="ml-1">↗</span></a>
           </div>
+          <nav aria-label="Wedding sections on mobile" className="flex min-h-11 items-center justify-center gap-7 border-t border-line/60 px-4 md:hidden">
+            <a href="#story" className="text-[10px] font-semibold uppercase tracking-[.12em] text-sage-dark transition-colors hover:text-charcoal">Our story</a>
+            <a href="#events" className="text-[10px] font-semibold uppercase tracking-[.12em] text-sage-dark transition-colors hover:text-charcoal">The day</a>
+            <a href="#location" className="text-[10px] font-semibold uppercase tracking-[.12em] text-sage-dark transition-colors hover:text-charcoal">Location</a>
+          </nav>
         </header>
 
         <main>
-          <section id="home" className="relative isolate overflow-hidden px-6 pb-24 pt-16 sm:px-10 lg:pb-31 lg:pt-21">
+          <section id="home" className="relative isolate overflow-hidden px-5 pb-20 pt-13 sm:px-10 sm:pt-16 lg:pb-31 lg:pt-21">
             <div className="hero-halo pointer-events-none absolute -right-[10%] top-[-5%] -z-10 h-[750px] w-[800px]" />
             <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[.92fr_1.08fr] lg:gap-17">
               <Reveal className="order-1 text-center lg:text-left">
@@ -189,7 +197,7 @@ export function WeddingExperience() {
                   <span className="h-px w-8 bg-gold" />
                   <p className="kicker">United in love and faith</p>
                 </div>
-                <h1 className="display-serif mt-8 text-[clamp(3.5rem,6.4vw,6.8rem)] leading-[.78] tracking-[-.065em]">
+                <h1 className="display-serif mt-8 text-[clamp(3rem,9vw,6.8rem)] leading-[.83] tracking-[-.065em]">
                   <span className="block">{wedding.bride}</span>
                   <span className="my-3 block text-[.68em] italic text-gold">&</span>
                   <span className="block">{wedding.groom}</span>
@@ -198,7 +206,15 @@ export function WeddingExperience() {
                   <TinyCross className="h-5 w-5 text-gold" />
                   <p className="text-[11px] font-semibold uppercase tracking-[.22em] text-sage-dark">{wedding.date.display}</p>
                 </div>
-                <p className="display-serif mt-9 text-[1.85rem] italic leading-snug text-charcoal/85 sm:text-[2.05rem]">
+                <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start" aria-label="Wedding schedule">
+                  <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-sage/30 bg-white/80 px-4 py-2 text-[11px] text-muted shadow-[0_4px_16px_rgba(65,83,65,.04)]">
+                    <TinyCross className="h-3.5 w-3.5 text-gold" /> Holy Mass <strong className="font-semibold text-sage-dark">{wedding.ceremony.time}</strong>
+                  </span>
+                  <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-sage/30 bg-white/80 px-4 py-2 text-[11px] text-muted shadow-[0_4px_16px_rgba(65,83,65,.04)]">
+                    <Heart className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} aria-hidden="true" /> Reception <strong className="font-semibold text-sage-dark">{wedding.reception.time}</strong>
+                  </span>
+                </div>
+                <p className="display-serif mt-7 text-[1.85rem] italic leading-snug text-charcoal/85 sm:mt-9 sm:text-[2.05rem]">
                   “{wedding.verse.text}”
                 </p>
                 <p className="mt-2 text-xs uppercase tracking-[.17em] text-gold">{wedding.verse.reference}</p>
@@ -209,7 +225,7 @@ export function WeddingExperience() {
 
               <Reveal delay={0.15} className="order-2 relative mx-auto w-full max-w-[530px] py-4 lg:ml-auto">
                 <div className="photo-arch absolute -inset-0 border border-gold/50" aria-hidden="true" />
-                <div className="photo-arch relative mx-3 mt-3 aspect-[4/5] overflow-hidden bg-sage-light sm:mx-5 sm:mt-5">
+                <div className="photo-arch relative mx-3 mt-3 aspect-[4/5] overflow-hidden bg-sage-light shadow-[0_25px_70px_rgba(54,73,55,.13)] sm:mx-5 sm:mt-5">
                   <Image
                     src="/couple.jpg"
                     alt={`Portrait of ${coupleNames}`}
@@ -305,7 +321,7 @@ export function WeddingExperience() {
               <Reveal>
                 <SectionTitle eyebrow="The pleasure of your company" title="Kindly RSVP" description={wedding.rsvp.deadline} />
               </Reveal>
-              <Reveal delay={0.1} className="mt-11 rounded-2xl border border-line bg-white p-7 shadow-[0_22px_75px_rgba(44,63,45,.07)] sm:p-11 md:p-13">
+              <Reveal delay={0.1} className="mt-11 rounded-2xl border border-line bg-white p-5 shadow-[0_22px_75px_rgba(44,63,45,.07)] sm:p-11 md:p-13">
                 <RsvpForm />
               </Reveal>
             </div>
@@ -315,7 +331,7 @@ export function WeddingExperience() {
         <footer className="relative overflow-hidden bg-ivory px-6 pb-26 pt-24 text-center sm:pt-29">
           <TinyCross className="mx-auto h-6 w-6 text-gold" />
           <p className="kicker mt-6 text-sage-dark">With all our love</p>
-          <p className="display-serif mt-4 text-5xl leading-tight sm:text-6xl">{coupleNames}</p>
+          <p className="display-serif mt-4 text-[clamp(2.5rem,9vw,3.75rem)] leading-tight">{coupleNames}</p>
           <DividerOrnament className="mt-6" />
           <p className="mt-7 text-xs tracking-[.12em] text-sage-dark">{wedding.hashtag}</p>
           <p className="mt-9 text-[10px] uppercase tracking-[.16em] text-muted">Made with love, faith and gratitude</p>
