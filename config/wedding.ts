@@ -19,6 +19,26 @@ export const wedding = {
     short: "22 . 05 . 2027",
   },
 
+  // Families named in the parents' invitation block. EDIT to the real names.
+  families: {
+    bride: "Mr. & Mrs. (Bride's parents)",
+    groom: "Mr. & Mrs. (Groom's parents)",
+  },
+
+  // Order of the day shown as the programme timeline.
+  programme: [
+    { time: "3:30 PM", title: "Arrival of guests", note: "Kindly be seated before the Mass begins" },
+    { time: "4:00 PM", title: "The Nuptial Mass", note: "Exchange of vows and rings at St. Paul's" },
+    { time: "6:30 PM", title: "Welcome & photographs", note: "Reception hall opens" },
+    { time: "7:00 PM", title: "Wedding reception", note: "Blessing, toasts, dinner and dancing" },
+  ],
+
+  // Phone numbers for the call buttons (international format). EDIT.
+  contacts: [
+    { label: "Call the bride's family", tel: "+94000000000" },
+    { label: "Call the groom's family", tel: "+94000000001" },
+  ],
+
   verse: {
     text: "Love is patient, love is kind.",
     reference: "1 Corinthians 13:4",

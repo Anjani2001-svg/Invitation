@@ -2,27 +2,27 @@
 
 /* Catholic wedding palette: champagne gold and sage green; ivory is the neutral paper colour. */
 @theme inline {
-  --color-ivory: #fcfbf5;
-  --color-paper: #f3f5ed;
-  --color-sage: #829d87;
-  --color-sage-dark: #476751;
-  --color-sage-deep: #294635;
-  --color-sage-light: #e9f0e6;
+  --color-ivory: #fbf9f3;
+  --color-paper: #f1f3f8;
+  --color-sage: #7d91b3;
+  --color-sage-dark: #25406e;
+  --color-sage-deep: #162a4d;
+  --color-sage-light: #e6ecf6;
   --color-gold: #b69861;
   --color-gold-deep: #896e40;
   --color-gold-light: #e9d9b4;
   --color-gold-mist: #f7f1e3;
-  --color-line: #dce4d8;
-  --color-charcoal: #304a3a;
-  --color-muted: #657968;
+  --color-line: #d9e0ed;
+  --color-charcoal: #1c2a45;
+  --color-muted: #5b6881;
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-inter);
 }
 
 :root { color-scheme: light; scroll-behavior: smooth; }
 * { box-sizing: border-box; }
-::selection { background: #e6d7b4; color: #294635; }
-body { min-height: 100%; background: #fcfbf5; }
+::selection { background: #e6d7b4; color: #162a4d; }
+body { min-height: 100%; background: #fbf9f3; }
 button, input, textarea, select { font: inherit; }
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 2px solid #896e40; outline-offset: 3px; }
@@ -37,34 +37,34 @@ section[id] { scroll-margin-top: 7.5rem; }
 .catholic-splash {
   background:
     radial-gradient(ellipse 70% 56% at 7% 9%, rgba(226, 212, 178, .52), transparent 74%),
-    radial-gradient(ellipse 64% 73% at 99% 92%, rgba(199, 217, 197, .63), transparent 76%),
+    radial-gradient(ellipse 64% 73% at 99% 92%, rgba(186, 203, 232, .63), transparent 76%),
     radial-gradient(ellipse 55% 45% at 92% 4%, rgba(236, 231, 205, .52), transparent 82%),
-    #fcfbf5;
+    #fbf9f3;
 }
 .catholic-hero {
   background:
-    radial-gradient(ellipse 54% 84% at 97% 28%, rgba(217, 229, 209, .64), transparent 78%),
+    radial-gradient(ellipse 54% 84% at 97% 28%, rgba(203, 216, 238, .64), transparent 78%),
     radial-gradient(ellipse 47% 66% at 4% 94%, rgba(237, 218, 175, .35), transparent 81%),
-    linear-gradient(122deg, #fcfbf5 8%, #f7f7ed 100%);
+    linear-gradient(122deg, #fbf9f3 8%, #f6f6f1 100%);
 }
 .story-bloom {
   background:
-    radial-gradient(ellipse 40% 80% at 0% 60%, rgba(216, 229, 212, .46), transparent 86%),
+    radial-gradient(ellipse 40% 80% at 0% 60%, rgba(203, 216, 238, .46), transparent 86%),
     radial-gradient(ellipse 39% 78% at 100% 28%, rgba(233, 216, 180, .4), transparent 88%);
 }
 .blessing-wash {
   background:
     radial-gradient(ellipse at 50% 10%, rgba(243, 227, 184, .41), transparent 69%),
-    linear-gradient(115deg, #eff4ea, #f9f6e9 50%, #edf2e7);
+    linear-gradient(115deg, #eaf0f8, #faf6ea 50%, #e8eef7);
 }
 .countdown-wash {
-  background: linear-gradient(112deg, #e9f0e6 0%, #f8f2e2 49%, #dce8d9 100%);
+  background: linear-gradient(112deg, #e6ecf6 0%, #f8f2e2 49%, #d6e1f1 100%);
 }
 .rsvp-wash {
-  background: linear-gradient(180deg, #f2f5ed 0%, #fcf8ed 54%, #fcfbf5 100%);
+  background: linear-gradient(180deg, #eef2f8 0%, #fcf8ed 54%, #fbf9f3 100%);
 }
-.footer-wash { background: linear-gradient(to bottom, #fcfbf5, #e9f0e6); }
-.flower-shadow { filter: drop-shadow(0 10px 15px rgba(60, 80, 60, .12)); }
+.footer-wash { background: linear-gradient(to bottom, #fbf9f3, #e6ecf6); }
+.flower-shadow { filter: drop-shadow(0 10px 15px rgba(28, 44, 80, .12)); }
 .paper-texture {
   background-image: radial-gradient(rgba(165, 146, 95, .17) .55px, transparent .55px);
   background-size: 22px 22px;
@@ -118,7 +118,7 @@ section[id] { scroll-margin-top: 7.5rem; }
   inset: 11% -5% 5% -2%;
   z-index: -2;
   border-radius: 46% 54% 42% 58%;
-  background: linear-gradient(132deg, #d8e5d4, #ebdfc2 59%, #d8e5d4);
+  background: linear-gradient(132deg, #d3deee, #ebdfc2 59%, #d3deee);
   transform: rotate(8deg);
 }
 .wedding-photo-wrap::after {
@@ -133,14 +133,14 @@ section[id] { scroll-margin-top: 7.5rem; }
 .wedding-photo-card {
   position: relative;
   background: #fffdf8;
-  box-shadow: 0 26px 70px rgba(56, 81, 57, .16), 0 5px 16px rgba(56, 81, 57, .08);
+  box-shadow: 0 26px 70px rgba(28, 44, 80, .16), 0 5px 16px rgba(28, 44, 80, .08);
   transform: rotate(1.5deg);
   border: 1px solid #dcc89d;
   border-radius: 16px;
   padding: 13px 13px 0;
   transition: transform .65s cubic-bezier(.2,.75,.25,1), box-shadow .65s ease;
 }
-.wedding-photo-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 34px 80px rgba(56, 81, 57, .2), 0 8px 18px rgba(56, 81, 57, .08); }
+.wedding-photo-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 34px 80px rgba(28, 44, 80, .2), 0 8px 18px rgba(28, 44, 80, .08); }
 .wedding-photo-card::before {
   content: "";
   position: absolute;
@@ -157,14 +157,14 @@ section[id] { scroll-margin-top: 7.5rem; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(158deg, rgba(244, 236, 215, .09), transparent 43%, rgba(87, 126, 91, .06));
+  background: linear-gradient(158deg, rgba(244, 236, 215, .09), transparent 43%, rgba(60, 90, 150, .06));
 }
 .wedding-photo-note {
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(1.25rem, 2.4vw, 1.6rem);
   font-style: italic;
   letter-spacing: .025em;
-  color: #557059;
+  color: #3a5584;
   line-height: 1;
 }
 
@@ -175,13 +175,13 @@ section[id] { scroll-margin-top: 7.5rem; }
   min-height: 3.25rem;
   padding: .85rem 1rem;
   border-radius: .85rem;
-  border: 1px solid #ceddce;
+  border: 1px solid #d3dbe9;
   background: #fffefa;
-  color: #304a3a;
+  color: #1c2a45;
   font-size: .88rem;
   transition: border-color .2s, background-color .2s, box-shadow .2s;
 }
-.input-field::placeholder { color: #809083; }
+.input-field::placeholder { color: #8793ab; }
 .input-field:hover { border-color: #b69861; }
 .input-field:focus { outline: none; border-color: #b69861; background-color: #fff; box-shadow: 0 0 0 4px rgba(182,152,97,.14); }
 .input-field[aria-invalid="true"] { border-color: #896e40; }
@@ -196,125 +196,9 @@ section[id] { scroll-margin-top: 7.5rem; }
   .wedding-photo-card:hover { transform: rotate(1.5deg); }
 }
 
-/* ------------------------------------------------------------------ */
-/* Church entrance scene: doors open, bride & groom walk in (~8.7s).   */
-/* Delays below are the timeline; keep CHURCH_ENTRANCE_MS in sync.     */
-/*   0.0s  scene fades in          1.0-3.0s  doors swing open          */
-/*   1.8s  doves + light rays      2.2-7.4s  couple walks to the door  */
-/*   6.9s  light blooms            7.6-8.5s  fade into the invitation  */
-/* ------------------------------------------------------------------ */
-.ce-door-left, .ce-door-right {
-  transform-box: fill-box;
-  animation: ce-door-open 2s cubic-bezier(.55, .05, .3, 1) 1s both;
-}
-.ce-door-left { transform-origin: left center; }
-.ce-door-right { transform-origin: right center; }
-@keyframes ce-door-open { from { transform: scaleX(1); } to { transform: scaleX(.1); } }
-
-.ce-rays {
-  opacity: 0;
-  animation: ce-rays-in 1.6s ease-out 1.8s forwards, ce-rays-breathe 3.6s ease-in-out 3.4s infinite alternate;
-}
-@keyframes ce-rays-in { to { opacity: 1; } }
-@keyframes ce-rays-breathe { from { opacity: 1; } to { opacity: .72; } }
-
-.ce-flicker { animation: ce-flicker 1.3s ease-in-out infinite alternate; }
-.ce-flicker-late { animation-delay: -.6s; }
-@keyframes ce-flicker { from { opacity: .55; } to { opacity: 1; } }
-
-.ce-bell {
-  transform-box: fill-box;
-  transform-origin: 50% 0;
-  animation: ce-bell .8s ease-in-out .3s infinite alternate;
-}
-@keyframes ce-bell { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
-
-.ce-twinkle {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ce-twinkle 2.6s ease-in-out infinite alternate;
-}
-@keyframes ce-twinkle {
-  from { opacity: .25; scale: .5; }
-  to { opacity: 1; scale: 1.15; }
-}
-
-.ce-dove { opacity: 0; animation: ce-fly 4.2s ease-in-out forwards; }
-.ce-dove-1 { animation-delay: 1.9s; }
-.ce-dove-2 { animation-delay: 2.6s; }
-@keyframes ce-fly {
-  0% { transform: translate(200px, 410px) scale(.45); opacity: 0; }
-  14% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translate(var(--ex), var(--ey)) scale(1.05); opacity: 0; }
-}
-.ce-flap {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ce-flap .34s ease-in-out infinite alternate;
-}
-@keyframes ce-flap { from { transform: scaleY(1); } to { transform: scaleY(.4); } }
-
-/* Perspective walk: quick at first, then slowing as they near the doorway. */
-.ce-couple {
-  opacity: 0;
-  transform: translate(208px, 860px) scale(1.35);
-  animation: ce-walk 5.2s linear 2.2s forwards;
-}
-@keyframes ce-walk {
-  0%   { transform: translate(208px, 860px) scale(1.35); opacity: 0; }
-  6%   { opacity: 1; }
-  22%  { transform: translate(208px, 600px) scale(.7); }
-  50%  { transform: translate(208px, 530px) scale(.5); }
-  78%  { transform: translate(208px, 493px) scale(.4); opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translate(208px, 474px) scale(.36); opacity: 0; }
-}
-.ce-bob { animation: ce-bob .62s ease-in-out infinite alternate; }
-@keyframes ce-bob { from { transform: translateY(0); } to { transform: translateY(-2.5px); } }
-.ce-leg-a, .ce-leg-b, .ce-hem { transform-box: fill-box; transform-origin: 50% 0; }
-.ce-leg-a { animation: ce-step .62s ease-in-out infinite alternate; }
-.ce-leg-b { animation: ce-step .62s ease-in-out infinite alternate-reverse; }
-@keyframes ce-step { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
-.ce-hem { animation: ce-sway .62s ease-in-out infinite alternate; }
-@keyframes ce-sway { from { transform: skewX(-1.6deg); } to { transform: skewX(1.6deg); } }
-
-.ce-petal {
-  opacity: 0;
-  animation: ce-fall var(--dur, 10s) linear var(--delay, 0s) infinite;
-}
-@keyframes ce-fall {
-  0%   { transform: translate(var(--x), -40px) rotate(0deg); opacity: 0; }
-  8%   { opacity: .85; }
-  92%  { opacity: .7; }
-  100% { transform: translate(calc(var(--x) + var(--drift)), 780px) rotate(420deg); opacity: 0; }
-}
-
-.ce-bloom {
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-  transform: scale(.2);
-  animation: ce-bloom 1.5s ease-in 6.9s forwards;
-}
-@keyframes ce-bloom { to { transform: scale(16); opacity: 1; } }
-.ce-flash { opacity: 0; animation: ce-flash .9s ease-in 7.6s forwards; }
-@keyframes ce-flash { to { opacity: 1; } }
-
-.ce-caption { opacity: 0; animation: ce-caption 7.2s ease-in-out .5s forwards; }
-@keyframes ce-caption {
-  0%   { opacity: 0; transform: translateY(8px); }
-  12%  { opacity: 1; transform: translateY(0); }
-  82%  { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* Church scene: the opening timeline waits (paused at its first frame) until the guest taps the church. */
-.ce-scene:not(.ce-play) :is(.ce-door-left, .ce-door-right, .ce-rays, .ce-dove, .ce-couple, .ce-bloom, .ce-flash, .ce-caption) {
-  animation-play-state: paused;
-}
-.ce-hint { animation: ce-hint 2.2s ease-in-out infinite; }
-@keyframes ce-hint {
-  0%, 100% { transform: translateY(0); box-shadow: 0 10px 28px rgba(54, 82, 62, .16), 0 0 0 0 rgba(182, 152, 97, .45); }
-  50% { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(54, 82, 62, .18), 0 0 0 10px rgba(182, 152, 97, 0); }
-}
+/* Loader + programme timeline */
+.loader-bar { height: 2px; background: rgba(182,152,97,.25); }
+.loader-bar > span { display: block; height: 100%; background: linear-gradient(90deg,#896e40,#e9d9b4,#b69861); transition: width .12s linear; }
+.timeline-dot { box-shadow: 0 0 0 5px rgba(182,152,97,.16); }
+.tab-card { transition: transform .3s ease, border-color .3s ease, background-color .3s ease; }
+.tab-card:hover { transform: translateY(-3px); border-color: #b69861; background-color: #fff; }
