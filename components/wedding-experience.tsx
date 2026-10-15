@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, CalendarDays, Church, Heart, MapPin, Navigation, Pause, Phone, Play } from "lucide-react";
 import { wedding, coupleNames } from "@/config/wedding";
-import { ChurchEntrance } from "@/components/church-entrance";
+import { CoupleVideo } from "@/components/couple-video";
 import { Countdown } from "@/components/countdown";
 import { EventCard } from "@/components/event-card";
 import { BotanicalSprig, DividerOrnament, SacredSeal, TinyCross, WeddingFlorals } from "@/components/ornaments";
@@ -23,7 +22,6 @@ export function WeddingExperience() {
   const reduced = useReducedMotion();
   const [progress, setProgress] = useState(0);
   const [opened, setOpened] = useState(false);
-  const [entering, setEntering] = useState(false);
   const [guest, setGuest] = useState("");
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -61,10 +59,7 @@ export function WeddingExperience() {
     a.volume = 0.4;
     void a.play().then(() => { setIsPlaying(true); setAudioFailed(false); if (save) persistMusic(true); }).catch(() => { setIsPlaying(false); setAudioFailed(true); });
   }
-  function openInvitation() {
-    if (musicPreferred) playMusic(); // must run inside the tap
-    if (reduced) setOpened(true); else setEntering(true);
-  }
+  function openInvitation() { setOpened(true); if (musicPreferred) playMusic(); }
   function toggleMusic() {
     const a = audioRef.current;
     if (!a) return;
@@ -78,7 +73,7 @@ export function WeddingExperience() {
       <audio ref={audioRef} src="/music.mp3" preload="metadata" loop onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} aria-hidden="true" />
 
       <AnimatePresence>
-        {!opened && !entering ? (
+        {!opened ? (
           <motion.div key="splash" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0, scale: reduced ? 1 : 1.03 }} transition={{ duration: 0.8 }}
             className="catholic-splash fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto px-6 py-10 text-center">
             <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
@@ -102,7 +97,6 @@ export function WeddingExperience() {
             </div>
           </motion.div>
         ) : null}
-        {entering && !opened ? <ChurchEntrance key="entrance" onDone={() => { setEntering(false); setOpened(true); }} /> : null}
       </AnimatePresence>
 
       {opened ? (
@@ -153,10 +147,10 @@ export function WeddingExperience() {
                 {[wedding.families.bride, wedding.families.groom].map((f) => <p key={f} className="display-serif text-2xl text-charcoal">{f}</p>)}
               </div>
               <p className="mt-6 text-sm leading-7 text-muted">invite you to celebrate the marriage of their beloved children</p>
-              <div className="wedding-photo-wrap relative mx-auto my-10 w-full max-w-[340px] py-8">
-                <div className="wedding-photo-card relative mx-auto w-[84%]">
-                  <div className="wedding-photo-image relative aspect-[4/4.95] overflow-hidden bg-sage-light">
-                    <Image src="/couple.jpg" alt={`Portrait of ${coupleNames}`} fill priority sizes="340px" className="object-cover object-[center_48%]" />
+              <div className="wedding-photo-wrap relative mx-auto my-10 w-full max-w-[600px] py-8">
+                <div className="wedding-photo-card relative mx-auto w-[92%]">
+                  <div className="wedding-photo-image relative aspect-video overflow-hidden bg-sage-light">
+                    <CoupleVideo className="absolute inset-0 h-full w-full object-cover" />
                   </div>
                   <div className="flex h-14 items-center justify-center"><span className="wedding-photo-note">together, by God&apos;s grace</span></div>
                 </div>
