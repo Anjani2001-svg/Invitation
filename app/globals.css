@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* Catholic wedding palette: champagne gold and sage green; ivory is the neutral paper colour. */
+@theme inline {
+  --color-ivory: #fbf9f3;
+  --color-paper: #f1f3f8;
+  --color-sage: #7d91b3;
+  --color-sage-dark: #25406e;
+  --color-sage-deep: #162a4d;
+  --color-sage-light: #e6ecf6;
+  --color-gold: #b69861;
+  --color-gold-deep: #896e40;
+  --color-gold-light: #e9d9b4;
+  --color-gold-mist: #f7f1e3;
+  --color-line: #d9e0ed;
+  --color-charcoal: #1c2a45;
+  --color-muted: #5b6881;
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-inter);
+}
+
+:root { color-scheme: light; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+::selection { background: #e6d7b4; color: #162a4d; }
+body { min-height: 100%; background: #fbf9f3; }
+button, input, textarea, select { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid #896e40; outline-offset: 3px; }
+section[id] { scroll-margin-top: 7.5rem; }
+@media (min-width: 768px) { section[id] { scroll-margin-top: 6rem; } }
+
+.kicker { letter-spacing: .27em; font-size: .65rem; font-weight: 700; text-transform: uppercase; }
+.display-serif { font-family: var(--font-cormorant), Georgia, serif; font-weight: 500; }
+.eyebrow-rule::before, .eyebrow-rule::after { content: ""; width: clamp(25px, 7vw, 72px); height: 1px; background: #cfbd99; }
+
+/* Paper, olive branches and champagne foil replace the former pink styling. */
+.catholic-splash {
+  background:
+    radial-gradient(ellipse 70% 56% at 7% 9%, rgba(226, 212, 178, .52), transparent 74%),
+    radial-gradient(ellipse 64% 73% at 99% 92%, rgba(186, 203, 232, .63), transparent 76%),
+    radial-gradient(ellipse 55% 45% at 92% 4%, rgba(236, 231, 205, .52), transparent 82%),
+    #fbf9f3;
+}
+.catholic-hero {
+  background:
+    radial-gradient(ellipse 54% 84% at 97% 28%, rgba(203, 216, 238, .64), transparent 78%),
+    radial-gradient(ellipse 47% 66% at 4% 94%, rgba(237, 218, 175, .35), transparent 81%),
+    linear-gradient(122deg, #fbf9f3 8%, #f6f6f1 100%);
+}
+.story-bloom {
+  background:
+    radial-gradient(ellipse 40% 80% at 0% 60%, rgba(203, 216, 238, .46), transparent 86%),
+    radial-gradient(ellipse 39% 78% at 100% 28%, rgba(233, 216, 180, .4), transparent 88%);
+}
+.blessing-wash {
+  background:
+    radial-gradient(ellipse at 50% 10%, rgba(243, 227, 184, .41), transparent 69%),
+    linear-gradient(115deg, #eaf0f8, #faf6ea 50%, #e8eef7);
+}
+.countdown-wash {
+  background: linear-gradient(112deg, #e6ecf6 0%, #f8f2e2 49%, #d6e1f1 100%);
+}
+.rsvp-wash {
+  background: linear-gradient(180deg, #eef2f8 0%, #fcf8ed 54%, #fbf9f3 100%);
+}
+.footer-wash { background: linear-gradient(to bottom, #fbf9f3, #e6ecf6); }
+.flower-shadow { filter: drop-shadow(0 10px 15px rgba(28, 44, 80, .12)); }
+.paper-texture {
+  background-image: radial-gradient(rgba(165, 146, 95, .17) .55px, transparent .55px);
+  background-size: 22px 22px;
+}
+
+/* Gentle, refined motion. Respect reduced-motion preferences below. */
+.wedding-sparkle { transform-origin: center; animation: wedding-shimmer 5.5s ease-in-out infinite alternate; }
+@keyframes wedding-shimmer {
+  from { transform: rotate(-9deg) scale(.9); opacity: .48; }
+  to { transform: rotate(9deg) scale(1.1); opacity: .96; }
+}
+.botanical-sway { transform-origin: 40% 92%; animation: botanical-sway 11s ease-in-out infinite alternate; }
+.botanical-sway-late { animation-delay: -5.5s; }
+@keyframes botanical-sway {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-9px) rotate(2deg); }
+}
+.sacred-glow { position: relative; isolation: isolate; }
+.sacred-glow::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 206, 149, .28), transparent 70%);
+  animation: blessing-breathe 7s ease-in-out infinite alternate;
+}
+@keyframes blessing-breathe {
+  from { opacity: .43; transform: scale(.94); }
+  to { opacity: .95; transform: scale(1.08); }
+}
+.gold-foil-line { background: linear-gradient(90deg, transparent 0%, #b69861 30%, #e9d9b4 49%, #b69861 68%, transparent 100%); }
+.gilded-button { position: relative; overflow: hidden; isolation: isolate; }
+.gilded-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateX(-140%) skewX(-24deg);
+  width: 35%;
+  background: linear-gradient(90deg, transparent, rgba(250,245,221,.18), rgba(255,255,255,.36), transparent);
+  transition: transform .75s ease;
+}
+.gilded-button:hover::after, .gilded-button:focus-visible::after { transform: translateX(390%) skewX(-24deg); }
+
+/* Keepsake photo with gilded corners - deliberately not an arched portrait. */
+.wedding-photo-wrap { isolation: isolate; }
+.wedding-photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 11% -5% 5% -2%;
+  z-index: -2;
+  border-radius: 46% 54% 42% 58%;
+  background: linear-gradient(132deg, #d3deee, #ebdfc2 59%, #d3deee);
+  transform: rotate(8deg);
+}
+.wedding-photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 4% -2% 11% -7%;
+  z-index: -1;
+  border: 1.5px solid rgba(174, 142, 81, .53);
+  border-radius: 49% 51% 47% 53%;
+  transform: rotate(-10deg);
+}
+.wedding-photo-card {
+  position: relative;
+  background: #fffdf8;
+  box-shadow: 0 26px 70px rgba(28, 44, 80, .16), 0 5px 16px rgba(28, 44, 80, .08);
+  transform: rotate(1.5deg);
+  border: 1px solid #dcc89d;
+  border-radius: 16px;
+  padding: 13px 13px 0;
+  transition: transform .65s cubic-bezier(.2,.75,.25,1), box-shadow .65s ease;
+}
+.wedding-photo-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 34px 80px rgba(28, 44, 80, .2), 0 8px 18px rgba(28, 44, 80, .08); }
+.wedding-photo-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(182, 152, 97, .43);
+  border-radius: 11px;
+  pointer-events: none;
+  z-index: 2;
+}
+.wedding-photo-image { border-radius: 5px 5px 2px 2px; }
+.wedding-photo-image img { filter: sepia(.08) saturate(.96) contrast(1.02); }
+.wedding-photo-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(158deg, rgba(244, 236, 215, .09), transparent 43%, rgba(60, 90, 150, .06));
+}
+.wedding-photo-note {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-style: italic;
+  letter-spacing: .025em;
+  color: #3a5584;
+  line-height: 1;
+}
+
+.calendar-actions-container { container-type: inline-size; }
+@container (min-width: 350px) { .calendar-actions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.input-field {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: .85rem 1rem;
+  border-radius: .85rem;
+  border: 1px solid #d3dbe9;
+  background: #fffefa;
+  color: #1c2a45;
+  font-size: .88rem;
+  transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+.input-field::placeholder { color: #8793ab; }
+.input-field:hover { border-color: #b69861; }
+.input-field:focus { outline: none; border-color: #b69861; background-color: #fff; box-shadow: 0 0 0 4px rgba(182,152,97,.14); }
+.input-field[aria-invalid="true"] { border-color: #896e40; }
+
+@media (max-width: 639px) {
+  .wedding-photo-card { padding: 9px 9px 0; border-radius: 12px; }
+  .wedding-photo-card::before { inset: 5px; border-radius: 8px; }
+  .music-toggle { bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); right: max(1.25rem, env(safe-area-inset-right, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .wedding-photo-card:hover { transform: rotate(1.5deg); }
+}
+
+/* Loader + programme timeline */
+.loader-bar { height: 2px; background: rgba(182,152,97,.25); }
+.loader-bar > span { display: block; height: 100%; background: linear-gradient(90deg,#896e40,#e9d9b4,#b69861); transition: width .12s linear; }
+.timeline-dot { box-shadow: 0 0 0 5px rgba(182,152,97,.16); }
+.tab-card { transition: transform .3s ease, border-color .3s ease, background-color .3s ease; }
+.tab-card:hover { transform: translateY(-3px); border-color: #b69861; background-color: #fff; }
