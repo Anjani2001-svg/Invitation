@@ -2365,14 +2365,14 @@ function WeddingExperience() {
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "pointer-events-none absolute inset-5 rounded-t-[999px] rounded-b-3xl border border-gold/40 sm:inset-10"
+                            className: "pointer-events-none absolute inset-5 rounded-[32px] border border-gold/25 sm:inset-10 sm:rounded-[44px]"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding-experience.tsx",
                             lineNumber: 80,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "pointer-events-none absolute inset-7 rounded-t-[999px] rounded-b-2xl border border-gold/20 sm:inset-13"
+                            className: "pointer-events-none absolute inset-7 rounded-[28px] border border-white/60 sm:inset-13 sm:rounded-[40px]"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding-experience.tsx",
                             lineNumber: 81,
@@ -2652,37 +2652,46 @@ function WeddingExperience() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                                 id: "home",
-                                className: "catholic-hero relative isolate overflow-hidden px-5 pb-20 pt-14 text-center sm:pt-20",
+                                className: "catholic-hero relative isolate flex min-h-[calc(100svh-3.5rem)] flex-col items-center justify-center overflow-hidden px-5 py-16 text-center",
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BotanicalSprig"], {
-                                        className: "pointer-events-none absolute -left-16 top-10 h-56 w-40 -rotate-12 text-sage/25"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "paper-texture pointer-events-none absolute inset-0 opacity-25"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding-experience.tsx",
                                         lineNumber: 125,
                                         columnNumber: 13
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BotanicalSprig"], {
-                                        className: "pointer-events-none absolute -right-16 top-10 h-56 w-40 rotate-[192deg] text-sage/25"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "botanical-sway pointer-events-none absolute -bottom-12 -left-16 h-60 w-60 opacity-80 sm:h-80 sm:w-80",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["WeddingFlorals"], {
+                                            className: "flower-shadow h-full w-full"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/wedding-experience.tsx",
+                                            lineNumber: 126,
+                                            columnNumber: 131
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding-experience.tsx",
                                         lineNumber: 126,
                                         columnNumber: 13
                                     }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "botanical-sway botanical-sway-late pointer-events-none absolute -right-16 -top-12 h-60 w-60 opacity-80 sm:h-80 sm:w-80",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["WeddingFlorals"], {
+                                            className: "flower-shadow h-full w-full rotate-180"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/wedding-experience.tsx",
+                                            lineNumber: 127,
+                                            columnNumber: 149
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/wedding-experience.tsx",
+                                        lineNumber: 127,
+                                        columnNumber: 13
+                                    }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$reveal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Reveal"], {
-                                        className: "relative mx-auto max-w-2xl",
+                                        className: "relative",
                                         children: [
-                                            guest ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "display-serif mb-5 text-2xl italic text-sage-dark",
-                                                children: [
-                                                    "Dear ",
-                                                    guest,
-                                                    ","
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 128,
-                                                columnNumber: 24
-                                            }, this) : null,
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TinyCross"], {
                                                 className: "mx-auto h-7 w-7 text-gold"
                                             }, void 0, false, {
@@ -2692,108 +2701,62 @@ function WeddingExperience() {
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "kicker mt-4 text-gold-deep",
-                                                children: "With the blessing of Almighty God"
+                                                children: "The Wedding of"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
                                                 lineNumber: 130,
                                                 columnNumber: 15
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "mx-auto mt-9 w-[min(78vw,340px)] rounded-t-[999px] rounded-b-2xl border border-gold/50 bg-white p-2.5 shadow-[0_26px_70px_rgba(28,44,80,.16)]",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-lg bg-sage-light",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$image$2d$component$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__Image__as__default$3e$__["default"], {
-                                                        src: "/couple.jpg",
-                                                        alt: `Portrait of ${__TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["coupleNames"]}`,
-                                                        fill: true,
-                                                        priority: true,
-                                                        sizes: "340px",
-                                                        className: "object-cover object-[center_40%]"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/wedding-experience.tsx",
-                                                        lineNumber: 133,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 132,
-                                                    columnNumber: 17
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 131,
-                                                columnNumber: 15
-                                            }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                className: "display-serif mt-9 text-[clamp(3.4rem,13vw,6.4rem)] leading-[.86] tracking-[-.04em] text-charcoal",
+                                                className: "display-serif mt-6 text-[clamp(3.8rem,15vw,8rem)] leading-[.85] tracking-[-.05em] text-charcoal",
                                                 children: [
                                                     __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].bride,
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "my-1 block text-[.5em] italic text-gold",
-                                                        children: "&"
+                                                        className: "my-2 block text-[.5em] italic text-gold",
+                                                        children: "and"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding-experience.tsx",
-                                                        lineNumber: 137,
+                                                        lineNumber: 132,
                                                         columnNumber: 32
                                                     }, this),
                                                     __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].groom
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 131,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "mt-6 text-[11px] font-semibold uppercase tracking-[.2em] text-sage-dark",
+                                                className: "mt-8 text-[11px] font-semibold uppercase tracking-[.22em] text-sage-dark",
                                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].date.display
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 139,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "mt-7 display-serif text-3xl italic text-charcoal",
-                                                children: [
-                                                    "“",
-                                                    __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].verse.text,
-                                                    "”"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 140,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "mt-2 text-[10px] font-semibold uppercase tracking-[.18em] text-gold-deep",
-                                                children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].verse.reference
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 141,
+                                                lineNumber: 134,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                href: "#details",
-                                                className: `${btn} mt-9`,
+                                                href: "#invitation",
+                                                className: "mt-12 inline-flex flex-col items-center gap-2 text-[10px] uppercase tracking-[.2em] text-muted hover:text-sage-dark",
                                                 children: [
-                                                    "Explore ",
+                                                    "Scroll down ",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
-                                                        className: "h-4 w-4 rotate-90",
+                                                        className: "scroll-cue h-4 w-4 rotate-90 text-gold",
                                                         "aria-hidden": "true"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding-experience.tsx",
-                                                        lineNumber: 142,
-                                                        columnNumber: 68
+                                                        lineNumber: 136,
+                                                        columnNumber: 29
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 142,
+                                                lineNumber: 135,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding-experience.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 128,
                                         columnNumber: 13
                                     }, this)
                                 ]
@@ -2803,101 +2766,220 @@ function WeddingExperience() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                                className: "story-bloom px-6 py-20 text-center sm:py-28",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$reveal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Reveal"], {
-                                    className: "mx-auto max-w-2xl",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "kicker text-gold-deep",
-                                            children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].invitation.eyebrow
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 148,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "display-serif mt-6 text-2xl italic leading-relaxed text-sage-dark",
-                                            children: "With joy and the blessings of our families,"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 149,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "mt-6 grid gap-5 sm:grid-cols-2",
-                                            children: [
-                                                __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].families.bride,
-                                                __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].families.groom
-                                            ].map((f)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "display-serif text-2xl text-charcoal",
-                                                    children: f
-                                                }, f, false, {
+                                id: "invitation",
+                                className: "story-bloom relative overflow-hidden px-6 py-20 text-center sm:py-28",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BotanicalSprig"], {
+                                        className: "pointer-events-none absolute -right-18 top-11 h-58 w-40 rotate-170 text-sage/25"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/wedding-experience.tsx",
+                                        lineNumber: 142,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$reveal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Reveal"], {
+                                        className: "mx-auto max-w-2xl",
+                                        children: [
+                                            guest ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "display-serif text-2xl italic text-sage-dark",
+                                                children: [
+                                                    "Dear ",
+                                                    guest,
+                                                    ","
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 144,
+                                                columnNumber: 24
+                                            }, this) : null,
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "display-serif mt-5 text-2xl italic leading-relaxed text-sage-dark",
+                                                children: "With joy and the blessings of our families,"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 145,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "mt-6 grid gap-4 sm:grid-cols-2",
+                                                children: [
+                                                    __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].families.bride,
+                                                    __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].families.groom
+                                                ].map((f)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "display-serif text-2xl text-charcoal",
+                                                        children: f
+                                                    }, f, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 147,
+                                                        columnNumber: 78
+                                                    }, this))
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 146,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "mt-6 text-sm leading-7 text-muted",
+                                                children: "invite you to celebrate the marriage of their beloved children"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 149,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "wedding-photo-wrap relative mx-auto my-10 w-full max-w-[340px] py-8",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "wedding-photo-card relative mx-auto w-[84%]",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "wedding-photo-image relative aspect-[4/4.95] overflow-hidden bg-sage-light",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$image$2d$component$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__Image__as__default$3e$__["default"], {
+                                                                src: "/couple.jpg",
+                                                                alt: `Portrait of ${__TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["coupleNames"]}`,
+                                                                fill: true,
+                                                                priority: true,
+                                                                sizes: "340px",
+                                                                className: "object-cover object-[center_48%]"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                                lineNumber: 153,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/wedding-experience.tsx",
+                                                            lineNumber: 152,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex h-14 items-center justify-center",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "wedding-photo-note",
+                                                                children: "together, by God's grace"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                                lineNumber: 155,
+                                                                columnNumber: 74
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/wedding-experience.tsx",
+                                                            lineNumber: 155,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
                                                     lineNumber: 151,
-                                                    columnNumber: 78
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 150,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "mx-auto mt-8 max-w-xl text-[15px] leading-[2] text-muted",
-                                            children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].invitation.body
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 153,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "blessing-wash relative mt-12 rounded-[28px] border border-gold/30 px-7 py-9",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "gold-foil-line absolute inset-x-8 top-0 h-px",
-                                                    "aria-hidden": "true"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 155,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TinyCross"], {
-                                                    className: "mx-auto h-7 w-7 text-gold"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 156,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "display-serif mt-3 text-[clamp(1.5rem,4vw,2.1rem)] italic leading-snug text-sage-dark",
-                                                    children: "“What God has joined together, let no one separate.”"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 157,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "kicker mt-4 text-gold-deep",
-                                                    children: "Matthew 19:6"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 158,
                                                     columnNumber: 17
                                                 }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 154,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/wedding-experience.tsx",
-                                    lineNumber: 147,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 150,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "display-serif text-5xl text-charcoal",
+                                                children: [
+                                                    __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].bride,
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "mx-3 italic text-gold",
+                                                        children: "&"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 158,
+                                                        columnNumber: 82
+                                                    }, this),
+                                                    __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].groom
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 158,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: "#rsvp",
+                                                className: "mt-4 inline-block text-[11px] font-semibold uppercase tracking-[.2em] text-sage-dark underline-offset-4 hover:underline",
+                                                children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].date.display
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 159,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "mx-auto mt-8 max-w-xl text-[15px] leading-[2] text-muted",
+                                                children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].invitation.body
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 160,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "blessing-wash relative mt-10 rounded-[28px] border border-gold/30 px-7 py-9",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "gold-foil-line absolute inset-x-8 top-0 h-px",
+                                                        "aria-hidden": "true"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 162,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TinyCross"], {
+                                                        className: "mx-auto h-7 w-7 text-gold"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 163,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "display-serif mt-3 text-[clamp(1.5rem,4vw,2.1rem)] italic leading-snug text-sage-dark",
+                                                        children: "“What God has joined together, let no one separate.”"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 164,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "kicker mt-4 text-gold-deep",
+                                                        children: "Matthew 19:6"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 165,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 161,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: "#details",
+                                                className: "mt-10 inline-flex flex-col items-center gap-2 text-[10px] uppercase tracking-[.2em] text-muted hover:text-sage-dark",
+                                                children: [
+                                                    "Explore ",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                        className: "scroll-cue h-4 w-4 rotate-90 text-gold",
+                                                        "aria-hidden": "true"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/wedding-experience.tsx",
+                                                        lineNumber: 167,
+                                                        columnNumber: 170
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/wedding-experience.tsx",
+                                                lineNumber: 167,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/wedding-experience.tsx",
+                                        lineNumber: 143,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 146,
+                                lineNumber: 141,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2913,12 +2995,12 @@ function WeddingExperience() {
                                                 description: "The day's programme, from the Nuptial Mass to the evening reception."
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 165,
+                                                lineNumber: 173,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 165,
+                                            lineNumber: 173,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2954,7 +3036,7 @@ function WeddingExperience() {
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 170,
+                                                            lineNumber: 178,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2962,7 +3044,7 @@ function WeddingExperience() {
                                                             children: t
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 170,
+                                                            lineNumber: 178,
                                                             columnNumber: 101
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2970,35 +3052,35 @@ function WeddingExperience() {
                                                             children: d
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 170,
+                                                            lineNumber: 178,
                                                             columnNumber: 175
                                                         }, this)
                                                     ]
                                                 }, href, true, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 169,
+                                                    lineNumber: 177,
                                                     columnNumber: 26
                                                 }, this);
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 166,
+                                            lineNumber: 174,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding-experience.tsx",
-                                    lineNumber: 164,
+                                    lineNumber: 172,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 163,
+                                lineNumber: 171,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$countdown$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Countdown"], {}, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 177,
+                                lineNumber: 185,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3013,12 +3095,12 @@ function WeddingExperience() {
                                                 title: "The Programme"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 181,
+                                                lineNumber: 189,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 189,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
@@ -3031,7 +3113,7 @@ function WeddingExperience() {
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 185,
+                                                            lineNumber: 193,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3039,7 +3121,7 @@ function WeddingExperience() {
                                                             children: p.time
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 186,
+                                                            lineNumber: 194,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3047,7 +3129,7 @@ function WeddingExperience() {
                                                             children: p.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 187,
+                                                            lineNumber: 195,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3055,18 +3137,18 @@ function WeddingExperience() {
                                                             children: p.note
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 187,
+                                                            lineNumber: 195,
                                                             columnNumber: 86
                                                         }, this)
                                                     ]
                                                 }, p.time, true, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 184,
+                                                    lineNumber: 192,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 190,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$usa$2d$time$2d$selector$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["UsaTimeSelector"], {
@@ -3074,7 +3156,7 @@ function WeddingExperience() {
                                             onChange: setUsZone
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 191,
+                                            lineNumber: 199,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3092,18 +3174,18 @@ function WeddingExperience() {
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 193,
+                                                            lineNumber: 201,
                                                             columnNumber: 110
                                                         }, this),
                                                         event: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].ceremony
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding-experience.tsx",
-                                                        lineNumber: 193,
+                                                        lineNumber: 201,
                                                         columnNumber: 44
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 201,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$reveal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Reveal"], {
@@ -3119,24 +3201,24 @@ function WeddingExperience() {
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 194,
+                                                            lineNumber: 202,
                                                             columnNumber: 124
                                                         }, this),
                                                         event: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].reception
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding-experience.tsx",
-                                                        lineNumber: 194,
+                                                        lineNumber: 202,
                                                         columnNumber: 57
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 194,
+                                                    lineNumber: 202,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 192,
+                                            lineNumber: 200,
                                             columnNumber: 15
                                         }, this),
                                         __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].dressCode ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3147,7 +3229,7 @@ function WeddingExperience() {
                                                     children: "Dress code"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 196,
+                                                    lineNumber: 204,
                                                     columnNumber: 87
                                                 }, this),
                                                 " · ",
@@ -3155,18 +3237,18 @@ function WeddingExperience() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 204,
                                             columnNumber: 36
                                         }, this) : null
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding-experience.tsx",
-                                    lineNumber: 180,
+                                    lineNumber: 188,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 179,
+                                lineNumber: 187,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3181,12 +3263,12 @@ function WeddingExperience() {
                                                 title: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].location.title
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 202,
+                                                lineNumber: 210,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 202,
+                                            lineNumber: 210,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3218,19 +3300,19 @@ function WeddingExperience() {
                                                                     "aria-hidden": "true"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                                    lineNumber: 208,
+                                                                    lineNumber: 216,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 label
                                                             ]
                                                         }, k, true, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 214,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 204,
+                                                    lineNumber: 212,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3244,7 +3326,7 @@ function WeddingExperience() {
                                                                     children: isMass ? "The sacred ceremony" : "Our reception venue"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                                    lineNumber: 214,
+                                                                    lineNumber: 222,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3252,7 +3334,7 @@ function WeddingExperience() {
                                                                     children: place.venue
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                                    lineNumber: 215,
+                                                                    lineNumber: 223,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3260,7 +3342,7 @@ function WeddingExperience() {
                                                                     children: place.address
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                                    lineNumber: 216,
+                                                                    lineNumber: 224,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3275,13 +3357,13 @@ function WeddingExperience() {
                                                                             children: "(Sri Lanka)"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                                            lineNumber: 217,
+                                                                            lineNumber: 225,
                                                                             columnNumber: 147
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                                    lineNumber: 217,
+                                                                    lineNumber: 225,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -3295,7 +3377,7 @@ function WeddingExperience() {
                                                                             "aria-hidden": "true"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                                            lineNumber: 218,
+                                                                            lineNumber: 226,
                                                                             columnNumber: 130
                                                                         }, this),
                                                                         "Open Google Maps ",
@@ -3304,19 +3386,19 @@ function WeddingExperience() {
                                                                             "aria-hidden": "true"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                                            lineNumber: 218,
+                                                                            lineNumber: 226,
                                                                             columnNumber: 200
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                                    lineNumber: 218,
+                                                                    lineNumber: 226,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 213,
+                                                            lineNumber: 221,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3330,35 +3412,35 @@ function WeddingExperience() {
                                                                 allowFullScreen: true
                                                             }, venue, false, {
                                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                                lineNumber: 221,
+                                                                lineNumber: 229,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding-experience.tsx",
-                                                            lineNumber: 220,
+                                                            lineNumber: 228,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 212,
+                                                    lineNumber: 220,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 203,
+                                            lineNumber: 211,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding-experience.tsx",
-                                    lineNumber: 201,
+                                    lineNumber: 209,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 200,
+                                lineNumber: 208,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3374,36 +3456,36 @@ function WeddingExperience() {
                                                 description: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].rsvp.deadline
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 230,
+                                                lineNumber: 238,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 230,
+                                            lineNumber: 238,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$reveal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Reveal"], {
                                             delay: 0.1,
-                                            className: "mt-10 rounded-3xl border border-gold/25 bg-white p-5 shadow-[0_22px_75px_rgba(28,44,80,.09)] sm:p-11",
+                                            className: "mt-10 rounded-3xl border border-gold/25 bg-white p-5 shadow-[0_22px_75px_rgba(60,80,60,.09)] sm:p-11",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$rsvp$2d$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["RsvpForm"], {}, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 239,
                                                 columnNumber: 148
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 239,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding-experience.tsx",
-                                    lineNumber: 229,
+                                    lineNumber: 237,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 228,
+                                lineNumber: 236,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -3421,12 +3503,12 @@ function WeddingExperience() {
                                     className: "h-20 w-20"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding-experience.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 245,
                                     columnNumber: 54
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 237,
+                                lineNumber: 245,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3434,7 +3516,7 @@ function WeddingExperience() {
                                 children: "Save the date"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 238,
+                                lineNumber: 246,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3442,7 +3524,7 @@ function WeddingExperience() {
                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].date.short
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 239,
+                                lineNumber: 247,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3450,14 +3532,14 @@ function WeddingExperience() {
                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].invitation.signoff
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 240,
+                                lineNumber: 248,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ornaments$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DividerOrnament"], {
                                 className: "mt-6"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 241,
+                                lineNumber: 249,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3472,14 +3554,14 @@ function WeddingExperience() {
                                                 "aria-hidden": "true"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding-experience.tsx",
-                                                lineNumber: 243,
+                                                lineNumber: 251,
                                                 columnNumber: 50
                                             }, this),
                                             "Add to calendar"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding-experience.tsx",
-                                        lineNumber: 243,
+                                        lineNumber: 251,
                                         columnNumber: 13
                                     }, this),
                                     __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["wedding"].contacts.map((c)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -3491,20 +3573,20 @@ function WeddingExperience() {
                                                     "aria-hidden": "true"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding-experience.tsx",
-                                                    lineNumber: 244,
+                                                    lineNumber: 252,
                                                     columnNumber: 271
                                                 }, this),
                                                 c.label
                                             ]
                                         }, c.tel, true, {
                                             fileName: "[project]/components/wedding-experience.tsx",
-                                            lineNumber: 244,
+                                            lineNumber: 252,
                                             columnNumber: 42
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 242,
+                                lineNumber: 250,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3512,7 +3594,7 @@ function WeddingExperience() {
                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$config$2f$wedding$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["coupleNames"]
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 246,
+                                lineNumber: 254,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3520,13 +3602,13 @@ function WeddingExperience() {
                                 children: "With God's grace and all our love"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding-experience.tsx",
-                                lineNumber: 247,
+                                lineNumber: 255,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding-experience.tsx",
-                        lineNumber: 236,
+                        lineNumber: 244,
                         columnNumber: 9
                     }, this)
                 ]
