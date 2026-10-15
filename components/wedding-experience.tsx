@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, CalendarDays, Church, Heart, MapPin, Navigation, Pause, Phone, Play } from "lucide-react";
 import { wedding, coupleNames } from "@/config/wedding";
+import { ChurchEntrance } from "@/components/church-entrance";
 import { Countdown } from "@/components/countdown";
 import { EventCard } from "@/components/event-card";
 import { BotanicalSprig, DividerOrnament, SacredSeal, TinyCross, WeddingFlorals } from "@/components/ornaments";
@@ -22,6 +23,7 @@ export function WeddingExperience() {
   const reduced = useReducedMotion();
   const [progress, setProgress] = useState(0);
   const [opened, setOpened] = useState(false);
+  const [entering, setEntering] = useState(false);
   const [guest, setGuest] = useState("");
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -59,7 +61,10 @@ export function WeddingExperience() {
     a.volume = 0.4;
     void a.play().then(() => { setIsPlaying(true); setAudioFailed(false); if (save) persistMusic(true); }).catch(() => { setIsPlaying(false); setAudioFailed(true); });
   }
-  function openInvitation() { setOpened(true); if (musicPreferred) playMusic(); }
+  function openInvitation() {
+    if (musicPreferred) playMusic(); // must run inside the tap
+    if (reduced) setOpened(true); else setEntering(true);
+  }
   function toggleMusic() {
     const a = audioRef.current;
     if (!a) return;
@@ -73,7 +78,7 @@ export function WeddingExperience() {
       <audio ref={audioRef} src="/music.mp3" preload="metadata" loop onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} aria-hidden="true" />
 
       <AnimatePresence>
-        {!opened ? (
+        {!opened && !entering ? (
           <motion.div key="splash" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0, scale: reduced ? 1 : 1.03 }} transition={{ duration: 0.8 }}
             className="catholic-splash fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto px-6 py-10 text-center">
             <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
@@ -97,6 +102,7 @@ export function WeddingExperience() {
             </div>
           </motion.div>
         ) : null}
+        {entering && !opened ? <ChurchEntrance key="entrance" onDone={() => { setEntering(false); setOpened(true); }} /> : null}
       </AnimatePresence>
 
       {opened ? (
