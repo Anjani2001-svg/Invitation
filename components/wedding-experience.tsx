@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, CalendarDays, Church, Heart, MapPin, Navigation, Pause, Phone, Play } from "lucide-react";
 import { wedding, coupleNames } from "@/config/wedding";
-import { CoupleVideo } from "@/components/couple-video";
 import { Countdown } from "@/components/countdown";
 import { EventCard } from "@/components/event-card";
 import { BotanicalSprig, DividerOrnament, SacredSeal, TinyCross, WeddingFlorals } from "@/components/ornaments";
@@ -22,6 +22,7 @@ export function WeddingExperience() {
   const reduced = useReducedMotion();
   const [progress, setProgress] = useState(0);
   const [opened, setOpened] = useState(false);
+  const [entering, setEntering] = useState(false);
   const [guest, setGuest] = useState("");
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -59,7 +60,16 @@ export function WeddingExperience() {
     a.volume = 0.4;
     void a.play().then(() => { setIsPlaying(true); setAudioFailed(false); if (save) persistMusic(true); }).catch(() => { setIsPlaying(false); setAudioFailed(true); });
   }
-  function openInvitation() { setOpened(true); if (musicPreferred) playMusic(); }
+  function openInvitation() {
+    if (musicPreferred) playMusic(); // must run inside the tap
+    if (reduced) setOpened(true); else setEntering(true);
+  }
+  // Never trap a guest if the video is slow or blocked.
+  useEffect(() => {
+    if (!entering) return;
+    const id = window.setTimeout(() => setOpened(true), 7500);
+    return () => window.clearTimeout(id);
+  }, [entering]);
   function toggleMusic() {
     const a = audioRef.current;
     if (!a) return;
@@ -81,6 +91,19 @@ export function WeddingExperience() {
             <div className="pointer-events-none absolute inset-7 rounded-[28px] border border-white/60 sm:inset-13 sm:rounded-[40px]" />
             <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-60 w-60 opacity-60 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
             <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-60 w-60 opacity-60 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
+            {entering ? (
+              <motion.div key="film" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="relative z-10 flex w-full max-w-xl flex-col items-center">
+                <p className="kicker text-gold-deep">United in faith & love</p>
+                <div className="wedding-photo-card mt-6 w-full">
+                  <div className="wedding-photo-image relative aspect-video overflow-hidden bg-ivory">
+                    <video className="absolute inset-0 h-full w-full object-cover" src="/church-entrance.mp4" poster="/church-entrance-poster.jpg" autoPlay muted playsInline preload="auto" onEnded={() => setOpened(true)} onError={() => setOpened(true)} aria-label="The couple walking to the altar" />
+                  </div>
+                  <div className="flex h-14 items-center justify-center"><span className="wedding-photo-note">together, by God&apos;s grace</span></div>
+                </div>
+                <p className="display-serif mt-7 text-[clamp(2.4rem,8vw,3.4rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&</span>{wedding.groom}</p>
+                <button type="button" onClick={() => setOpened(true)} className="mt-5 text-[10px] uppercase tracking-[.2em] text-muted underline-offset-4 hover:text-sage-dark hover:underline">Skip</button>
+              </motion.div>
+            ) : (
             <div className="relative z-10 flex max-w-md flex-col items-center">
               <div className="sacred-glow"><SacredSeal className="h-24 w-24" /></div>
               {guest ? <p className="display-serif mt-6 text-xl italic text-sage-dark">Dear {guest},</p> : null}
@@ -94,7 +117,7 @@ export function WeddingExperience() {
               <button type="button" onClick={openInvitation} disabled={progress < 100} className={`${btn} mt-8 disabled:pointer-events-none disabled:opacity-0 transition-opacity`}>
                 Open invitation <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
-            </div>
+            </div>)}
           </motion.div>
         ) : null}
       </AnimatePresence>
@@ -147,10 +170,10 @@ export function WeddingExperience() {
                 {[wedding.families.bride, wedding.families.groom].map((f) => <p key={f} className="display-serif text-2xl text-charcoal">{f}</p>)}
               </div>
               <p className="mt-6 text-sm leading-7 text-muted">invite you to celebrate the marriage of their beloved children</p>
-              <div className="wedding-photo-wrap relative mx-auto my-10 w-full max-w-[600px] py-8">
-                <div className="wedding-photo-card relative mx-auto w-[92%]">
-                  <div className="wedding-photo-image relative aspect-video overflow-hidden bg-sage-light">
-                    <CoupleVideo className="absolute inset-0 h-full w-full object-cover" />
+              <div className="wedding-photo-wrap relative mx-auto my-10 w-full max-w-[340px] py-8">
+                <div className="wedding-photo-card relative mx-auto w-[84%]">
+                  <div className="wedding-photo-image relative aspect-[4/4.95] overflow-hidden bg-sage-light">
+                    <Image src="/couple.jpg" alt={`Portrait of ${coupleNames}`} fill priority sizes="340px" className="object-cover object-[center_48%]" />
                   </div>
                   <div className="flex h-14 items-center justify-center"><span className="wedding-photo-note">together, by God&apos;s grace</span></div>
                 </div>
