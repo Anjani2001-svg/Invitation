@@ -77,8 +77,8 @@ export function WeddingExperience() {
           <motion.div key="splash" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0, scale: reduced ? 1 : 1.03 }} transition={{ duration: 0.8 }}
             className="catholic-splash fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto px-6 py-10 text-center">
             <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
-            <div className="pointer-events-none absolute inset-5 rounded-t-[999px] rounded-b-3xl border border-gold/40 sm:inset-10" />
-            <div className="pointer-events-none absolute inset-7 rounded-t-[999px] rounded-b-2xl border border-gold/20 sm:inset-13" />
+            <div className="pointer-events-none absolute inset-5 rounded-[32px] border border-gold/25 sm:inset-10 sm:rounded-[44px]" />
+            <div className="pointer-events-none absolute inset-7 rounded-[28px] border border-white/60 sm:inset-13 sm:rounded-[40px]" />
             <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-60 w-60 opacity-60 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
             <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-60 w-60 opacity-60 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
             <div className="relative z-10 flex max-w-md flex-col items-center">
@@ -121,42 +121,50 @@ export function WeddingExperience() {
         </header>
 
         <main>
-          <section id="home" className="catholic-hero relative isolate overflow-hidden px-5 pb-20 pt-14 text-center sm:pt-20">
-            <BotanicalSprig className="pointer-events-none absolute -left-16 top-10 h-56 w-40 -rotate-12 text-sage/25" />
-            <BotanicalSprig className="pointer-events-none absolute -right-16 top-10 h-56 w-40 rotate-[192deg] text-sage/25" />
-            <Reveal className="relative mx-auto max-w-2xl">
-              {guest ? <p className="display-serif mb-5 text-2xl italic text-sage-dark">Dear {guest},</p> : null}
+          <section id="home" className="catholic-hero relative isolate flex min-h-[calc(100svh-3.5rem)] flex-col items-center justify-center overflow-hidden px-5 py-16 text-center">
+            <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
+            <div className="botanical-sway pointer-events-none absolute -bottom-12 -left-16 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
+            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -right-16 -top-12 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full rotate-180" /></div>
+            <Reveal className="relative">
               <TinyCross className="mx-auto h-7 w-7 text-gold" />
-              <p className="kicker mt-4 text-gold-deep">With the blessing of Almighty God</p>
-              <div className="mx-auto mt-9 w-[min(78vw,340px)] rounded-t-[999px] rounded-b-2xl border border-gold/50 bg-white p-2.5 shadow-[0_26px_70px_rgba(28,44,80,.16)]">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-lg bg-sage-light">
-                  <Image src="/couple.jpg" alt={`Portrait of ${coupleNames}`} fill priority sizes="340px" className="object-cover object-[center_40%]" />
-                </div>
-              </div>
-              <h1 className="display-serif mt-9 text-[clamp(3.4rem,13vw,6.4rem)] leading-[.86] tracking-[-.04em] text-charcoal">
-                {wedding.bride}<span className="my-1 block text-[.5em] italic text-gold">&</span>{wedding.groom}
+              <p className="kicker mt-4 text-gold-deep">The Wedding of</p>
+              <h1 className="display-serif mt-6 text-[clamp(3.8rem,15vw,8rem)] leading-[.85] tracking-[-.05em] text-charcoal">
+                {wedding.bride}<span className="my-2 block text-[.5em] italic text-gold">and</span>{wedding.groom}
               </h1>
-              <p className="mt-6 text-[11px] font-semibold uppercase tracking-[.2em] text-sage-dark">{wedding.date.display}</p>
-              <p className="mt-7 display-serif text-3xl italic text-charcoal">“{wedding.verse.text}”</p>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[.18em] text-gold-deep">{wedding.verse.reference}</p>
-              <a href="#details" className={`${btn} mt-9`}>Explore <ArrowRight className="h-4 w-4 rotate-90" aria-hidden="true" /></a>
+              <p className="mt-8 text-[11px] font-semibold uppercase tracking-[.22em] text-sage-dark">{wedding.date.display}</p>
+              <a href="#invitation" className="mt-12 inline-flex flex-col items-center gap-2 text-[10px] uppercase tracking-[.2em] text-muted hover:text-sage-dark">
+                Scroll down <ArrowRight className="scroll-cue h-4 w-4 rotate-90 text-gold" aria-hidden="true" />
+              </a>
             </Reveal>
           </section>
 
-          <section className="story-bloom px-6 py-20 text-center sm:py-28">
+          <section id="invitation" className="story-bloom relative overflow-hidden px-6 py-20 text-center sm:py-28">
+            <BotanicalSprig className="pointer-events-none absolute -right-18 top-11 h-58 w-40 rotate-170 text-sage/25" />
             <Reveal className="mx-auto max-w-2xl">
-              <p className="kicker text-gold-deep">{wedding.invitation.eyebrow}</p>
-              <p className="display-serif mt-6 text-2xl italic leading-relaxed text-sage-dark">With joy and the blessings of our families,</p>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              {guest ? <p className="display-serif text-2xl italic text-sage-dark">Dear {guest},</p> : null}
+              <p className="display-serif mt-5 text-2xl italic leading-relaxed text-sage-dark">With joy and the blessings of our families,</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {[wedding.families.bride, wedding.families.groom].map((f) => <p key={f} className="display-serif text-2xl text-charcoal">{f}</p>)}
               </div>
+              <p className="mt-6 text-sm leading-7 text-muted">invite you to celebrate the marriage of their beloved children</p>
+              <div className="wedding-photo-wrap relative mx-auto my-10 w-full max-w-[340px] py-8">
+                <div className="wedding-photo-card relative mx-auto w-[84%]">
+                  <div className="wedding-photo-image relative aspect-[4/4.95] overflow-hidden bg-sage-light">
+                    <Image src="/couple.jpg" alt={`Portrait of ${coupleNames}`} fill priority sizes="340px" className="object-cover object-[center_48%]" />
+                  </div>
+                  <div className="flex h-14 items-center justify-center"><span className="wedding-photo-note">together, by God&apos;s grace</span></div>
+                </div>
+              </div>
+              <p className="display-serif text-5xl text-charcoal">{wedding.bride}<span className="mx-3 italic text-gold">&</span>{wedding.groom}</p>
+              <a href="#rsvp" className="mt-4 inline-block text-[11px] font-semibold uppercase tracking-[.2em] text-sage-dark underline-offset-4 hover:underline">{wedding.date.display}</a>
               <p className="mx-auto mt-8 max-w-xl text-[15px] leading-[2] text-muted">{wedding.invitation.body}</p>
-              <div className="blessing-wash relative mt-12 rounded-[28px] border border-gold/30 px-7 py-9">
+              <div className="blessing-wash relative mt-10 rounded-[28px] border border-gold/30 px-7 py-9">
                 <span className="gold-foil-line absolute inset-x-8 top-0 h-px" aria-hidden="true" />
                 <TinyCross className="mx-auto h-7 w-7 text-gold" />
                 <p className="display-serif mt-3 text-[clamp(1.5rem,4vw,2.1rem)] italic leading-snug text-sage-dark">“What God has joined together, let no one separate.”</p>
                 <p className="kicker mt-4 text-gold-deep">Matthew 19:6</p>
               </div>
+              <a href="#details" className="mt-10 inline-flex flex-col items-center gap-2 text-[10px] uppercase tracking-[.2em] text-muted hover:text-sage-dark">Explore <ArrowRight className="scroll-cue h-4 w-4 rotate-90 text-gold" aria-hidden="true" /></a>
             </Reveal>
           </section>
 
@@ -228,7 +236,7 @@ export function WeddingExperience() {
           <section id="rsvp" className="rsvp-wash relative overflow-hidden px-6 py-20 sm:py-28">
             <div className="relative mx-auto max-w-[740px]">
               <Reveal><SectionTitle eyebrow="The pleasure of your company" title="Kindly RSVP" description={wedding.rsvp.deadline} /></Reveal>
-              <Reveal delay={0.1} className="mt-10 rounded-3xl border border-gold/25 bg-white p-5 shadow-[0_22px_75px_rgba(28,44,80,.09)] sm:p-11"><RsvpForm /></Reveal>
+              <Reveal delay={0.1} className="mt-10 rounded-3xl border border-gold/25 bg-white p-5 shadow-[0_22px_75px_rgba(60,80,60,.09)] sm:p-11"><RsvpForm /></Reveal>
             </div>
           </section>
         </main>
