@@ -92,7 +92,7 @@ export function WeddingExperience() {
             <div className="relative z-10 flex max-w-md flex-col items-center">
               <div className="sacred-glow"><SacredSeal className="h-24 w-24" /></div>
               <p className="display-serif mt-7 text-[clamp(1.7rem,6vw,2.3rem)] italic text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
-              <p className="kicker mt-3 text-gold-deep">to the wedding of</p>
+              <p className="kicker mt-3 text-gold-deep">{guest ? "You are invited to the wedding of" : "to the wedding of"}</p>
               <h1 className="display-serif mt-4 text-[clamp(2.8rem,10vw,4.6rem)] leading-[.9] text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&</span>{wedding.groom}</h1>
               <p className="mt-4 text-[11px] font-semibold tracking-[.24em] text-sage-dark">{wedding.date.short}</p>
               <button type="button" onClick={openInvitation} className={`${btn} mt-9`}>Open invitation <ArrowRight className="h-4 w-4" aria-hidden="true" /></button>
@@ -112,7 +112,7 @@ export function WeddingExperience() {
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="absolute inset-x-0 top-[max(3.2rem,8vh)] px-8 text-center">
               <TinyCross className="mx-auto h-6 w-6 text-gold" />
               <p className="display-serif mt-3 text-[clamp(1.5rem,5vw,2.2rem)] italic text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
-              <p className="kicker mt-2 text-gold-deep">United in faith & love</p>
+              <p className="kicker mt-2 text-gold-deep">{guest ? "You are invited" : "United in faith & love"}</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.8 }} className="absolute inset-x-0 bottom-[max(3.2rem,8vh)] px-8 text-center">
               <h1 className="display-serif text-[clamp(2.8rem,10vw,5rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-3 italic text-gold">&</span>{wedding.groom}</h1>
