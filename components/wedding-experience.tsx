@@ -20,9 +20,7 @@ const NAV = [["#home", "Home"], ["#details", "Details"], ["#rsvp", "RSVP"], ["#l
 export function WeddingExperience() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const reduced = useReducedMotion();
-  const [progress, setProgress] = useState(0);
   const [opened, setOpened] = useState(false);
-  const [entering, setEntering] = useState(false);
   const [guest, setGuest] = useState("");
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,9 +36,11 @@ export function WeddingExperience() {
     setGuest((q.get("guest") ?? q.get("to") ?? "").slice(0, 80));
     try { if (window.localStorage.getItem(MUSIC_PREF) === "paused") setMusicPreferred(false); } catch { /* no storage */ }
     if (audioRef.current) audioRef.current.volume = 0.4;
-    // Loading screen with percentage
-    const id = window.setInterval(() => setProgress((p) => Math.min(100, p + (reduced ? 50 : 7))), 110);
-    return () => window.clearInterval(id);
+    if (reduced) setOpened(true);
+    let wants = true;
+    try { wants = window.localStorage.getItem(MUSIC_PREF) !== "paused"; } catch { /* no storage */ }
+    if (wants) playMusic(); // browsers may block this until the first tap; handled below
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduced]);
 
   useEffect(() => {
@@ -60,16 +60,22 @@ export function WeddingExperience() {
     a.volume = 0.4;
     void a.play().then(() => { setIsPlaying(true); setAudioFailed(false); if (save) persistMusic(true); }).catch(() => { setIsPlaying(false); setAudioFailed(true); });
   }
-  function openInvitation() {
-    if (musicPreferred) playMusic(); // must run inside the tap
-    if (reduced) setOpened(true); else setEntering(true);
-  }
+  // Music needs one user gesture: start it on the guest's first tap or key press.
+  useEffect(() => {
+    if (isPlaying || !musicPreferred) return;
+    const start = () => playMusic();
+    window.addEventListener("pointerup", start, { once: true });
+    window.addEventListener("keydown", start, { once: true });
+    return () => { window.removeEventListener("pointerup", start); window.removeEventListener("keydown", start); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPlaying, musicPreferred]);
   // Never trap a guest if the video is slow or blocked.
   useEffect(() => {
-    if (!entering) return;
-    const id = window.setTimeout(() => setOpened(true), 7500);
+    if (opened) return;
+    const id = window.setTimeout(() => setOpened(true), 9000);
     return () => window.clearTimeout(id);
-  }, [entering]);
+  }, [opened]);
+  const finishSoon = () => window.setTimeout(() => setOpened(true), 1100);
   function toggleMusic() {
     const a = audioRef.current;
     if (!a) return;
@@ -84,52 +90,37 @@ export function WeddingExperience() {
 
       <AnimatePresence>
         {!opened ? (
-          <motion.div key="splash" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0, scale: reduced ? 1 : 1.03 }} transition={{ duration: 0.8 }}
-            className="catholic-splash fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto px-6 py-10 text-center">
-            <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
-            <div className="pointer-events-none absolute inset-5 rounded-[32px] border border-gold/25 sm:inset-10 sm:rounded-[44px]" />
-            <div className="pointer-events-none absolute inset-7 rounded-[28px] border border-white/60 sm:inset-13 sm:rounded-[40px]" />
-            <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-60 w-60 opacity-60 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
-            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-60 w-60 opacity-60 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
-            {entering ? (
-              <motion.div key="film" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="relative z-10 flex w-full max-w-xl flex-col items-center">
-                <p className="kicker text-gold-deep">United in faith & love</p>
-                <div className="wedding-photo-card mt-6 w-full">
-                  <div className="wedding-photo-image relative aspect-video overflow-hidden bg-ivory">
-                    <video className="absolute inset-0 h-full w-full object-cover" src="/church-entrance.mp4" poster="/church-entrance-poster.jpg" autoPlay muted playsInline preload="auto" onEnded={() => setOpened(true)} onError={() => setOpened(true)} aria-label="The couple walking to the altar" />
-                  </div>
-                  <div className="flex h-14 items-center justify-center"><span className="wedding-photo-note">together, by God&apos;s grace</span></div>
-                </div>
-                <p className="display-serif mt-7 text-[clamp(2.4rem,8vw,3.4rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&</span>{wedding.groom}</p>
-                <button type="button" onClick={() => setOpened(true)} className="mt-5 text-[10px] uppercase tracking-[.2em] text-muted underline-offset-4 hover:text-sage-dark hover:underline">Skip</button>
-              </motion.div>
-            ) : (
-            <div className="relative z-10 flex max-w-md flex-col items-center">
-              <div className="sacred-glow"><SacredSeal className="h-24 w-24" /></div>
-              {guest ? <p className="display-serif mt-6 text-xl italic text-sage-dark">Dear {guest},</p> : null}
-              <p className="kicker mt-4 text-gold-deep">You are invited</p>
-              <h1 className="display-serif mt-4 text-[clamp(2.8rem,10vw,4.6rem)] leading-[.9] text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&</span>{wedding.groom}</h1>
-              <p className="mt-4 text-[11px] font-semibold tracking-[.24em] text-sage-dark">{wedding.date.short}</p>
-              <div className="mt-9 w-56">
-                <p className="mb-2 text-[10px] uppercase tracking-[.2em] text-muted">{progress < 100 ? `Preparing your invitation ${progress}%` : "Your invitation is ready"}</p>
-                <div className="loader-bar" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}><span style={{ width: `${progress}%` }} /></div>
-              </div>
-              <button type="button" onClick={openInvitation} disabled={progress < 100} className={`${btn} mt-8 disabled:pointer-events-none disabled:opacity-0 transition-opacity`}>
-                Open invitation <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </button>
-            </div>)}
+          <motion.div key="stage" role="dialog" aria-modal="true" aria-label="Wedding invitation opening" exit={{ opacity: 0 }} transition={{ duration: 1 }}
+            className="catholic-splash fixed inset-0 z-[100] overflow-hidden">
+            <video className="absolute inset-0 h-full w-full object-cover" src="/church-entrance.mp4" poster="/church-entrance-poster.jpg" autoPlay muted playsInline preload="auto" onEnded={finishSoon} onError={() => setOpened(true)} aria-label="The couple walking to the altar" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ivory/90 via-ivory/0 to-ivory/95" />
+            <div className="paper-texture pointer-events-none absolute inset-0 opacity-20" />
+            <div className="pointer-events-none absolute inset-4 rounded-[32px] border border-gold/45 sm:inset-8 sm:rounded-[44px]" />
+            <div className="pointer-events-none absolute inset-6 rounded-[26px] border border-white/70 sm:inset-11 sm:rounded-[38px]" />
+            <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-56 w-56 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
+            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-56 w-56 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="absolute inset-x-0 top-[max(3.2rem,8vh)] px-8 text-center">
+              <TinyCross className="mx-auto h-6 w-6 text-gold" />
+              <p className="display-serif mt-3 text-[clamp(1.5rem,5vw,2.2rem)] italic text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
+              <p className="kicker mt-2 text-gold-deep">United in faith & love</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.8 }} className="absolute inset-x-0 bottom-[max(3.2rem,8vh)] px-8 text-center">
+              <h1 className="display-serif text-[clamp(2.8rem,10vw,5rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-3 italic text-gold">&</span>{wedding.groom}</h1>
+              <p className="mt-3 text-[11px] font-semibold tracking-[.24em] text-sage-dark">{wedding.date.short}</p>
+              <button type="button" onClick={() => setOpened(true)} className="mt-4 text-[10px] uppercase tracking-[.2em] text-muted underline-offset-4 hover:text-sage-dark hover:underline">Skip</button>
+            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
 
-      {opened ? (
+      {(
         <button type="button" onClick={toggleMusic} aria-label={isPlaying ? "Pause background music" : "Play background music"} aria-pressed={isPlaying}
           title={audioFailed ? "Tap to try playing music again" : undefined}
-          className="music-toggle fixed bottom-5 right-5 z-50 flex h-11 items-center gap-2 rounded-full border border-gold/30 bg-white/95 px-4 text-sage-dark shadow-lg backdrop-blur-md hover:bg-sage-light">
+          className="music-toggle fixed bottom-5 right-5 z-[120] flex h-11 items-center gap-2 rounded-full border border-gold/30 bg-white/95 px-4 text-sage-dark shadow-lg backdrop-blur-md hover:bg-sage-light">
           {isPlaying ? <Pause className="h-4 w-4 fill-current" aria-hidden="true" /> : <Play className="h-4 w-4 fill-current" aria-hidden="true" />}
           <span className="text-[10px] font-semibold uppercase tracking-[.13em]">{isPlaying ? "Music on" : "Music off"}</span>
         </button>
-      ) : null}
+      )}
 
       <div id="top" inert={!opened} className="overflow-x-clip">
         <header className="sticky top-0 z-30 border-b border-gold/20 bg-ivory/90 backdrop-blur-xl">

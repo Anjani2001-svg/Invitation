@@ -21,8 +21,8 @@ export const wedding = {
 
   // Families named in the parents' invitation block. EDIT to the real names.
   families: {
-    bride: "Mr. & Mrs. de silva",
-    groom: "Mr. & Mrs. vithanage",
+    bride: "Mr. & Mrs. (Bride's parents)",
+    groom: "Mr. & Mrs. (Groom's parents)",
   },
 
   // Order of the day shown as the programme timeline.
@@ -35,8 +35,8 @@ export const wedding = {
 
   // Phone numbers for the call buttons (international format). EDIT.
   contacts: [
-    { label: "Call the bride's family", tel: "+94763794742" },
-    { label: "Call the groom's family", tel: "+94770807813" },
+    { label: "Call the bride's family", tel: "+94000000000" },
+    { label: "Call the groom's family", tel: "+94000000001" },
   ],
 
   verse: {
