@@ -21,8 +21,8 @@ export const wedding = {
 
   // Families named in the parents' invitation block. EDIT to the real names.
   families: {
-    bride: "Mr. & Mrs. (De Silva)",
-    groom: "Mr. & Mrs. (Vithanage)",
+    bride: "Mr. & Mrs. De Silva",
+    groom: "Mr. & Mrs. Vithanage",
   },
 
   // Order of the day shown as the programme timeline.
