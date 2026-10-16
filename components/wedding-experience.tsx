@@ -21,6 +21,7 @@ export function WeddingExperience() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const reduced = useReducedMotion();
   const [opened, setOpened] = useState(false);
+  const [entering, setEntering] = useState(false);
   const [guest, setGuest] = useState("");
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -36,10 +37,6 @@ export function WeddingExperience() {
     setGuest((q.get("guest") ?? q.get("to") ?? "").slice(0, 80));
     try { if (window.localStorage.getItem(MUSIC_PREF) === "paused") setMusicPreferred(false); } catch { /* no storage */ }
     if (audioRef.current) audioRef.current.volume = 0.4;
-    if (reduced) setOpened(true);
-    let wants = true;
-    try { wants = window.localStorage.getItem(MUSIC_PREF) !== "paused"; } catch { /* no storage */ }
-    if (wants) playMusic(); // browsers may block this until the first tap; handled below
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduced]);
 
@@ -60,21 +57,16 @@ export function WeddingExperience() {
     a.volume = 0.4;
     void a.play().then(() => { setIsPlaying(true); setAudioFailed(false); if (save) persistMusic(true); }).catch(() => { setIsPlaying(false); setAudioFailed(true); });
   }
-  // Music needs one user gesture: start it on the guest's first tap or key press.
-  useEffect(() => {
-    if (isPlaying || !musicPreferred) return;
-    const start = () => playMusic();
-    window.addEventListener("pointerup", start, { once: true });
-    window.addEventListener("keydown", start, { once: true });
-    return () => { window.removeEventListener("pointerup", start); window.removeEventListener("keydown", start); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlaying, musicPreferred]);
+  function openInvitation() {
+    if (musicPreferred) playMusic(); // must run inside the tap
+    if (reduced) setOpened(true); else setEntering(true);
+  }
   // Never trap a guest if the video is slow or blocked.
   useEffect(() => {
-    if (opened) return;
+    if (!entering || opened) return;
     const id = window.setTimeout(() => setOpened(true), 9000);
     return () => window.clearTimeout(id);
-  }, [opened]);
+  }, [entering, opened]);
   const finishSoon = () => window.setTimeout(() => setOpened(true), 1100);
   function toggleMusic() {
     const a = audioRef.current;
@@ -89,7 +81,25 @@ export function WeddingExperience() {
       <audio ref={audioRef} src="/music.mp3" preload="metadata" loop onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} aria-hidden="true" />
 
       <AnimatePresence>
-        {!opened ? (
+        {!entering && !opened ? (
+          <motion.div key="gate" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0 }} transition={{ duration: 0.9 }}
+            className="catholic-splash fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto px-6 py-10 text-center">
+            <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
+            <div className="pointer-events-none absolute inset-4 rounded-[32px] border border-gold/30 sm:inset-8 sm:rounded-[44px]" />
+            <div className="pointer-events-none absolute inset-6 rounded-[26px] border border-white/70 sm:inset-11 sm:rounded-[38px]" />
+            <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
+            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
+            <div className="relative z-10 flex max-w-md flex-col items-center">
+              <div className="sacred-glow"><SacredSeal className="h-24 w-24" /></div>
+              <p className="display-serif mt-7 text-[clamp(1.7rem,6vw,2.3rem)] italic text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
+              <p className="kicker mt-3 text-gold-deep">to the wedding of</p>
+              <h1 className="display-serif mt-4 text-[clamp(2.8rem,10vw,4.6rem)] leading-[.9] text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&</span>{wedding.groom}</h1>
+              <p className="mt-4 text-[11px] font-semibold tracking-[.24em] text-sage-dark">{wedding.date.short}</p>
+              <button type="button" onClick={openInvitation} className={`${btn} mt-9`}>Open invitation <ArrowRight className="h-4 w-4" aria-hidden="true" /></button>
+            </div>
+          </motion.div>
+        ) : null}
+        {entering && !opened ? (
           <motion.div key="stage" role="dialog" aria-modal="true" aria-label="Wedding invitation opening" exit={{ opacity: 0 }} transition={{ duration: 1 }}
             className="catholic-splash fixed inset-0 z-[100] overflow-hidden">
             <video className="absolute inset-0 h-full w-full object-cover" src="/church-entrance.mp4" poster="/church-entrance-poster.jpg" autoPlay muted playsInline preload="auto" onEnded={finishSoon} onError={() => setOpened(true)} aria-label="The couple walking to the altar" />
