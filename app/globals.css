@@ -23,6 +23,42 @@
 * { box-sizing: border-box; }
 ::selection { background: #e6d7b4; color: #294635; }
 body { min-height: 100%; background: #fcfbf5; }
+
+/* Site-wide background: white sculpted petals, fixed behind everything */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #f1f0ec url("/bg-petals.jpg") center / cover no-repeat;
+}
+.envelope-stage {
+  height: min(100svh, calc(100vw * 16 / 9));
+  aspect-ratio: 9 / 16;
+}
+.envelope-doors { filter: drop-shadow(0 18px 40px rgba(60, 50, 30, .22)); }
+.envelope-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  cursor: pointer;
+  background-image: url("/envelope.jpg");
+  background-size: 200% 100%;
+  backface-visibility: hidden;
+}
+.envelope-door-left { left: 0; background-position: 0 0; }
+.envelope-door-right { right: 0; background-position: 100% 0; }
+.wax-seal-button { cursor: pointer; background: transparent; border: 0; }
+.wax-seal-button::after {
+  content: "";
+  position: absolute;
+  inset: -4%;
+  border-radius: 50%;
+  border: 2px solid rgba(182, 152, 97, .75);
+  animation: seal-pulse 2.2s ease-out infinite;
+}
+.wax-seal-button:disabled::after { animation: none; opacity: 0; }
+@keyframes seal-pulse { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 button, input, textarea, select { font: inherit; }
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 2px solid #896e40; outline-offset: 3px; }
@@ -204,3 +240,10 @@ section[id] { scroll-margin-top: 7.5rem; }
 .tab-card:hover { transform: translateY(-3px); border-color: #b69861; background-color: #fff; }
 .scroll-cue { animation: scroll-cue 2.2s ease-in-out infinite; }
 @keyframes scroll-cue { 0%,100% { transform: translateY(0); opacity: .6; } 50% { transform: translateY(7px); opacity: 1; } }
+
+/* Let the petal background show through the section washes */
+.catholic-hero, .story-bloom, .rsvp-wash { background: transparent; }
+.countdown-wash { background: linear-gradient(112deg, rgba(233,240,230,.55), rgba(248,242,226,.5) 49%, rgba(220,232,217,.55)); }
+.footer-wash { background: linear-gradient(to bottom, transparent, rgba(233,240,230,.7)); }
+.bg-paper { background-color: rgba(252, 251, 245, .5); }
+.blessing-wash { background: linear-gradient(115deg, rgba(239,244,234,.85), rgba(249,246,233,.85) 50%, rgba(237,242,231,.85)); }

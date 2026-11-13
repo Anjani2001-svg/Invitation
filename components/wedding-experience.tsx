@@ -21,7 +21,7 @@ export function WeddingExperience() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const reduced = useReducedMotion();
   const [opened, setOpened] = useState(false);
-  const [entering, setEntering] = useState(false);
+  const [opening, setOpening] = useState(false);
   const [guest, setGuest] = useState("");
   const [musicPreferred, setMusicPreferred] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -58,16 +58,17 @@ export function WeddingExperience() {
     void a.play().then(() => { setIsPlaying(true); setAudioFailed(false); if (save) persistMusic(true); }).catch(() => { setIsPlaying(false); setAudioFailed(true); });
   }
   function openInvitation() {
+    if (opening || opened) return;
     if (musicPreferred) playMusic(); // must run inside the tap
-    if (reduced) setOpened(true); else setEntering(true);
+    if (reduced) { setOpened(true); window.scrollTo(0, 0); return; }
+    setOpening(true);
   }
-  // Never trap a guest if the video is slow or blocked.
+  // Doors swing open, then the gate is removed. Never trap a guest if animation is blocked.
   useEffect(() => {
-    if (!entering || opened) return;
-    const id = window.setTimeout(() => setOpened(true), 9000);
+    if (!opening || opened) return;
+    const id = window.setTimeout(() => { setOpened(true); window.scrollTo(0, 0); }, 1900);
     return () => window.clearTimeout(id);
-  }, [entering, opened]);
-  const finishSoon = () => window.setTimeout(() => setOpened(true), 1100);
+  }, [opening, opened]);
   function toggleMusic() {
     const a = audioRef.current;
     if (!a) return;
@@ -81,44 +82,29 @@ export function WeddingExperience() {
       <audio ref={audioRef} src="/music.mp3" preload="metadata" loop onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} aria-hidden="true" />
 
       <AnimatePresence>
-        {!entering && !opened ? (
-          <motion.div key="gate" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0 }} transition={{ duration: 0.9 }}
-            className="catholic-splash fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto px-6 py-10 text-center">
-            <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
-            <div className="pointer-events-none absolute inset-4 rounded-[32px] border border-gold/30 sm:inset-8 sm:rounded-[44px]" />
-            <div className="pointer-events-none absolute inset-6 rounded-[26px] border border-white/70 sm:inset-11 sm:rounded-[38px]" />
-            <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
-            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
-            <div className="relative z-10 flex max-w-md flex-col items-center">
-              <div className="sacred-glow"><SacredSeal className="h-24 w-24" /></div>
-              <p className="display-serif mt-7 text-[clamp(1.7rem,6vw,2.3rem)] italic text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
-              <p className="kicker mt-3 text-gold-deep">{guest ? "You are invited to the wedding of" : "to the wedding of"}</p>
-              <h1 className="display-serif mt-4 text-[clamp(2.8rem,10vw,4.6rem)] leading-[.9] text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&</span>{wedding.groom}</h1>
-              <p className="mt-4 text-[11px] font-semibold tracking-[.24em] text-sage-dark">{wedding.date.short}</p>
-              <button type="button" onClick={openInvitation} className={`${btn} mt-9`}>Open invitation <ArrowRight className="h-4 w-4" aria-hidden="true" /></button>
+        {!opened ? (
+          <motion.div key="gate" role="dialog" aria-modal="true" aria-label="Open your wedding invitation" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
+            {/* Petal backdrop fades away as the doors open, revealing the invitation behind */}
+            <motion.div className="site-bg absolute inset-0" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 1.1, delay: 0.35 }} aria-hidden="true" />
+            <div className="envelope-stage relative">
+              <motion.div className="envelope-doors absolute inset-0" style={{ perspective: "1800px" }} animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.4, delay: 1.35 }}>
+                <motion.div className="envelope-door envelope-door-left" style={{ transformOrigin: "left center" }}
+                  animate={{ rotateY: opening ? -112 : 0 }} transition={{ duration: 1.5, ease: [0.5, 0, 0.2, 1] }} onClick={openInvitation} aria-hidden="true" />
+                <motion.div className="envelope-door envelope-door-right" style={{ transformOrigin: "right center" }}
+                  animate={{ rotateY: opening ? 112 : 0 }} transition={{ duration: 1.5, ease: [0.5, 0, 0.2, 1] }} onClick={openInvitation} aria-hidden="true" />
+              </motion.div>
+              <motion.div className="pointer-events-none absolute inset-x-0 top-[7%] px-[10%] text-center" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.4 }}>
+                <p className="display-serif text-[clamp(1.25rem,4.6vw,2rem)] italic leading-tight text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
+                <p className="display-serif mt-2 text-[clamp(1.5rem,6vw,2.6rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&amp;</span>{wedding.groom}</p>
+                <p className="mt-3 text-[10px] font-semibold tracking-[.22em] text-sage-dark">{wedding.date.short}</p>
+              </motion.div>
+              <motion.p className="pointer-events-none absolute inset-x-0 bottom-[3.5%] text-center text-[10px] font-semibold uppercase tracking-[.2em] text-sage-dark" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.3 }}>
+                Tap the seal to open
+              </motion.p>
+              <button type="button" onClick={openInvitation} aria-label="Open invitation" disabled={opening}
+                className="wax-seal-button absolute left-1/2 top-[51.3%] z-10 aspect-[0.92] w-[21%] -translate-x-1/2 -translate-y-1/2 rounded-full" />
             </div>
-          </motion.div>
-        ) : null}
-        {entering && !opened ? (
-          <motion.div key="stage" role="dialog" aria-modal="true" aria-label="Wedding invitation opening" exit={{ opacity: 0 }} transition={{ duration: 1 }}
-            className="catholic-splash fixed inset-0 z-[100] overflow-hidden">
-            <video className="absolute inset-0 h-full w-full object-cover" src="/church-entrance.mp4" poster="/church-entrance-poster.jpg" autoPlay muted playsInline preload="auto" onEnded={finishSoon} onError={() => setOpened(true)} aria-label="The couple walking to the altar" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ivory/90 via-ivory/0 to-ivory/95" />
-            <div className="paper-texture pointer-events-none absolute inset-0 opacity-20" />
-            <div className="pointer-events-none absolute inset-4 rounded-[32px] border border-gold/45 sm:inset-8 sm:rounded-[44px]" />
-            <div className="pointer-events-none absolute inset-6 rounded-[26px] border border-white/70 sm:inset-11 sm:rounded-[38px]" />
-            <div className="botanical-sway pointer-events-none absolute -bottom-10 -left-14 h-56 w-56 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
-            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -bottom-10 -right-14 h-56 w-56 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full -scale-x-100" /></div>
-            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="absolute inset-x-0 top-[max(3.2rem,8vh)] px-8 text-center">
-              <TinyCross className="mx-auto h-6 w-6 text-gold" />
-              <p className="display-serif mt-3 text-[clamp(1.5rem,5vw,2.2rem)] italic text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
-              <p className="kicker mt-2 text-gold-deep">{guest ? "You are invited" : "United in faith & love"}</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.8 }} className="absolute inset-x-0 bottom-[max(3.2rem,8vh)] px-8 text-center">
-              <h1 className="display-serif text-[clamp(2.8rem,10vw,5rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-3 italic text-gold">&</span>{wedding.groom}</h1>
-              <p className="mt-3 text-[11px] font-semibold tracking-[.24em] text-sage-dark">{wedding.date.short}</p>
-              <button type="button" onClick={() => setOpened(true)} className="mt-4 text-[10px] uppercase tracking-[.2em] text-muted underline-offset-4 hover:text-sage-dark hover:underline">Skip</button>
-            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>

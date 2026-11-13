@@ -58,6 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${headings.variable} ${body.variable}`}>
       <body className="bg-ivory font-sans text-charcoal antialiased">
+        <div className="site-bg" aria-hidden="true" />
         {children}
       </body>
     </html>
