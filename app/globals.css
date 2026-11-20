@@ -24,16 +24,16 @@
 ::selection { background: #e6d7b4; color: #294635; }
 body { min-height: 100%; background: #fcfbf5; }
 
-/* Site-wide background: white sculpted petals, fixed behind everything */
+/* Site-wide background: soft floral wallpaper, fixed behind everything */
 .site-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: #f1f0ec url("/bg-petals.jpg") center / cover no-repeat;
+  background: #e9e5dc url("/bg-floral.jpg") center / cover no-repeat;
 }
 .envelope-stage {
-  height: min(100svh, calc(100vw * 16 / 9));
-  aspect-ratio: 9 / 16;
+  height: min(100svh, calc(100vw * 1291 / 720));
+  aspect-ratio: 720 / 1291;
 }
 .envelope-doors { filter: drop-shadow(0 18px 40px rgba(60, 50, 30, .22)); }
 .envelope-door {

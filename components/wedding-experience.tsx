@@ -7,7 +7,7 @@ import { ArrowRight, ArrowUpRight, CalendarDays, Church, Heart, MapPin, Navigati
 import { wedding, coupleNames } from "@/config/wedding";
 import { Countdown } from "@/components/countdown";
 import { EventCard } from "@/components/event-card";
-import { BotanicalSprig, DividerOrnament, SacredSeal, TinyCross, WeddingFlorals } from "@/components/ornaments";
+import { DividerOrnament, SacredSeal, TinyCross } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
 import { RsvpForm } from "@/components/rsvp-form";
 import { SectionTitle } from "@/components/section-title";
@@ -94,16 +94,16 @@ export function WeddingExperience() {
                 <motion.div className="envelope-door envelope-door-right" style={{ transformOrigin: "right center" }}
                   animate={{ rotateY: opening ? 112 : 0 }} transition={{ duration: 1.5, ease: [0.5, 0, 0.2, 1] }} onClick={openInvitation} aria-hidden="true" />
               </motion.div>
-              <motion.div className="pointer-events-none absolute inset-x-0 top-[7%] px-[10%] text-center" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.4 }}>
+              <motion.div className="pointer-events-none absolute left-1/2 top-[4.5%] w-[62%] -translate-x-1/2 rounded-2xl border border-gold/40 bg-[#fbf7ee]/90 px-3 py-3 text-center shadow-sm" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.4 }}>
                 <p className="display-serif text-[clamp(1.25rem,4.6vw,2rem)] italic leading-tight text-sage-dark">{guest ? `Dear ${guest},` : "You are invited"}</p>
                 <p className="display-serif mt-2 text-[clamp(1.5rem,6vw,2.6rem)] leading-none text-charcoal">{wedding.bride}<span className="mx-2 italic text-gold">&amp;</span>{wedding.groom}</p>
                 <p className="mt-3 text-[10px] font-semibold tracking-[.22em] text-sage-dark">{wedding.date.short}</p>
               </motion.div>
-              <motion.p className="pointer-events-none absolute inset-x-0 bottom-[3.5%] text-center text-[10px] font-semibold uppercase tracking-[.2em] text-sage-dark" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.3 }}>
+              <motion.p className="pointer-events-none absolute bottom-[3.5%] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-gold/40 bg-[#fbf7ee]/90 px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[.2em] text-sage-dark shadow-sm" animate={{ opacity: opening ? 0 : 1 }} transition={{ duration: 0.3 }}>
                 Tap the seal to open
               </motion.p>
               <button type="button" onClick={openInvitation} aria-label="Open invitation" disabled={opening}
-                className="wax-seal-button absolute left-1/2 top-[51.3%] z-10 aspect-[0.92] w-[21%] -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                className="wax-seal-button absolute left-[49.9%] top-[50.7%] z-10 aspect-[0.74] w-[19.5%] -translate-x-1/2 -translate-y-1/2 rounded-full" />
             </div>
           </motion.div>
         ) : null}
@@ -133,8 +133,6 @@ export function WeddingExperience() {
         <main>
           <section id="home" className="catholic-hero relative isolate flex min-h-[calc(100svh-3.5rem)] flex-col items-center justify-center overflow-hidden px-5 py-16 text-center">
             <div className="paper-texture pointer-events-none absolute inset-0 opacity-25" />
-            <div className="botanical-sway pointer-events-none absolute -bottom-12 -left-16 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full" /></div>
-            <div className="botanical-sway botanical-sway-late pointer-events-none absolute -right-16 -top-12 h-60 w-60 opacity-80 sm:h-80 sm:w-80"><WeddingFlorals className="flower-shadow h-full w-full rotate-180" /></div>
             <Reveal className="relative">
               <TinyCross className="mx-auto h-7 w-7 text-gold" />
               <p className="kicker mt-4 text-gold-deep">The Wedding of</p>
@@ -149,7 +147,6 @@ export function WeddingExperience() {
           </section>
 
           <section id="invitation" className="story-bloom relative overflow-hidden px-6 py-20 text-center sm:py-28">
-            <BotanicalSprig className="pointer-events-none absolute -right-18 top-11 h-58 w-40 rotate-170 text-sage/25" />
             <Reveal className="mx-auto max-w-2xl">
               {guest ? <p className="display-serif text-2xl italic text-sage-dark">Dear {guest},</p> : null}
               <p className="display-serif mt-5 text-2xl italic leading-relaxed text-sage-dark">With joy and the blessings of our families,</p>

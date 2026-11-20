@@ -2,7 +2,7 @@ import { ArrowUpRight, Clock3, Globe2, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { wedding } from "@/config/wedding";
 import { CalendarActions } from "@/components/calendar-actions";
-import { WeddingFlorals, SacredSeal } from "@/components/ornaments";
+import { SacredSeal } from "@/components/ornaments";
 import { getWeddingCalendarEvent, type WeddingCalendarKind } from "@/lib/calendar";
 import { getUsWeddingTime, US_TIME_ZONES, type UsTimeZone } from "@/lib/us-time";
 
@@ -36,7 +36,6 @@ export function EventCard({
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-[26px] border border-gold/15 bg-white px-6 pb-9 pt-10 shadow-[0_11px_35px_rgba(57,81,61,.055)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(57,81,61,.13)] motion-reduce:transform-none sm:px-11 sm:pb-12 sm:pt-12">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[5px] bg-gradient-to-r from-gold/60 via-gold/80 to-sage/65" aria-hidden="true" />
-      <WeddingFlorals className="pointer-events-none absolute -right-24 -top-24 h-60 w-60 opacity-[.1]" />
       {eventKind === "ceremony" ? <SacredSeal className="pointer-events-none absolute -right-13 top-34 h-50 w-50 opacity-[.09]" /> : null}
       <span className="absolute right-7 top-8 display-serif text-3xl text-gold/30 sm:right-10">{number}</span>
       <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/20 bg-gradient-to-br from-gold-mist to-sage-light text-sage-dark">
